@@ -1,10 +1,10 @@
 {
-    "voice_id": "mixed_voice_simulation",
-    "voice_name": "FlukakuMix",
+    "voice_id": "oG30eP3GaYrCwnabbDCw",
+    "voice_name": "FlukakuFluido",
     "settings": {
-        "stability": 0.05,
-        "similarity_boost": 0.8,
-        "style": 1.0,
+        "stability": 0.15,
+        "similarity_boost": 0.65,
+        "style": 0.85,
         "use_speaker_boost": true,
         "model_id": "eleven_multilingual_v2"
     }
