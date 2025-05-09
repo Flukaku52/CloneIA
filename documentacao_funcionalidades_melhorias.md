@@ -118,12 +118,18 @@
 
 ## Avatares
 
-### 1. Flukaku Rapidinha
+### 1. Flukaku Rapidinha Novo
+- **ID**: 4f8680b8f3654e8da9f8b274abd1266b
+- **Status**: Novo avatar criado para substituir o anterior
+- **Tipo**: Avatar personalizado baseado em vídeos de referência
+- **Observação**: Adicionado em 04/05/2025 para testes futuros
+
+### 2. Flukaku Rapidinha (Antigo)
 - **ID**: 84aa751d70e24c8eb5a12cac86762e6a
 - **Status**: Criado, mas apresentando problemas ("not ready")
 - **Tipo**: Avatar personalizado baseado em vídeos de referência
 
-### 2. Avatares Padrão
+### 3. Avatares Padrão
 - **Daisy-inshirt-20220818**: Avatar feminino padrão do HeyGen
 - **Outros avatares padrão**: Disponíveis através da API do HeyGen
 
@@ -198,9 +204,9 @@
 ## Problemas Conhecidos
 
 ### 1. Avatar "Not Ready"
-- **Descrição**: O avatar personalizado (ID: 84aa751d70e24c8eb5a12cac86762e6a) apresenta o erro "not ready"
-- **Solução Temporária**: Usar avatares padrão do HeyGen
-- **Status**: Pendente
+- **Descrição**: O avatar personalizado antigo (ID: 84aa751d70e24c8eb5a12cac86762e6a) apresenta o erro "not ready"
+- **Solução**: Novo avatar criado (ID: 4f8680b8f3654e8da9f8b274abd1266b) para substituir o anterior
+- **Status**: Resolvido - Pendente de teste
 
 ### 2. Pausas na Fala
 - **Descrição**: Algumas vezes a voz gerada apresenta pausas não naturais
