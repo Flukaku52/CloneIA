@@ -41,7 +41,7 @@ DEFAULT_VOICE_SETTINGS = {
 }
 
 # Video constants
-AVATAR_ID = "3228e777071e48e887d7a9bb5066d921"
+AVATAR_ID = "84aa751d70e24c8eb5a12cac86762e6a"
 FOLDER_NAME = "augment"
 VIDEO_WIDTH = 1080
 VIDEO_HEIGHT = 1920
@@ -52,15 +52,18 @@ BG_COLOR = (25, 25, 25)
 TEXT_COLOR = (255, 255, 255)
 HIGHLIGHT_COLOR = (0, 123, 255)
 
-def load_api_key() -> Optional[str]:
+def load_api_key(key_name: str = "ELEVENLABS_API_KEY") -> Optional[str]:
     """
-    Load the ElevenLabs API key from environment or .env file.
+    Load an API key from environment or .env file.
+
+    Args:
+        key_name: Name of the environment variable containing the API key
 
     Returns:
         Optional[str]: The API key or None if not found
     """
     # Try to get from environment
-    api_key = os.getenv("ELEVENLABS_API_KEY")
+    api_key = os.getenv(key_name)
 
     if not api_key:
         # Try to load directly from .env file
@@ -69,18 +72,36 @@ def load_api_key() -> Optional[str]:
             try:
                 with open(env_path, 'r') as f:
                     for line in f:
-                        if line.startswith("ELEVENLABS_API_KEY="):
+                        if line.startswith(f"{key_name}="):
                             api_key = line.strip().split("=")[1].strip('"').strip("'")
                             break
             except Exception as e:
                 logger.error(f"Error reading .env file: {e}")
 
     if not api_key:
-        logger.warning("ElevenLabs API key not found")
+        logger.warning(f"{key_name} not found")
     else:
-        logger.info(f"ElevenLabs API key found: {api_key[:4]}...{api_key[-4:]}")
+        logger.info(f"{key_name} found: {api_key[:4]}...{api_key[-4:]}")
 
     return api_key
+
+def load_elevenlabs_api_key() -> Optional[str]:
+    """
+    Load the ElevenLabs API key from environment or .env file.
+
+    Returns:
+        Optional[str]: The API key or None if not found
+    """
+    return load_api_key("ELEVENLABS_API_KEY")
+
+def load_heygen_api_key() -> Optional[str]:
+    """
+    Load the HeyGen API key from environment or .env file.
+
+    Returns:
+        Optional[str]: The API key or None if not found
+    """
+    return load_api_key("HEYGEN_API_KEY")
 
 def load_voice_config(profile_name: Optional[str] = None) -> Optional[Dict[str, Any]]:
     """
