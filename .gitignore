@@ -49,6 +49,12 @@ reference/**/*
 # Comentado para permitir os scripts de teste
 # test_*.py
 
+# Testes antigos
+old_tests/
+
+# Arquivos de log
+*.log
+
 # Arquivos de configuração sensíveis
 # Comentado para permitir os arquivos de configuração
 # config/
