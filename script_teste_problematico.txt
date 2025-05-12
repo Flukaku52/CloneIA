@@ -1,0 +1,9 @@
+E aí cambada! Hoje vamos falar sobre o <Bitcoin> e as novidades do mercado.
+
+Este texto contém algumas tags HTML que podem causar problemas: <strong>destaque</strong> e <em>ênfase</em>.
+
+Também tem URLs como https://www.exemplo.com que podem não ser lidas corretamente.
+
+E caracteres de escape como \n e \t que podem causar problemas.
+
+Este texto é propositalmente problemático para testar o validador de roteiro!!!

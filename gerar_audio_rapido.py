@@ -57,7 +57,8 @@ def optimize_text_for_speed(text):
 
     return text
 
-def generate_audio(script_path: str, output_path: str = None, profile_name: str = "flukakuia"):
+def generate_audio(script_path: str, output_path: str = None, profile_name: str = "flukakuia",
+                validate: bool = True, force: bool = False):
     """
     Gera áudio a partir de um script usando o perfil especificado.
 
@@ -65,6 +66,8 @@ def generate_audio(script_path: str, output_path: str = None, profile_name: str 
         script_path: Caminho para o arquivo de script
         output_path: Caminho para salvar o áudio (se None, gera um nome baseado no timestamp)
         profile_name: Nome do perfil de voz a ser usado
+        validate: Se True, valida o roteiro antes de gerar o áudio
+        force: Se True, gera o áudio mesmo se a validação falhar
 
     Returns:
         str: Caminho para o áudio gerado, ou None se falhar
@@ -76,6 +79,36 @@ def generate_audio(script_path: str, output_path: str = None, profile_name: str 
     # Carregar o texto do script
     with open(script_path, 'r', encoding='utf-8') as f:
         script_content = f.read()
+
+    # Validar o roteiro antes de gerar o áudio
+    if validate:
+        try:
+            from validador_roteiro import ValidadorRoteiro
+            validador = ValidadorRoteiro()
+            valido, problemas = validador.validar_texto(script_content)
+            custos = validador.estimar_custos(script_content)
+
+            logger.info("\n=== Validação do Roteiro ===")
+            logger.info(f"Válido: {'Sim' if valido else 'Não'}")
+
+            if not valido:
+                for problema in problemas:
+                    logger.warning(f"- {problema}")
+
+                logger.info("\n=== Estimativa de Custos ===")
+                logger.info(f"Caracteres: {custos.get('caracteres', 0)}")
+                logger.info(f"Duração estimada: {custos.get('duracao_segundos', 0):.2f} segundos")
+                logger.info(f"Custo ElevenLabs: ${custos.get('custo_elevenlabs', 0):.4f}")
+                logger.info(f"Custo HeyGen: ${custos.get('custo_heygen', 0):.2f}")
+                logger.info(f"Custo total: ${custos.get('custo_total', 0):.2f}")
+
+                if not force:
+                    logger.error("Geração de áudio cancelada devido a problemas no roteiro. Use --force para ignorar.")
+                    return None
+                else:
+                    logger.warning("Ignorando problemas no roteiro devido à flag --force.")
+        except ImportError:
+            logger.warning("Módulo validador_roteiro não encontrado. Pulando validação.")
 
     # Otimizar o texto para velocidade
     optimized_text = optimize_text_for_speed(script_content)
@@ -114,19 +147,50 @@ def main():
     parser.add_argument("--script", required=True, help="Caminho para o arquivo de script")
     parser.add_argument("--output", help="Caminho para salvar o áudio")
     parser.add_argument("--profile", default="flukakuia", help="Nome do perfil de voz a ser usado")
+    parser.add_argument("--no-validate", action="store_true", help="Desativa a validação do roteiro")
+    parser.add_argument("--force", action="store_true", help="Força a geração mesmo com problemas no roteiro")
+    parser.add_argument("--validate-only", action="store_true", help="Apenas valida o roteiro, sem gerar áudio")
 
     args = parser.parse_args()
+
+    # Se a opção --validate-only foi especificada, apenas validar o roteiro
+    if args.validate_only:
+        try:
+            from validador_roteiro import validar_arquivo
+            valido, mensagem, custos = validar_arquivo(args.script, corrigir=False)
+
+            print("\n=== Resultado da Validação ===")
+            print(f"Arquivo: {args.script}")
+            print(f"Válido: {'Sim' if valido else 'Não'}")
+            print(mensagem)
+
+            print("\n=== Estimativa de Custos ===")
+            print(f"Caracteres: {custos.get('caracteres', 0)}")
+            print(f"Duração estimada: {custos.get('duracao_segundos', 0):.2f} segundos")
+            print(f"Custo ElevenLabs: ${custos.get('custo_elevenlabs', 0):.4f}")
+            print(f"Custo HeyGen: ${custos.get('custo_heygen', 0):.2f}")
+            print(f"Custo total: ${custos.get('custo_total', 0):.2f}")
+
+            return 0 if valido else 1
+        except ImportError:
+            logger.error("Módulo validador_roteiro não encontrado. Não é possível validar o roteiro.")
+            return 1
 
     # Gerar o áudio
     audio_path = generate_audio(
         script_path=args.script,
         output_path=args.output,
-        profile_name=args.profile
+        profile_name=args.profile,
+        validate=not args.no_validate,
+        force=args.force
     )
 
     # Retornar o caminho do áudio para uso em outros scripts
     if audio_path:
         print(f"AUDIO_PATH={audio_path}")
+        return 0
+    else:
+        return 1
 
 if __name__ == "__main__":
     main()
