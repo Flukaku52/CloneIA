@@ -20,15 +20,19 @@ def optimize_text_for_speed(text):
     Otimiza o texto para reduzir espaços entre palavras e aumentar a velocidade,
     preservando melhor as características da voz original.
     """
+    # Processar hífens que foram adicionados para juntar palavras
+    text = text.replace("-", " ")
+
     # Remover espaços extras
     text = ' '.join(text.split())
 
     # Substituir espaços por espaços reduzidos em certas frases
     text = text.replace("E aí cambada", "EAÍCAMBADA")
     text = text.replace("Fala cambada", "FALACAMBADA")
+    text = text.replace("Eaí cambada", "EAÍCAMBADA")
 
     # Reduzir pontuação que causa pausas (mas não remover completamente)
-    for char in [',', ';', ':']:
+    for char in [',', ';']:
         text = text.replace(char, '')
 
     # Manter alguns sinais de pontuação para preservar a entonação natural
@@ -48,8 +52,8 @@ def optimize_text_for_speed(text):
     for original, replacement in replacements.items():
         text = text.replace(original, replacement)
 
-    # Adicionar marcadores de velocidade intermediária
-    text = "<prosody rate='1.15'>" + text + "</prosody>"
+    # Adicionar marcadores de velocidade
+    text = "<prosody rate='1.35'>" + text + "</prosody>"
 
     return text
 
