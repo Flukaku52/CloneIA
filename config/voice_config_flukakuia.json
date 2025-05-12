@@ -2,9 +2,9 @@
     "voice_id": "oG30eP3GaYrCwnabbDCw",
     "voice_name": "FlukakuIA",
     "settings": {
-        "stability": 0.15,
-        "similarity_boost": 0.60,
-        "style": 0.90,
+        "stability": 0.30,
+        "similarity_boost": 0.35,
+        "style": 0.75,
         "use_speaker_boost": true,
         "model_id": "eleven_multilingual_v2"
     }
