@@ -52,8 +52,8 @@ def optimize_text_for_speed(text):
     for original, replacement in replacements.items():
         text = text.replace(original, replacement)
 
-    # Adicionar marcadores de velocidade
-    text = "<prosody rate='1.35'>" + text + "</prosody>"
+    # Adicionar marcadores de velocidade (25% mais rápido)
+    text = "<prosody rate='1.25'>" + text + "</prosody>"
 
     return text
 
