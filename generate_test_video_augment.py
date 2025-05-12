@@ -120,7 +120,7 @@ def generate_video_with_heygen(script_path, audio_path):
         heygen_generator = HeyGenVideoGenerator()
 
         # Usar seu avatar personalizado
-        heygen_generator.avatar_id = "ae9ff9b6dc47436c8e9a30c25a0d7b29"  # Seu avatar atualizado
+        heygen_generator.avatar_id = "01cbe2535df5453a97f4a872ea532b33"  # Seu avatar atualizado
         print(f"Usando seu avatar personalizado: {heygen_generator.avatar_id}")
 
         # Diretório para o vídeo

@@ -78,7 +78,7 @@ def main():
     parser.add_argument("--audio", help="Caminho para o arquivo de áudio")
     parser.add_argument("--script", help="Caminho para o arquivo de script (opcional)")
     parser.add_argument("--output", help="Caminho para salvar o vídeo")
-    parser.add_argument("--avatar", default="ae9ff9b6dc47436c8e9a30c25a0d7b29",
+    parser.add_argument("--avatar", default="01cbe2535df5453a97f4a872ea532b33",
                       help="ID do avatar a ser usado (padrão: Flukaku Rapidinha)")
     parser.add_argument("--folder", default="augment",
                       help="Nome da pasta no HeyGen onde o vídeo será salvo (padrão: augment)")

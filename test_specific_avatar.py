@@ -13,7 +13,7 @@ load_dotenv()
 
 # Configurações
 API_KEY = os.getenv("HEYGEN_API_KEY")
-AVATAR_ID = "ae9ff9b6dc47436c8e9a30c25a0d7b29"  # ID do avatar atualizado
+AVATAR_ID = "01cbe2535df5453a97f4a872ea532b33"  # ID do avatar atualizado
 VOICE_ID = "7e4e469711394247bb252ff848ac061d"  # ID da voz em português
 SCRIPT = "E aí cambada! Este é um teste da API do HeyGen para o quadro Rapidinha Cripto. Estamos testando a geração de vídeo com o meu avatar personalizado."
 

@@ -117,7 +117,7 @@ class OfflineTester:
         # Display information
         print("\n=== Video Generation Simulation ===")
         print(f"Audio: {audio_path}")
-        print(f"Avatar: ae9ff9b6dc47436c8e9a30c25a0d7b29 (Flukaku Rapidinha)")
+        print(f"Avatar: 01cbe2535df5453a97f4a872ea532b33 (Flukaku Rapidinha)")
         print(f"Folder: augment")
         print(f"Simulated video file: {output_path}")
 
