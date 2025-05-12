@@ -1,0 +1,1 @@
+E aí cambada! Hoje vamos falar sobre o e as novidades do mercado. Este texto contém algumas tags HTML que podem causar problemas: destaque e ênfase. Também tem URLs como https://www.exemplo.com que podem não ser lidas corretamente. E caracteres de escape como e que podem causar problemas. Este texto é propositalmente problemático para testar o validador de roteiro!
