@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 """
 Script para testar o verificador de notícias com dados simulados.
+Permite validar o funcionamento do sistema de cruzamento de informações.
 """
 import os
 import sys
 import json
 import logging
+import argparse
 from datetime import datetime, timedelta
+from typing import List, Dict, Any
 
 # Configurar logging
 logging.basicConfig(
@@ -16,7 +19,7 @@ logging.basicConfig(
 logger = logging.getLogger('test_verificador_noticias')
 
 # Adicionar o diretório raiz ao path
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 # Importar o verificador de notícias
 from core.verificador_noticias import VerificadorNoticias
@@ -144,14 +147,86 @@ NOTICIAS_SIMULADAS = [
     }
 ]
 
+def exibir_noticia(noticia: Dict[str, Any], indice: int = 0) -> None:
+    """
+    Exibe informações detalhadas sobre uma notícia.
+
+    Args:
+        noticia: Dicionário com informações da notícia
+        indice: Índice da notícia na lista (para exibição)
+    """
+    # Mostrar informações de credibilidade
+    credibilidade_info = f"[Credibilidade: {noticia.get('credibilidade')}/10]"
+
+    # Adicionar informações de cruzamento, se disponíveis
+    cruzamento_info = ""
+    if noticia.get('cruzamento'):
+        fontes_unicas = noticia['cruzamento'].get('fontes_unicas', 1)
+        confirmado = noticia['cruzamento'].get('confirmado', False)
+
+        if confirmado:
+            cruzamento_info = f" [✓ Confirmada por {fontes_unicas} fontes diferentes]"
+        else:
+            cruzamento_info = f" [Fonte única]"
+
+        if noticia['cruzamento'].get('tem_contradicoes', False):
+            cruzamento_info += " [⚠️ Contradições detectadas]"
+
+    # Mostrar credibilidade original vs. atual, se houver diferença
+    if noticia.get('credibilidade_original') and noticia.get('credibilidade_original') != noticia.get('credibilidade'):
+        credibilidade_info = f"[Credibilidade: {noticia.get('credibilidade_original')}/10 → {noticia.get('credibilidade')}/10]"
+
+    # Exibir informações básicas
+    prefix = f"{indice}. " if indice > 0 else ""
+    print(f"{prefix}{noticia['titulo']} {credibilidade_info}{cruzamento_info}")
+    print(f"   Portal: {noticia['portal']}")
+    print(f"   Data: {noticia['data']}")
+
+    # Exibir resumo, se disponível
+    if noticia.get('resumo'):
+        resumo = noticia['resumo']
+        if len(resumo) > 150:
+            resumo = resumo[:147] + "..."
+        print(f"   Resumo: {resumo}")
+
+    # Mostrar razões de credibilidade, se houver
+    if noticia.get('razoes_credibilidade'):
+        print(f"   Observações: {', '.join(noticia['razoes_credibilidade'])}")
+
+    # Mostrar fontes que confirmam a notícia, se houver
+    if noticia.get('cruzamento') and noticia['cruzamento'].get('fontes', []):
+        fontes = noticia['cruzamento']['fontes']
+        if len(fontes) > 1:  # Só mostrar se houver mais de uma fonte
+            print(f"   Fontes que confirmam: {', '.join(fontes)}")
+
+    print()
+
 def main():
     """
     Função principal para testar o verificador de notícias.
     """
-    logger.info("Testando o verificador de notícias com dados simulados...")
+    # Configurar argumentos da linha de comando
+    parser = argparse.ArgumentParser(description="Teste do verificador de notícias")
+    parser.add_argument("--limiar", type=float, default=0.4, help="Limiar de similaridade (0.0-1.0)")
+    parser.add_argument("--min-confirmacoes", type=int, default=2, help="Número mínimo de fontes para confirmação")
+    parser.add_argument("--bonus", type=int, default=1, help="Bônus de credibilidade por confirmação")
+    parser.add_argument("--debug", action="store_true", help="Ativar modo de depuração")
 
-    # Criar o verificador
-    verificador = VerificadorNoticias(limiar_similaridade=0.4)
+    args = parser.parse_args()
+
+    # Configurar nível de log
+    if args.debug:
+        logger.setLevel(logging.DEBUG)
+
+    logger.info("Testando o verificador de notícias com dados simulados...")
+    logger.info(f"Configurações: limiar={args.limiar}, min_confirmacoes={args.min_confirmacoes}, bonus={args.bonus}")
+
+    # Criar o verificador com os parâmetros fornecidos
+    verificador = VerificadorNoticias(
+        limiar_similaridade=args.limiar,
+        min_confirmacoes=args.min_confirmacoes,
+        bonus_confirmacao=args.bonus
+    )
 
     # Verificar as notícias
     noticias_verificadas = verificador.verificar_noticias(NOTICIAS_SIMULADAS)
@@ -159,46 +234,18 @@ def main():
     # Exibir resultados
     print(f"\nResultados da verificação cruzada de {len(NOTICIAS_SIMULADAS)} notícias simuladas:\n")
 
+    # Exibir estatísticas
+    noticias_confiaveis = [n for n in noticias_verificadas if n.get('confiavel', False)]
+    noticias_confirmadas = [n for n in noticias_verificadas if n.get('cruzamento', {}).get('confirmado', False)]
+
+    print(f"Total de notícias: {len(noticias_verificadas)}")
+    print(f"Notícias confiáveis: {len(noticias_confiaveis)} ({len(noticias_confiaveis)/len(noticias_verificadas)*100:.1f}%)")
+    print(f"Notícias confirmadas por múltiplas fontes: {len(noticias_confirmadas)} ({len(noticias_confirmadas)/len(noticias_verificadas)*100:.1f}%)")
+    print()
+
+    # Exibir cada notícia
     for i, noticia in enumerate(noticias_verificadas, 1):
-        # Mostrar informações de credibilidade
-        credibilidade_info = f"[Credibilidade: {noticia.get('credibilidade')}/10]"
-
-        # Adicionar informações de cruzamento, se disponíveis
-        cruzamento_info = ""
-        if noticia.get('cruzamento'):
-            num_fontes = noticia['cruzamento'].get('num_fontes', 1)
-            confirmado = noticia['cruzamento'].get('confirmado', False)
-
-            if confirmado:
-                cruzamento_info = f" [✓ Confirmada por {num_fontes} fontes]"
-            else:
-                cruzamento_info = f" [Fonte única]"
-
-            if noticia['cruzamento'].get('tem_contradicoes', False):
-                cruzamento_info += " [⚠️ Contradições detectadas]"
-
-        # Mostrar credibilidade original vs. atual, se houver diferença
-        if noticia.get('credibilidade_original') and noticia.get('credibilidade_original') != noticia.get('credibilidade'):
-            credibilidade_info = f"[Credibilidade: {noticia.get('credibilidade_original')}/10 → {noticia.get('credibilidade')}/10]"
-
-        print(f"{i}. {noticia['titulo']} {credibilidade_info}{cruzamento_info}")
-        print(f"   Portal: {noticia['portal']}")
-        print(f"   Data: {noticia['data']}")
-
-        if noticia.get('resumo'):
-            print(f"   Resumo: {noticia['resumo']}")
-
-        # Mostrar razões de credibilidade, se houver
-        if noticia.get('razoes_credibilidade'):
-            print(f"   Observações: {', '.join(noticia['razoes_credibilidade'])}")
-
-        # Mostrar fontes que confirmam a notícia, se houver
-        if noticia.get('cruzamento') and noticia['cruzamento'].get('fontes', []):
-            fontes = noticia['cruzamento']['fontes']
-            if len(fontes) > 1:  # Só mostrar se houver mais de uma fonte
-                print(f"   Fontes que confirmam: {', '.join(fontes)}")
-
-        print()
+        exibir_noticia(noticia, i)
 
     return 0
 
