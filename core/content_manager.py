@@ -138,11 +138,9 @@ class ContentManager:
 
         return random.choice(enfases)
 
-    @lru_cache(maxsize=1)
     def _get_random_saudacao(self) -> str:
         """
         Retorna uma saudação aleatória da lista de saudações variadas.
-        Usa cache para manter a mesma saudação durante a geração de um script.
 
         Returns:
             str: Saudação aleatória
