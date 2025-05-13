@@ -31,13 +31,15 @@ class GeradorScriptRapidinha:
     """
     Classe para gerar scripts para a Rapidinha com base em notícias e tweets.
     Foco em conteúdo acessível para público leigo em criptomoedas.
+    Suporta carregamento de padrões extraídos de Reels existentes.
     """
-    def __init__(self, output_dir: str = "output/scripts"):
+    def __init__(self, output_dir: str = "output/scripts", patterns_file: str = None):
         """
         Inicializa o gerador de scripts.
 
         Args:
             output_dir: Diretório para salvar os scripts gerados
+            patterns_file: Arquivo com padrões extraídos de Reels existentes
         """
         self.output_dir = output_dir
 
@@ -97,6 +99,19 @@ class GeradorScriptRapidinha:
             "Um abraço e até a próxima!"
         ]
 
+        # Hashtags comuns (serão preenchidas se patterns_file for fornecido)
+        self.hashtags_comuns = []
+
+        # Perguntas adicionais (serão preenchidas se patterns_file for fornecido)
+        self.perguntas_adicionais = []
+
+        # Estilo de escrita (será preenchido se patterns_file for fornecido)
+        self.estilo_escrita = {
+            "sentence_length": 12,  # Comprimento médio padrão das frases
+            "emoji_frequency": {},
+            "common_phrases": []
+        }
+
         # Termos técnicos e suas explicações simplificadas
         self.explicacoes_termos = {
             "blockchain": "tecnologia que funciona como um livro-caixa digital",
@@ -134,6 +149,66 @@ class GeradorScriptRapidinha:
             "dicas para iniciantes",
             "corretoras de cripto"
         ]
+
+        # Carregar padrões se o arquivo for fornecido
+        if patterns_file:
+            self.carregar_padroes(patterns_file)
+
+    def carregar_padroes(self, patterns_file: str) -> bool:
+        """
+        Carrega padrões extraídos de Reels existentes.
+
+        Args:
+            patterns_file: Caminho para o arquivo de padrões
+
+        Returns:
+            bool: True se os padrões foram carregados com sucesso
+        """
+        try:
+            with open(patterns_file, 'r', encoding='utf-8') as f:
+                patterns = json.load(f)
+
+            # Atualizar templates com os padrões carregados
+            if "intro_phrases" in patterns and patterns["intro_phrases"]:
+                # Manter alguns templates padrão e adicionar os extraídos
+                self.templates_intro = self.templates_intro[:2] + patterns["intro_phrases"]
+
+            if "transition_phrases" in patterns and patterns["transition_phrases"]:
+                # Manter alguns templates padrão e adicionar os extraídos
+                self.templates_transicao = self.templates_transicao[:2] + patterns["transition_phrases"]
+
+            if "conclusion_phrases" in patterns and patterns["conclusion_phrases"]:
+                # Manter alguns templates padrão e adicionar os extraídos
+                self.templates_conclusao = self.templates_conclusao[:2] + patterns["conclusion_phrases"]
+
+            # Adicionar perguntas extraídas
+            if "question_patterns" in patterns and patterns["question_patterns"]:
+                self.perguntas_adicionais = patterns["question_patterns"]
+
+            # Armazenar hashtags comuns
+            if "hashtags" in patterns and patterns["hashtags"]:
+                self.hashtags_comuns = patterns["hashtags"]
+
+            # Armazenar estilo de escrita
+            if "style_patterns" in patterns:
+                style = patterns["style_patterns"]
+
+                if "sentence_length" in style:
+                    self.estilo_escrita["sentence_length"] = style["sentence_length"]
+
+                if "emoji_frequency" in style:
+                    self.estilo_escrita["emoji_frequency"] = style["emoji_frequency"]
+
+                if "common_phrases" in style:
+                    self.estilo_escrita["common_phrases"] = style["common_phrases"]
+
+            logger.info(f"Padrões carregados com sucesso de {patterns_file}")
+            logger.info(f"Carregadas {len(self.perguntas_adicionais)} perguntas e {len(self.hashtags_comuns)} hashtags")
+            return True
+
+        except Exception as e:
+            logger.error(f"Erro ao carregar padrões: {e}")
+            return False
 
     def _formatar_noticia(self, noticia: Dict[str, Any]) -> str:
         """
@@ -501,6 +576,7 @@ class GeradorScriptRapidinha:
         """
         Gera perguntas para engajar a audiência com base no conteúdo,
         focando em perguntas acessíveis para público leigo.
+        Utiliza perguntas extraídas de Reels existentes, se disponíveis.
 
         Args:
             conteudo: Lista de conteúdos selecionados
@@ -540,8 +616,14 @@ class GeradorScriptRapidinha:
             "Isso faz vocês quererem aprender mais antes de investir?"
         ]
 
-        # Combinar as perguntas, priorizando as para leigos
-        todas_perguntas = perguntas_leigos + perguntas_investimento + perguntas_gerais
+        # Adicionar perguntas extraídas de Reels existentes, se disponíveis
+        perguntas_extraidas = []
+        if hasattr(self, 'perguntas_adicionais') and self.perguntas_adicionais:
+            perguntas_extraidas = self.perguntas_adicionais
+            logger.info(f"Adicionando {len(perguntas_extraidas)} perguntas extraídas de Reels existentes")
+
+        # Combinar as perguntas, priorizando as extraídas e as para leigos
+        todas_perguntas = perguntas_extraidas + perguntas_leigos + perguntas_investimento + perguntas_gerais
 
         # Verificar se há termos técnicos no conteúdo
         termos_tecnicos_encontrados = set()
@@ -574,8 +656,17 @@ class GeradorScriptRapidinha:
         # Garantir que não temos perguntas duplicadas
         todas_perguntas = list(set(todas_perguntas))
 
-        # Selecionar perguntas aleatoriamente
-        return random.sample(todas_perguntas, min(3, len(todas_perguntas)))
+        # Selecionar perguntas aleatoriamente, priorizando as extraídas
+        num_perguntas = min(3, len(todas_perguntas))
+
+        # Se temos perguntas extraídas, garantir que pelo menos uma seja usada
+        if perguntas_extraidas and num_perguntas > 0:
+            perguntas_selecionadas = [random.choice(perguntas_extraidas)]
+            todas_perguntas = [p for p in todas_perguntas if p not in perguntas_selecionadas]
+            perguntas_selecionadas.extend(random.sample(todas_perguntas, num_perguntas - 1))
+            return perguntas_selecionadas
+        else:
+            return random.sample(todas_perguntas, num_perguntas)
 
     def _gerar_secao_noticia(self, noticia: Dict[str, Any], perguntas: List[str]) -> str:
         """
@@ -596,23 +687,17 @@ class GeradorScriptRapidinha:
 
         return texto
 
-    def _gerar_secao_tweet(self, tweet: Dict[str, Any], perguntas: List[str]) -> str:
+    def _gerar_secao_tweet(self, tweet: Dict[str, Any]) -> str:
         """
         Gera uma seção do script para um tweet.
 
         Args:
             tweet: Dados do tweet
-            perguntas: Lista de perguntas para engajamento
 
         Returns:
             str: Texto da seção
         """
         texto = self._formatar_tweet(tweet)
-
-        # Adicionar uma pergunta aleatória para engajamento
-        if perguntas:
-            texto += f"{random.choice(perguntas)}\n\n"
-
         return texto
 
     def gerar_script(self, num_noticias: int = 5, num_tweets: int = 2,
@@ -681,7 +766,7 @@ class GeradorScriptRapidinha:
             if item["tipo"] == "noticia":
                 script += self._gerar_secao_noticia(item["dados"], perguntas)
             else:  # tweet
-                script += self._gerar_secao_tweet(item["dados"], perguntas)
+                script += self._gerar_secao_tweet(item["dados"])
 
             # Adicionar marcador de corte entre as seções
             if i < len(conteudo) - 1:
@@ -694,7 +779,24 @@ class GeradorScriptRapidinha:
         script += random.choice(self.templates_resposta_desafio) + " "
 
         # Despedida
-        script += random.choice(self.templates_despedida) + "\n"
+        script += random.choice(self.templates_despedida) + "\n\n"
+
+        # Adicionar hashtags extraídas dos Reels, se disponíveis
+        if hasattr(self, 'hashtags_comuns') and self.hashtags_comuns:
+            # Selecionar algumas hashtags aleatórias
+            num_hashtags = min(5, len(self.hashtags_comuns))
+            hashtags_selecionadas = random.sample(self.hashtags_comuns, num_hashtags)
+
+            # Adicionar hashtags padrão
+            hashtags_padrao = ["#bitcoin", "#cripto", "#criptomoedas", "#rapidinha", "#flukaku"]
+
+            # Combinar e remover duplicatas
+            todas_hashtags = list(set(hashtags_padrao + hashtags_selecionadas))
+
+            # Adicionar ao script
+            script += " ".join(todas_hashtags)
+
+            logger.info(f"Adicionadas {len(todas_hashtags)} hashtags ao script")
 
         logger.info("Script gerado com sucesso!")
 
@@ -736,11 +838,16 @@ def main():
     parser.add_argument("--tweets", type=int, default=2, help="Número de tweets a incluir no script")
     parser.add_argument("--output", help="Nome do arquivo de saída")
     parser.add_argument("--gerar-video", action="store_true", help="Gerar vídeo automaticamente após criar o script")
+    parser.add_argument("--patterns", help="Arquivo com padrões extraídos de Reels existentes")
 
     args = parser.parse_args()
 
     # Criar o gerador de scripts
-    gerador = GeradorScriptRapidinha()
+    gerador = GeradorScriptRapidinha(patterns_file=args.patterns)
+
+    # Verificar se carregou padrões
+    if args.patterns:
+        logger.info(f"Usando padrões do arquivo: {args.patterns}")
 
     # Gerar o script
     script = gerador.gerar_script(
