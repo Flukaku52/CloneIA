@@ -205,16 +205,19 @@ def gerar_video(audio_path, dry_run=False):
             audio_data = audio_file.read()
 
         # Fazer upload do áudio para o endpoint de upload
-        upload_url = "https://api.heygen.com/v1/upload/audio"
+        upload_url = "https://upload.heygen.com/v1/asset"
 
-        upload_files = {
-            'file': (os.path.basename(audio_path), audio_data, 'audio/mpeg')
+        # Configurar headers para upload
+        upload_headers = {
+            "Content-Type": "audio/mpeg",
+            "X-Api-Key": api_key
         }
 
+        # Enviar o áudio diretamente no corpo da requisição
         upload_response = requests.post(
             upload_url,
-            headers=headers,
-            files=upload_files
+            headers=upload_headers,
+            data=audio_data
         )
 
         if upload_response.status_code != 200:
@@ -222,7 +225,7 @@ def gerar_video(audio_path, dry_run=False):
             return None
 
         # Obter o ID do áudio
-        audio_asset_id = upload_response.json().get("data", {}).get("asset_id")
+        audio_asset_id = upload_response.json().get("data", {}).get("id")
 
         if not audio_asset_id:
             logger.error("ID do áudio não encontrado na resposta.")
