@@ -29,7 +29,8 @@ def criar_diretorios():
             os.makedirs(diretorio)
             logger.info(f"Diretório criado: {diretorio}")
 
-def combinar_videos(video_files, output_file=None, transition="fade", transition_duration=0.5):
+def combinar_videos(video_files, output_file=None, transition="fade", transition_duration=0.5,
+                audio_files=None, audio_delay=0.0, use_original_audio=False):
     """
     Combina vários vídeos em um único arquivo.
 
@@ -38,6 +39,9 @@ def combinar_videos(video_files, output_file=None, transition="fade", transition
         output_file: Caminho para o arquivo de saída (opcional)
         transition: Tipo de transição entre os vídeos (opcional)
         transition_duration: Duração da transição em segundos (opcional)
+        audio_files: Lista de caminhos para os arquivos de áudio (opcional)
+        audio_delay: Atraso do áudio em segundos (pode ser negativo para adiantar) (opcional)
+        use_original_audio: Se True, usa os arquivos de áudio originais em vez do áudio dos vídeos (opcional)
 
     Returns:
         str: Caminho para o vídeo combinado, ou None em caso de erro
@@ -127,41 +131,132 @@ def combinar_videos(video_files, output_file=None, transition="fade", transition
             for video_file in video_files:
                 cmd.extend(["-i", video_file])
 
-            # Criar filtros para áudio
-            audio_filters = []
-            for i in range(len(video_files)):
-                audio_filters.append(f"[{i}:a]")
+            # Verificar se devemos usar áudio original
+            if use_original_audio and audio_files and len(audio_files) == len(video_files):
+                logger.info("Usando arquivos de áudio originais")
 
-            # Adicionar filtro complexo para vídeo e áudio
-            filter_complex_str = ";".join(filter_complex)
+                # Adicionar inputs de áudio
+                for audio_file in audio_files:
+                    cmd.extend(["-i", audio_file])
 
-            # Adicionar concatenação de áudio se houver mais de um vídeo
-            if len(video_files) > 1:
-                filter_complex_str += f";{''.join(audio_filters)}concat=n={len(video_files)}:v=0:a=1[aout]"
-                cmd.extend([
-                    "-filter_complex",
-                    filter_complex_str,
-                    "-map", f"[v{len(video_files)-1}_t]",
-                    "-map", "[aout]",
-                    "-c:v", "libx264",
-                    "-c:a", "aac",
-                    "-preset", "medium",
-                    "-crf", "23",
-                    output_file
-                ])
+                # Criar filtros para áudio com ajuste de sincronização
+                audio_filters = []
+                audio_offset = len(video_files)  # Índice dos inputs de áudio
+
+                for i in range(len(audio_files)):
+                    # Aplicar atraso de áudio se necessário
+                    if audio_delay > 0:
+                        # Atraso positivo: atrasar o áudio
+                        audio_filters.append(f"[{audio_offset + i}:a]adelay={int(audio_delay * 1000)}|{int(audio_delay * 1000)}[a{i}]")
+                    elif audio_delay < 0:
+                        # Atraso negativo: adiantar o áudio (atrasar o vídeo)
+                        # Não podemos adiantar o áudio, então vamos atrasar o vídeo
+                        # Modificar os filtros de vídeo para incluir o atraso
+                        filter_complex[i] = f"[{i}:v]setpts=PTS+{abs(audio_delay)}/TB,scale={width}:{height},setsar=1[v{i}]"
+                        audio_filters.append(f"[{audio_offset + i}:a]acopy[a{i}]")
+                    else:
+                        audio_filters.append(f"[{audio_offset + i}:a]acopy[a{i}]")
+
+                # Adicionar filtro complexo para vídeo e áudio
+                filter_complex_str = ";".join(filter_complex) + ";" + ";".join(audio_filters)
+
+                # Adicionar concatenação de áudio se houver mais de um áudio
+                if len(audio_files) > 1:
+                    audio_concat_inputs = "".join([f"[a{i}]" for i in range(len(audio_files))])
+                    filter_complex_str += f";{audio_concat_inputs}concat=n={len(audio_files)}:v=0:a=1[aout]"
+
+                    cmd.extend([
+                        "-filter_complex",
+                        filter_complex_str,
+                        "-map", f"[v{len(video_files)-1}_t]",
+                        "-map", "[aout]",
+                        "-c:v", "libx264",
+                        "-c:a", "aac",
+                        "-preset", "medium",
+                        "-crf", "23",
+                        output_file
+                    ])
+                else:
+                    # Se houver apenas um áudio
+                    cmd.extend([
+                        "-filter_complex",
+                        filter_complex_str,
+                        "-map", f"[v{len(video_files)-1}_t]",
+                        "-map", f"[a0]",
+                        "-c:v", "libx264",
+                        "-c:a", "aac",
+                        "-preset", "medium",
+                        "-crf", "23",
+                        output_file
+                    ])
             else:
-                # Se houver apenas um vídeo, manter o áudio original
-                cmd.extend([
-                    "-filter_complex",
-                    filter_complex_str,
-                    "-map", f"[v{len(video_files)-1}_t]",
-                    "-map", "0:a",
-                    "-c:v", "libx264",
-                    "-c:a", "aac",
-                    "-preset", "medium",
-                    "-crf", "23",
-                    output_file
-                ])
+                # Usar áudio dos vídeos
+                # Criar filtros para áudio
+                audio_filters = []
+                for i in range(len(video_files)):
+                    # Aplicar atraso de áudio se necessário
+                    if audio_delay > 0:
+                        # Atraso positivo: atrasar o áudio
+                        audio_filters.append(f"[{i}:a]adelay={int(audio_delay * 1000)}|{int(audio_delay * 1000)}[a{i}]")
+                    elif audio_delay < 0:
+                        # Atraso negativo: adiantar o áudio (atrasar o vídeo)
+                        # Não podemos adiantar o áudio, então vamos atrasar o vídeo
+                        # Modificar os filtros de vídeo para incluir o atraso
+                        filter_complex[i] = f"[{i}:v]setpts=PTS+{abs(audio_delay)}/TB,scale={width}:{height},setsar=1[v{i}]"
+                        audio_filters.append(f"[{i}:a]")
+                    else:
+                        audio_filters.append(f"[{i}:a]")
+
+                # Adicionar filtro complexo para vídeo e áudio
+                filter_complex_str = ";".join(filter_complex)
+
+                # Adicionar filtros de áudio se houver atraso
+                if audio_delay != 0:
+                    filter_complex_str += ";" + ";".join(audio_filters)
+                    audio_concat_inputs = "".join([f"[a{i}]" for i in range(len(video_files))])
+                else:
+                    audio_concat_inputs = "".join(audio_filters)
+
+                # Adicionar concatenação de áudio se houver mais de um vídeo
+                if len(video_files) > 1:
+                    filter_complex_str += f";{audio_concat_inputs}concat=n={len(video_files)}:v=0:a=1[aout]"
+                    cmd.extend([
+                        "-filter_complex",
+                        filter_complex_str,
+                        "-map", f"[v{len(video_files)-1}_t]",
+                        "-map", "[aout]",
+                        "-c:v", "libx264",
+                        "-c:a", "aac",
+                        "-preset", "medium",
+                        "-crf", "23",
+                        output_file
+                    ])
+                else:
+                    # Se houver apenas um vídeo
+                    if audio_delay != 0:
+                        cmd.extend([
+                            "-filter_complex",
+                            filter_complex_str,
+                            "-map", f"[v{len(video_files)-1}_t]",
+                            "-map", "[a0]",
+                            "-c:v", "libx264",
+                            "-c:a", "aac",
+                            "-preset", "medium",
+                            "-crf", "23",
+                            output_file
+                        ])
+                    else:
+                        cmd.extend([
+                            "-filter_complex",
+                            filter_complex_str,
+                            "-map", f"[v{len(video_files)-1}_t]",
+                            "-map", "0:a",
+                            "-c:v", "libx264",
+                            "-c:a", "aac",
+                            "-preset", "medium",
+                            "-crf", "23",
+                            output_file
+                        ])
 
         # Executar comando
         logger.info(f"Executando comando: {' '.join(cmd)}")
@@ -214,9 +309,12 @@ def main():
     # Configurar argumentos da linha de comando
     parser = argparse.ArgumentParser(description="Combinador de vídeos para o FlukakuIA")
     parser.add_argument("--videos", nargs="+", help="Lista de caminhos para os arquivos de vídeo")
+    parser.add_argument("--audios", nargs="+", help="Lista de caminhos para os arquivos de áudio originais")
     parser.add_argument("--output", help="Caminho para o arquivo de saída")
     parser.add_argument("--transition", choices=["none", "fade", "dissolve", "wipe"], default="fade", help="Tipo de transição entre os vídeos")
     parser.add_argument("--transition-duration", type=float, default=0.5, help="Duração da transição em segundos")
+    parser.add_argument("--audio-delay", type=float, default=0.0, help="Atraso do áudio em segundos (pode ser negativo para adiantar)")
+    parser.add_argument("--use-original-audio", action="store_true", help="Usar os arquivos de áudio originais em vez do áudio dos vídeos")
     parser.add_argument("--no-abrir", action="store_true", help="Não abrir o arquivo gerado")
     parser.add_argument("--debug", action="store_true", help="Ativar modo de depuração")
 
@@ -252,8 +350,48 @@ def main():
     else:
         video_files = args.videos
 
+    # Se não foram fornecidos áudios e use_original_audio é True, procurar os áudios correspondentes
+    audio_files = args.audios
+    if args.use_original_audio and not audio_files:
+        import glob
+
+        # Tentar encontrar os áudios correspondentes
+        audio_files = []
+        for video_file in video_files:
+            # Extrair o número da seção do nome do arquivo de vídeo
+            try:
+                secao = os.path.basename(video_file).split("_")[3]
+                # Encontrar o áudio correspondente
+                audio_pattern = f"output/audio/rapidinha_secao_{secao}_*.mp3"
+                matching_audios = sorted(glob.glob(audio_pattern), key=os.path.getmtime, reverse=True)
+
+                if matching_audios:
+                    audio_files.append(matching_audios[0])
+                    logger.info(f"Áudio encontrado para seção {secao}: {matching_audios[0]}")
+                else:
+                    logger.warning(f"Nenhum áudio encontrado para seção {secao}")
+                    args.use_original_audio = False
+                    break
+            except (IndexError, ValueError):
+                logger.warning(f"Não foi possível extrair o número da seção do arquivo: {video_file}")
+                args.use_original_audio = False
+                break
+
+        if args.use_original_audio and len(audio_files) != len(video_files):
+            logger.warning("Número de arquivos de áudio não corresponde ao número de vídeos")
+            args.use_original_audio = False
+            audio_files = None
+
     # Combinar vídeos
-    output_file = combinar_videos(video_files, args.output, args.transition, args.transition_duration)
+    output_file = combinar_videos(
+        video_files,
+        args.output,
+        args.transition,
+        args.transition_duration,
+        audio_files,
+        args.audio_delay,
+        args.use_original_audio
+    )
 
     if output_file:
         logger.info(f"Vídeo combinado com sucesso: {output_file}")
