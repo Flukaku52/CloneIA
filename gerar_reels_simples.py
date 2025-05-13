@@ -175,7 +175,7 @@ def gerar_video(audio_path, dry_run=False):
         }
 
         # Criar vídeo
-        url = "https://api.heygen.com/v1/video.generate"
+        url = "https://api.heygen.com/v2/video.generate"
 
         payload = {
             "background": "#000000",
