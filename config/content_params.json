@@ -17,7 +17,9 @@
     "duracao_maxima_segundos": 180,
     "palavras_por_minuto": 150,
     "limite_palavras": 450,
+    "num_noticias_padrao": 4,
     "tom_voz": "informal",
+    "nivel_tecnico": "baixo",
     "formato": {
       "introducao": {
         "obrigatoria": true,
@@ -49,16 +51,16 @@
       "vocês não vão acreditar no que aconteceu com {{assunto}}!"
     ],
     "transicoes": [
-      "Mas o que isso significa?",
-      "Vamos entender melhor:",
-      "Isso é importante porque:",
-      "O que precisamos saber:",
-      "Agora vem a parte interessante:",
-      "Mas tem mais:",
-      "Olha só que interessante:",
-      "Prestem atenção nisso:",
-      "E não para por aí:",
-      "Mas calma que tem mais:"
+      "Primeira notícia:",
+      "Segunda notícia:",
+      "Terceira notícia:",
+      "Quarta notícia:",
+      "E tem mais:",
+      "Outra novidade:",
+      "Também temos:",
+      "Vale destacar que:",
+      "O mais interessante é que:",
+      "Além disso:"
     ],
     "expressoes_enfase": [
       "Isso mesmo!",
@@ -93,8 +95,8 @@
       "vender"
     ],
     "avisos_legais": {
-      "obrigatorio": true,
-      "texto": "Lembre-se: isso não é recomendação de investimento. Faça sua própria pesquisa."
+      "obrigatorio": false,
+      "texto": ""
     }
   }
 }

@@ -286,10 +286,15 @@ class ContentManager:
         # Criar conclusão
         conclusao = self.get_conclusion_template()
 
-        # Adicionar aviso legal
-        aviso_legal = self.get_legal_disclaimer()
-        if aviso_legal:
-            conclusao = f"{conclusao}\n\n{aviso_legal}"
+        # Verificar se o aviso legal é obrigatório
+        avisos_legais = self.rapidinha_params.get("avisos_legais", {})
+        obrigatorio = avisos_legais.get("obrigatorio", False)
+
+        # Adicionar aviso legal apenas se for obrigatório
+        if obrigatorio:
+            aviso_legal = self.get_legal_disclaimer()
+            if aviso_legal:
+                conclusao = f"{conclusao}\n\n{aviso_legal}"
 
         # Montar script completo
         script = f"{introducao}\n\n{conteudo}\n\n{conclusao}"
