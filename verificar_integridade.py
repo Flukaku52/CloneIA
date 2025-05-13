@@ -19,7 +19,7 @@ logger = logging.getLogger('verificar_integridade')
 def verificar_arquivos():
     """
     Verifica se todos os arquivos necessários estão presentes.
-    
+
     Returns:
         bool: True se todos os arquivos estão presentes, False caso contrário
     """
@@ -32,21 +32,21 @@ def verificar_arquivos():
         ".env",
         "config/content_params.json"
     ]
-    
+
     # Verificar cada arquivo
     arquivos_faltando = []
     for arquivo in arquivos_essenciais:
         if not os.path.exists(arquivo):
             arquivos_faltando.append(arquivo)
             logger.error(f"Arquivo essencial não encontrado: {arquivo}")
-    
+
     # Verificar diretórios
     diretorios_essenciais = [
         "output/audio",
         "output/videos",
         "scripts"
     ]
-    
+
     for diretorio in diretorios_essenciais:
         if not os.path.exists(diretorio):
             logger.warning(f"Diretório não encontrado: {diretorio}")
@@ -56,12 +56,12 @@ def verificar_arquivos():
             except Exception as e:
                 logger.error(f"Erro ao criar diretório {diretorio}: {e}")
                 arquivos_faltando.append(diretorio)
-    
+
     # Verificar se há pelo menos um script de exemplo
     scripts = [f for f in os.listdir("scripts") if f.endswith(".txt")]
     if not scripts:
         logger.warning("Nenhum script de exemplo encontrado.")
-    
+
     # Retornar resultado
     if arquivos_faltando:
         logger.error(f"Verificação de arquivos falhou. {len(arquivos_faltando)} arquivos faltando.")
@@ -73,18 +73,18 @@ def verificar_arquivos():
 def verificar_dependencias():
     """
     Verifica se todas as dependências Python estão instaladas.
-    
+
     Returns:
         bool: True se todas as dependências estão instaladas, False caso contrário
     """
     # Lista de dependências
     dependencias = [
         "requests",
-        "python-dotenv",
+        "dotenv",  # O módulo é importado como 'dotenv', mas o pacote é 'python-dotenv'
         "fpdf",
         "markdown"
     ]
-    
+
     # Verificar cada dependência
     dependencias_faltando = []
     for dependencia in dependencias:
@@ -94,7 +94,7 @@ def verificar_dependencias():
         except ImportError:
             dependencias_faltando.append(dependencia)
             logger.error(f"Dependência não encontrada: {dependencia}")
-    
+
     # Retornar resultado
     if dependencias_faltando:
         logger.error(f"Verificação de dependências falhou. {len(dependencias_faltando)} dependências faltando.")
@@ -106,7 +106,7 @@ def verificar_dependencias():
 def verificar_apis():
     """
     Verifica se as chaves de API estão configuradas.
-    
+
     Returns:
         bool: True se as chaves de API estão configuradas, False caso contrário
     """
@@ -117,22 +117,22 @@ def verificar_apis():
     except ImportError:
         logger.error("Não foi possível carregar o módulo python-dotenv.")
         return False
-    
+
     # Verificar chaves de API
     chaves_api = {
         "ELEVENLABS_API_KEY": os.environ.get("ELEVENLABS_API_KEY"),
         "HEYGEN_API_KEY": os.environ.get("HEYGEN_API_KEY")
     }
-    
+
     # Verificar cada chave
     chaves_faltando = []
     for nome, chave in chaves_api.items():
-        if not chave or chave == "sua_chave_aqui":
+        if not chave:
             chaves_faltando.append(nome)
             logger.error(f"Chave de API não configurada: {nome}")
         else:
             logger.info(f"Chave de API configurada: {nome}")
-    
+
     # Retornar resultado
     if chaves_faltando:
         logger.error(f"Verificação de APIs falhou. {len(chaves_faltando)} chaves faltando.")
@@ -144,27 +144,27 @@ def verificar_apis():
 def verificar_git():
     """
     Verifica se o repositório Git está configurado corretamente.
-    
+
     Returns:
         bool: True se o repositório Git está configurado corretamente, False caso contrário
     """
     try:
         # Verificar se é um repositório Git
         subprocess.check_output(["git", "rev-parse", "--is-inside-work-tree"])
-        
+
         # Obter informações do repositório
         commit_hash = subprocess.check_output(["git", "rev-parse", "HEAD"]).decode().strip()
         branch = subprocess.check_output(["git", "rev-parse", "--abbrev-ref", "HEAD"]).decode().strip()
-        
+
         logger.info(f"Repositório Git configurado corretamente.")
         logger.info(f"Branch atual: {branch}")
         logger.info(f"Commit atual: {commit_hash}")
-        
+
         # Verificar se há alterações não commitadas
         status = subprocess.check_output(["git", "status", "--porcelain"]).decode().strip()
         if status:
             logger.warning("Há alterações não commitadas no repositório.")
-        
+
         return True
     except Exception as e:
         logger.error(f"Erro ao verificar repositório Git: {e}")
@@ -173,34 +173,34 @@ def verificar_git():
 def verificar_integridade(corrigir=False):
     """
     Verifica a integridade do sistema FlukakuIA.
-    
+
     Args:
         corrigir: Se True, tenta corrigir problemas encontrados
-        
+
     Returns:
         bool: True se o sistema está íntegro, False caso contrário
     """
     logger.info("Iniciando verificação de integridade do sistema FlukakuIA...")
-    
+
     # Verificar arquivos
     arquivos_ok = verificar_arquivos()
-    
+
     # Verificar dependências
     dependencias_ok = verificar_dependencias()
-    
+
     # Verificar APIs
     apis_ok = verificar_apis()
-    
+
     # Verificar Git
     git_ok = verificar_git()
-    
+
     # Verificar se tudo está ok
     tudo_ok = arquivos_ok and dependencias_ok and apis_ok and git_ok
-    
+
     # Tentar corrigir problemas
     if not tudo_ok and corrigir:
         logger.info("Tentando corrigir problemas...")
-        
+
         # Instalar dependências faltantes
         if not dependencias_ok:
             try:
@@ -209,7 +209,7 @@ def verificar_integridade(corrigir=False):
                 dependencias_ok = True
             except Exception as e:
                 logger.error(f"Erro ao instalar dependências: {e}")
-        
+
         # Criar diretórios faltantes
         if not arquivos_ok:
             for diretorio in ["output/audio", "output/videos", "scripts"]:
@@ -219,16 +219,16 @@ def verificar_integridade(corrigir=False):
                         logger.info(f"Diretório criado: {diretorio}")
                     except Exception as e:
                         logger.error(f"Erro ao criar diretório {diretorio}: {e}")
-        
+
         # Verificar novamente
         tudo_ok = arquivos_ok and dependencias_ok and apis_ok and git_ok
-    
+
     # Exibir resultado
     if tudo_ok:
         logger.info("Sistema FlukakuIA íntegro!")
     else:
         logger.error("Sistema FlukakuIA não está íntegro. Corrija os problemas antes de continuar.")
-    
+
     return tudo_ok
 
 def main():
@@ -239,13 +239,13 @@ def main():
     parser = argparse.ArgumentParser(description="Verificador de integridade do sistema FlukakuIA")
     parser.add_argument("--corrigir", action="store_true", help="Tentar corrigir problemas encontrados")
     parser.add_argument("--verbose", action="store_true", help="Exibir informações detalhadas")
-    
+
     args = parser.parse_args()
-    
+
     # Configurar nível de log
     if args.verbose:
         logging.getLogger().setLevel(logging.DEBUG)
-    
+
     # Verificar integridade
     if verificar_integridade(args.corrigir):
         return 0
