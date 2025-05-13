@@ -124,10 +124,10 @@ def gerar_conteudo(args: argparse.Namespace) -> Optional[Dict[str, Any]]:
     """
     logger.info("Gerando conteúdo da Rapidinha...")
 
-    # Verificar dependências (comentado para testes)
-    # if not verificar_dependencias():
-    #     logger.error("Algumas dependências não foram encontradas. Abortando.")
-    #     return None
+    # Verificar dependências
+    if not verificar_dependencias():
+        logger.error("Algumas dependências não foram encontradas. Abortando.")
+        return None
 
     # Importar módulos necessários
     from buscador_noticias_cripto import NoticiasCriptoScraper
