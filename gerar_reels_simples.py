@@ -63,7 +63,7 @@ def gerar_audio(script_path, dry_run=False):
 
     try:
         # Importar o gerador de áudio
-        import elevenlabs
+        from elevenlabs import Client
 
         # Verificar API key
         api_key = os.environ.get("ELEVENLABS_API_KEY")
@@ -71,7 +71,8 @@ def gerar_audio(script_path, dry_run=False):
             logger.error("API key do ElevenLabs não encontrada.")
             return None
 
-        elevenlabs.set_api_key(api_key)
+        # Criar cliente
+        client = Client(api_key=api_key)
 
         # Ler o script
         with open(script_path, "r", encoding="utf-8") as f:
@@ -89,10 +90,10 @@ def gerar_audio(script_path, dry_run=False):
         }
 
         # Gerar áudio
-        audio = elevenlabs.generate(
+        audio = client.text_to_speech.convert(
             text=texto,
-            voice=voice_id,
-            model="eleven_multilingual_v2",
+            voice_id=voice_id,
+            model_id="eleven_multilingual_v2",
             voice_settings=voice_settings
         )
 
