@@ -480,8 +480,26 @@ class InstagramPublisher:
         Returns:
             Optional[str]: ID da publicação, ou None se falhar
         """
-        # Adicionar hashtags à legenda
+        # Preparar a legenda com hashtags
+        final_caption = self._prepare_caption_with_hashtags(caption, hashtags)
+
+        # Publicar o vídeo
+        return self.publish_video(video_path, final_caption)
+
+    def _prepare_caption_with_hashtags(self, caption: str, hashtags: List[str] = None) -> str:
+        """
+        Prepara a legenda com hashtags.
+
+        Args:
+            caption: Legenda original
+            hashtags: Lista de hashtags para adicionar
+
+        Returns:
+            str: Legenda formatada com hashtags
+        """
+        # Adicionar hashtags personalizadas
         if hashtags:
+            # Garantir que as hashtags estão no formato correto
             hashtag_text = " ".join([f"#{tag.strip('#')}" for tag in hashtags])
             if caption:
                 caption = f"{caption}\n\n{hashtag_text}"
@@ -495,7 +513,7 @@ class InstagramPublisher:
         else:
             caption = default_hashtags
 
-        return self.publish_video(video_path, caption)
+        return caption
 
     def schedule_post(self, video_path: str, caption: str = "",
                      publish_time: datetime = None, hashtags: List[str] = None) -> Optional[str]:
@@ -511,14 +529,17 @@ class InstagramPublisher:
         Returns:
             Optional[str]: ID da publicação agendada, ou None se falhar
         """
+        # Preparar a legenda com hashtags
+        final_caption = self._prepare_caption_with_hashtags(caption, hashtags)
+
         if publish_time is None:
             # Publicar imediatamente
-            return self.publish_reels(video_path, caption, hashtags)
+            return self.publish_video(video_path, final_caption)
 
         # Verificar se a data é futura
         if publish_time <= datetime.now():
             logger.warning("Data de publicação deve ser futura. Publicando imediatamente.")
-            return self.publish_reels(video_path, caption, hashtags)
+            return self.publish_video(video_path, final_caption)
 
         # Implementar agendamento (pode ser feito com um job scheduler como APScheduler)
         # Por enquanto, apenas salvamos os dados para agendamento manual
