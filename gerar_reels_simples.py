@@ -257,11 +257,16 @@ def gerar_video(audio_path, dry_run=False):
         payload["video_inputs"][0]["voice"]["audio_asset_id"] = audio_asset_id
 
         # Enviar a requisição para gerar o vídeo
+        logger.info(f"Enviando requisição para gerar vídeo: {url}")
+        logger.info(f"Payload: {payload}")
+
         response = requests.post(
             url,
             headers=headers,
             json=payload
         )
+
+        logger.info(f"Resposta: {response.status_code} - {response.text}")
 
         if response.status_code != 200:
             logger.error(f"Erro ao criar vídeo: {response.text}")
