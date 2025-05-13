@@ -77,6 +77,12 @@ def gerar_audio(script_path, dry_run=False):
             logger.error("API key do ElevenLabs não encontrada.")
             return None
 
+        # Usar a chave diretamente se necessário
+        if api_key == "sua_chave_aqui":
+            api_key = "sk_2eeadfe816f7442422d9a3a508e5d912797de421403ba9d6"
+
+        logger.info(f"Usando API key do ElevenLabs: {api_key[:10]}...")
+
         # Ler o script
         with open(script_path, "r", encoding="utf-8") as f:
             texto = f.read()
@@ -164,6 +170,12 @@ def gerar_video(audio_path, dry_run=False):
         if not api_key:
             logger.error("API key do HeyGen não encontrada.")
             return None
+
+        # Usar a chave diretamente se necessário
+        if api_key == "sua_chave_aqui":
+            api_key = "OTU2YjcxM2ZhZGY2NDE5Mjg3MzYzMmZlNjEyYjZiNzUtMTc0Njc1NzMxNQ=="
+
+        logger.info(f"Usando API key do HeyGen: {api_key[:10]}...")
 
         # ID do avatar padrão do Flukaku
         avatar_id = "189d9626f12f473f8f6e927c5ec482fa"
