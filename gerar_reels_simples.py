@@ -178,7 +178,7 @@ def gerar_video(audio_path, dry_run=False):
         logger.info(f"Usando API key do HeyGen: {api_key[:10]}...")
 
         # ID do avatar padrão do Flukaku
-        avatar_id = "189d9626f12f473f8f6e927c5ec482fa"
+        avatar_id = "431f819b1a8e42bb8f095e98e1e805a4"
 
         # Configurar headers
         headers = {
