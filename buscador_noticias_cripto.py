@@ -16,6 +16,14 @@ from bs4 import BeautifulSoup
 from urllib.parse import urlparse
 from googletrans import Translator
 
+# Importar o verificador de notícias
+try:
+    from core.verificador_noticias import VerificadorNoticias
+    VERIFICADOR_DISPONIVEL = True
+except ImportError:
+    VERIFICADOR_DISPONIVEL = False
+    logging.warning("Módulo verificador_noticias não encontrado. O cruzamento de informações não estará disponível.")
+
 # Configurar logging
 logging.basicConfig(
     level=logging.INFO,
@@ -494,7 +502,7 @@ class NoticiasCriptoScraper:
             return []
 
     def buscar_todas_noticias(self, max_por_portal: int = 5, max_total: int = 20,
-                          dias_max: int = 7) -> List[Dict[str, Any]]:
+                          dias_max: int = 7, usar_verificacao_cruzada: bool = True) -> List[Dict[str, Any]]:
         """
         Busca notícias em todos os portais configurados, filtrando por data.
 
@@ -502,6 +510,7 @@ class NoticiasCriptoScraper:
             max_por_portal: Número máximo de notícias por portal
             max_total: Número máximo de notícias no total
             dias_max: Número máximo de dias de antiguidade das notícias
+            usar_verificacao_cruzada: Se True, usa o sistema de verificação cruzada para melhorar a confiabilidade
 
         Returns:
             List[Dict[str, Any]]: Lista de notícias encontradas
@@ -536,12 +545,29 @@ class NoticiasCriptoScraper:
 
             todas_noticias.extend(noticias_recentes[:max_por_portal])  # Limitar ao máximo por portal
 
-            # Parar se já tivermos notícias suficientes
-            if len(todas_noticias) >= max_total:
+            # Parar se já tivermos notícias suficientes (coletamos mais para fazer a verificação cruzada)
+            if len(todas_noticias) >= max_total * 2:
                 break
 
-        # Ordenar por data (mais recentes primeiro)
-        todas_noticias.sort(key=lambda x: x.get("data_iso", ""), reverse=True)
+        # Aplicar verificação cruzada se disponível e solicitada
+        if VERIFICADOR_DISPONIVEL and usar_verificacao_cruzada and len(todas_noticias) > 1:
+            logger.info("Aplicando verificação cruzada para melhorar a confiabilidade das notícias...")
+            verificador = VerificadorNoticias()
+            todas_noticias = verificador.verificar_noticias(todas_noticias)
+
+            # Filtrar notícias com base na credibilidade atualizada
+            todas_noticias = [n for n in todas_noticias if n.get('confiavel', False)]
+
+            logger.info(f"Após verificação cruzada: {len(todas_noticias)} notícias confiáveis")
+        else:
+            # Se não usar verificação cruzada, ordenar por credibilidade original
+            todas_noticias.sort(key=lambda x: x.get("credibilidade", 0), reverse=True)
+
+            # Filtrar notícias não confiáveis
+            todas_noticias = [n for n in todas_noticias if n.get('confiavel', False)]
+
+        # Ordenar por data (mais recentes primeiro) e depois por credibilidade
+        todas_noticias.sort(key=lambda x: (x.get("data_iso", ""), x.get("credibilidade", 0)), reverse=True)
 
         # Limitar ao número máximo de notícias
         return todas_noticias[:max_total]
@@ -558,6 +584,8 @@ def main():
     parser.add_argument("--dias", type=int, default=7, help="Número máximo de dias de antiguidade das notícias")
     parser.add_argument("--no-traduzir", action="store_true", help="Não traduzir notícias automaticamente")
     parser.add_argument("--min-credibilidade", type=int, default=6, help="Pontuação mínima de credibilidade (1-10)")
+    parser.add_argument("--no-verificacao-cruzada", action="store_true", help="Desativar verificação cruzada de notícias")
+    parser.add_argument("--limiar-similaridade", type=float, default=0.7, help="Limiar de similaridade para verificação cruzada (0.0-1.0)")
 
     args = parser.parse_args()
 
@@ -565,10 +593,19 @@ def main():
     scraper = NoticiasCriptoScraper(traduzir_automaticamente=not args.no_traduzir)
 
     # Buscar notícias
-    noticias = scraper.buscar_todas_noticias(max_total=args.max, dias_max=args.dias)
+    noticias = scraper.buscar_todas_noticias(
+        max_total=args.max,
+        dias_max=args.dias,
+        usar_verificacao_cruzada=not args.no_verificacao_cruzada
+    )
 
     # Exibir as notícias encontradas
     print(f"\nEncontradas {len(noticias)} notícias sobre criptomoedas:\n")
+
+    if VERIFICADOR_DISPONIVEL and not args.no_verificacao_cruzada:
+        print("Verificação cruzada: ATIVADA")
+    else:
+        print("Verificação cruzada: DESATIVADA")
 
     for i, noticia in enumerate(noticias, 1):
         # Mostrar informações de tradução, se aplicável
@@ -579,7 +616,25 @@ def main():
         # Mostrar informações de credibilidade
         credibilidade_info = f"[Credibilidade: {noticia.get('credibilidade', 'N/A')}/10]"
 
-        print(f"{i}. {titulo_display} {credibilidade_info}")
+        # Adicionar informações de cruzamento, se disponíveis
+        cruzamento_info = ""
+        if noticia.get('cruzamento'):
+            num_fontes = noticia['cruzamento'].get('num_fontes', 1)
+            confirmado = noticia['cruzamento'].get('confirmado', False)
+
+            if confirmado:
+                cruzamento_info = f" [✓ Confirmada por {num_fontes} fontes]"
+            else:
+                cruzamento_info = f" [Fonte única]"
+
+            if noticia['cruzamento'].get('tem_contradicoes', False):
+                cruzamento_info += " [⚠️ Contradições detectadas]"
+
+        # Mostrar credibilidade original vs. atual, se houver diferença
+        if noticia.get('credibilidade_original') and noticia.get('credibilidade_original') != noticia.get('credibilidade'):
+            credibilidade_info = f"[Credibilidade: {noticia.get('credibilidade_original')}/10 → {noticia.get('credibilidade')}/10]"
+
+        print(f"{i}. {titulo_display} {credibilidade_info}{cruzamento_info}")
         print(f"   Portal: {noticia['portal']}")
         print(f"   Data: {noticia['data']}")
         print(f"   Link: {noticia['link']}")
@@ -593,6 +648,12 @@ def main():
         # Mostrar razões de credibilidade, se houver
         if noticia.get('razoes_credibilidade'):
             print(f"   Observações: {', '.join(noticia['razoes_credibilidade'])}")
+
+        # Mostrar fontes que confirmam a notícia, se houver
+        if noticia.get('cruzamento') and noticia['cruzamento'].get('fontes', []):
+            fontes = noticia['cruzamento']['fontes']
+            if len(fontes) > 1:  # Só mostrar se houver mais de uma fonte
+                print(f"   Fontes que confirmam: {', '.join(fontes)}")
 
         print()
 
