@@ -316,13 +316,37 @@ def gerar_video(audio_path, dry_run=False):
                 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
                 video_path = os.path.join("output", "videos", f"rapidinha_video_{timestamp}.mp4")
 
-                response = requests.get(video_url)
+                try:
+                    # Usar curl para baixar o vídeo
+                    import subprocess
+                    logger.info(f"Baixando vídeo: {video_url}")
+                    logger.info(f"Salvando em: {video_path}")
 
-                with open(video_path, "wb") as f:
-                    f.write(response.content)
+                    # Escapar a URL para o shell
+                    escaped_url = video_url.replace('"', '\\"')
 
-                logger.info(f"Vídeo gerado com sucesso: {video_path}")
-                return video_path
+                    # Executar o comando curl
+                    cmd = f'curl -o "{video_path}" "{escaped_url}"'
+                    subprocess.run(cmd, shell=True, check=True)
+
+                    logger.info(f"Vídeo gerado com sucesso: {video_path}")
+                    return video_path
+                except Exception as e:
+                    logger.error(f"Erro ao baixar vídeo: {e}")
+
+                    # Tentar método alternativo com requests
+                    try:
+                        logger.info("Tentando método alternativo para baixar o vídeo...")
+                        response = requests.get(video_url)
+
+                        with open(video_path, "wb") as f:
+                            f.write(response.content)
+
+                        logger.info(f"Vídeo gerado com sucesso: {video_path}")
+                        return video_path
+                    except Exception as e2:
+                        logger.error(f"Erro ao baixar vídeo (método alternativo): {e2}")
+                        return None
 
             elif status == "failed":
                 logger.error("Falha ao gerar vídeo.")
