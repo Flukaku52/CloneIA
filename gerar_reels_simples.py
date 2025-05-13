@@ -52,6 +52,9 @@ def gerar_audio(script_path, dry_run=False):
     Returns:
         str: Caminho para o arquivo de áudio
     """
+    import os
+    from datetime import datetime
+
     logger.info(f"Gerando áudio para o script: {script_path}")
 
     if dry_run:
@@ -138,6 +141,9 @@ def gerar_video(audio_path, dry_run=False):
     Returns:
         str: Caminho para o arquivo de vídeo
     """
+    import os
+    from datetime import datetime
+
     logger.info(f"Gerando vídeo para o áudio: {audio_path}")
 
     if dry_run:
