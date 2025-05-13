@@ -10,10 +10,11 @@ import time
 import random
 import logging
 import requests
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any, Optional, Tuple
 from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
+from googletrans import Translator
 
 # Configurar logging
 logging.basicConfig(
@@ -24,6 +25,7 @@ logger = logging.getLogger('buscador_noticias_cripto')
 
 # Lista de portais de notícias sobre criptomoedas
 PORTAIS = [
+    # Portais nacionais (confiáveis)
     {
         "nome": "CriptoFácil",
         "url": "https://www.criptofacil.com/ultimas-noticias/",
@@ -32,7 +34,9 @@ PORTAIS = [
         "seletor_link": "h3.jeg_post_title a",
         "seletor_data": "div.jeg_meta_date a",
         "seletor_resumo": "div.jeg_post_excerpt p",
-        "formato_data": "%d de %B de %Y"
+        "formato_data": "%d de %B de %Y",
+        "idioma": "pt",
+        "confiabilidade": 8  # Escala de 1-10
     },
     {
         "nome": "Portal do Bitcoin",
@@ -42,7 +46,9 @@ PORTAIS = [
         "seletor_link": "h3.entry-title a",
         "seletor_data": "time.entry-date",
         "seletor_resumo": "div.td-excerpt",
-        "formato_data": "%d de %B de %Y"
+        "formato_data": "%d de %B de %Y",
+        "idioma": "pt",
+        "confiabilidade": 9  # Escala de 1-10
     },
     {
         "nome": "Cointelegraph Brasil",
@@ -52,7 +58,9 @@ PORTAIS = [
         "seletor_link": "a.post-card__title-link",
         "seletor_data": "time.post-card__date",
         "seletor_resumo": "p.post-card__text",
-        "formato_data": "%d/%m/%Y"
+        "formato_data": "%d/%m/%Y",
+        "idioma": "pt",
+        "confiabilidade": 8  # Escala de 1-10
     },
     {
         "nome": "Livecoins",
@@ -62,26 +70,123 @@ PORTAIS = [
         "seletor_link": "h3.jeg_post_title a",
         "seletor_data": "div.jeg_meta_date a",
         "seletor_resumo": "div.jeg_post_excerpt p",
-        "formato_data": "%d de %B de %Y"
+        "formato_data": "%d de %B de %Y",
+        "idioma": "pt",
+        "confiabilidade": 7  # Escala de 1-10
+    },
+    {
+        "nome": "Bitcoin Portal",
+        "url": "https://bitcoinportal.com.br/",
+        "seletor_noticias": "article.post",
+        "seletor_titulo": "h2.entry-title a",
+        "seletor_link": "h2.entry-title a",
+        "seletor_data": "time.entry-date",
+        "seletor_resumo": "div.entry-content p",
+        "formato_data": "%d de %B de %Y",
+        "idioma": "pt",
+        "confiabilidade": 7  # Escala de 1-10
+    },
+    {
+        "nome": "BeInCrypto Brasil",
+        "url": "https://beincrypto.com.br/",
+        "seletor_noticias": "article.jeg_post",
+        "seletor_titulo": "h3.jeg_post_title a",
+        "seletor_link": "h3.jeg_post_title a",
+        "seletor_data": "div.jeg_meta_date a",
+        "seletor_resumo": "div.jeg_post_excerpt p",
+        "formato_data": "%d de %B de %Y",
+        "idioma": "pt",
+        "confiabilidade": 7  # Escala de 1-10
+    },
+
+    # Portais internacionais (confiáveis)
+    {
+        "nome": "CoinDesk",
+        "url": "https://www.coindesk.com/",
+        "seletor_noticias": "div.article-cardstyles__AcRoot-sc-q1x8lc-1",
+        "seletor_titulo": "h6.typography__StyledTypography-sc-owin6q-0",
+        "seletor_link": "a.card-title",
+        "seletor_data": "span.typography__StyledTypography-sc-owin6q-0",
+        "seletor_resumo": "p.typography__StyledTypography-sc-owin6q-0",
+        "formato_data": "%b %d, %Y",
+        "idioma": "en",
+        "confiabilidade": 9  # Escala de 1-10
+    },
+    {
+        "nome": "Cointelegraph",
+        "url": "https://cointelegraph.com/",
+        "seletor_noticias": "article.post-card",
+        "seletor_titulo": "span.post-card__title-text",
+        "seletor_link": "a.post-card__title-link",
+        "seletor_data": "time.post-card__date",
+        "seletor_resumo": "p.post-card__text",
+        "formato_data": "%m/%d/%Y",
+        "idioma": "en",
+        "confiabilidade": 8  # Escala de 1-10
+    },
+    {
+        "nome": "Bitcoin Magazine",
+        "url": "https://bitcoinmagazine.com/",
+        "seletor_noticias": "article.article-card",
+        "seletor_titulo": "h3.article-card__title a",
+        "seletor_link": "h3.article-card__title a",
+        "seletor_data": "time.article-card__date",
+        "seletor_resumo": "p.article-card__excerpt",
+        "formato_data": "%B %d, %Y",
+        "idioma": "en",
+        "confiabilidade": 9  # Escala de 1-10
+    },
+    {
+        "nome": "Decrypt",
+        "url": "https://decrypt.co/",
+        "seletor_noticias": "article.styledArticle",
+        "seletor_titulo": "h3.styledHeading a",
+        "seletor_link": "h3.styledHeading a",
+        "seletor_data": "time.styledTime",
+        "seletor_resumo": "p.styledExcerpt",
+        "formato_data": "%B %d, %Y",
+        "idioma": "en",
+        "confiabilidade": 8  # Escala de 1-10
     }
+]
+
+# Lista de palavras-chave que podem indicar notícias falsas ou sensacionalistas
+PALAVRAS_SUSPEITAS = [
+    "golpe garantido", "lucro garantido", "enriqueça rápido", "ganhe dinheiro fácil",
+    "segredo revelado", "ninguém está falando sobre", "os bancos odeiam",
+    "governo não quer que você saiba", "proibido", "censurado",
+    "esquema infalível", "retorno garantido", "investimento sem risco",
+    "exclusivo", "revolucionário", "milagroso", "inacreditável",
+    "chocante", "surpreendente", "você não vai acreditar"
+]
+
+# Lista de domínios conhecidos por espalhar notícias falsas sobre criptomoedas
+DOMINIOS_SUSPEITOS = [
+    "crypto-scam.com", "get-rich-crypto.com", "bitcoin-millionaire-secret.com",
+    "crypto-ponzi-scheme.com", "fake-crypto-news.com", "scam-ico-alerts.com"
 ]
 
 class NoticiasCriptoScraper:
     """
     Classe para buscar notícias sobre criptomoedas em portais especializados.
     """
-    def __init__(self, user_agent: str = None, cache_dir: str = "cache"):
+    def __init__(self, user_agent: str = None, cache_dir: str = "cache", traduzir_automaticamente: bool = True):
         """
         Inicializa o scraper de notícias.
 
         Args:
             user_agent: User-Agent a ser usado nas requisições
             cache_dir: Diretório para armazenar o cache de notícias
+            traduzir_automaticamente: Se True, traduz automaticamente notícias em outros idiomas
         """
         self.user_agent = user_agent or "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
         self.cache_dir = cache_dir
         self.session = requests.Session()
         self.session.headers.update({"User-Agent": self.user_agent})
+        self.traduzir_automaticamente = traduzir_automaticamente
+
+        # Inicializar o tradutor
+        self.translator = Translator()
 
         # Criar diretório de cache se não existir
         os.makedirs(self.cache_dir, exist_ok=True)
@@ -170,6 +275,106 @@ class NoticiasCriptoScraper:
             logger.warning(f"Erro ao converter data '{data_str}': {e}")
             return None
 
+    def _traduzir_noticia(self, noticia: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Traduz uma notícia para português, se necessário.
+
+        Args:
+            noticia: Dados da notícia
+
+        Returns:
+            Dict[str, Any]: Notícia traduzida
+        """
+        if not self.traduzir_automaticamente:
+            return noticia
+
+        # Se a notícia já está em português, não precisa traduzir
+        if noticia.get("idioma", "pt") == "pt":
+            return noticia
+
+        try:
+            # Traduzir título
+            titulo_traduzido = self.translator.translate(
+                noticia["titulo"], src=noticia.get("idioma", "en"), dest="pt"
+            ).text
+
+            # Traduzir resumo, se existir
+            resumo_traduzido = ""
+            if noticia.get("resumo"):
+                resumo_traduzido = self.translator.translate(
+                    noticia["resumo"], src=noticia.get("idioma", "en"), dest="pt"
+                ).text
+
+            # Criar cópia da notícia com os campos traduzidos
+            noticia_traduzida = noticia.copy()
+            noticia_traduzida["titulo_original"] = noticia["titulo"]
+            noticia_traduzida["titulo"] = titulo_traduzido
+
+            if resumo_traduzido:
+                noticia_traduzida["resumo_original"] = noticia["resumo"]
+                noticia_traduzida["resumo"] = resumo_traduzido
+
+            noticia_traduzida["traduzido"] = True
+            noticia_traduzida["idioma_original"] = noticia.get("idioma", "en")
+            noticia_traduzida["idioma"] = "pt"
+
+            logger.info(f"Notícia traduzida: {noticia['titulo']} -> {titulo_traduzido}")
+            return noticia_traduzida
+        except Exception as e:
+            logger.error(f"Erro ao traduzir notícia: {e}")
+            # Em caso de erro, retornar a notícia original
+            noticia["traduzido"] = False
+            return noticia
+
+    def _verificar_credibilidade(self, noticia: Dict[str, Any], portal: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Verifica a credibilidade de uma notícia.
+
+        Args:
+            noticia: Dados da notícia
+            portal: Configuração do portal
+
+        Returns:
+            Dict[str, Any]: Notícia com informações de credibilidade
+        """
+        # Inicializar pontuação de credibilidade com base na confiabilidade do portal
+        credibilidade = portal.get("confiabilidade", 5)
+        razoes = []
+
+        # Verificar se o domínio está na lista de suspeitos
+        dominio = urlparse(noticia["link"]).netloc
+        if any(dominio_suspeito in dominio for dominio_suspeito in DOMINIOS_SUSPEITOS):
+            credibilidade -= 5
+            razoes.append("Domínio suspeito")
+
+        # Verificar se o título ou resumo contém palavras suspeitas
+        texto_completo = (noticia["titulo"] + " " + noticia.get("resumo", "")).lower()
+        palavras_encontradas = [palavra for palavra in PALAVRAS_SUSPEITAS if palavra.lower() in texto_completo]
+
+        if palavras_encontradas:
+            credibilidade -= len(palavras_encontradas)
+            razoes.append(f"Contém {len(palavras_encontradas)} termos sensacionalistas")
+
+        # Verificar se a notícia tem data (notícias sem data são menos confiáveis)
+        if not noticia.get("data_iso"):
+            credibilidade -= 1
+            razoes.append("Sem data definida")
+
+        # Verificar se o título é muito sensacionalista (todo em maiúsculas, muitas exclamações)
+        if noticia["titulo"].isupper() or noticia["titulo"].count("!") > 1:
+            credibilidade -= 2
+            razoes.append("Título sensacionalista")
+
+        # Limitar a pontuação entre 0 e 10
+        credibilidade = max(0, min(10, credibilidade))
+
+        # Adicionar informações de credibilidade à notícia
+        noticia["credibilidade"] = credibilidade
+        noticia["razoes_credibilidade"] = razoes
+        noticia["confiavel"] = credibilidade >= 6  # Consideramos confiável se a pontuação for 6 ou mais
+
+        return noticia
+
     def _extrair_noticias(self, portal: Dict[str, str], html: str) -> List[Dict[str, Any]]:
         """
         Extrai notícias do HTML de um portal.
@@ -225,10 +430,23 @@ class NoticiasCriptoScraper:
                     "data_iso": data_iso,
                     "resumo": resumo,
                     "portal": portal["nome"],
+                    "idioma": portal.get("idioma", "pt"),
                     "timestamp": datetime.now().isoformat()
                 }
 
-                noticias.append(noticia)
+                # Verificar credibilidade da notícia
+                noticia = self._verificar_credibilidade(noticia, portal)
+
+                # Adicionar à lista apenas se for confiável
+                if noticia["confiavel"]:
+                    # Traduzir notícia se necessário
+                    if portal.get("idioma", "pt") != "pt" and self.traduzir_automaticamente:
+                        noticia = self._traduzir_noticia(noticia)
+
+                    noticias.append(noticia)
+                else:
+                    logger.warning(f"Notícia descartada por baixa credibilidade: {noticia['titulo']} (Pontuação: {noticia['credibilidade']})")
+                    logger.warning(f"Razões: {', '.join(noticia['razoes_credibilidade'])}")
             except Exception as e:
                 logger.error(f"Erro ao extrair notícia de {portal['nome']}: {e}")
 
@@ -332,22 +550,50 @@ def main():
     """
     Função principal para testar o buscador de notícias.
     """
+    import argparse
+
+    # Configurar argumentos da linha de comando
+    parser = argparse.ArgumentParser(description="Buscador de notícias sobre criptomoedas")
+    parser.add_argument("--max", type=int, default=20, help="Número máximo de notícias a buscar")
+    parser.add_argument("--dias", type=int, default=7, help="Número máximo de dias de antiguidade das notícias")
+    parser.add_argument("--no-traduzir", action="store_true", help="Não traduzir notícias automaticamente")
+    parser.add_argument("--min-credibilidade", type=int, default=6, help="Pontuação mínima de credibilidade (1-10)")
+
+    args = parser.parse_args()
+
     # Criar o scraper
-    scraper = NoticiasCriptoScraper()
+    scraper = NoticiasCriptoScraper(traduzir_automaticamente=not args.no_traduzir)
 
     # Buscar notícias
-    noticias = scraper.buscar_todas_noticias()
+    noticias = scraper.buscar_todas_noticias(max_total=args.max, dias_max=args.dias)
 
     # Exibir as notícias encontradas
     print(f"\nEncontradas {len(noticias)} notícias sobre criptomoedas:\n")
 
     for i, noticia in enumerate(noticias, 1):
-        print(f"{i}. {noticia['titulo']}")
+        # Mostrar informações de tradução, se aplicável
+        titulo_display = noticia['titulo']
+        if noticia.get('traduzido'):
+            titulo_display += f" [Traduzido de: {noticia.get('idioma_original', 'en')}]"
+
+        # Mostrar informações de credibilidade
+        credibilidade_info = f"[Credibilidade: {noticia.get('credibilidade', 'N/A')}/10]"
+
+        print(f"{i}. {titulo_display} {credibilidade_info}")
         print(f"   Portal: {noticia['portal']}")
         print(f"   Data: {noticia['data']}")
         print(f"   Link: {noticia['link']}")
+
         if noticia.get('resumo'):
-            print(f"   Resumo: {noticia['resumo'][:150]}...")
+            resumo_display = noticia['resumo'][:150]
+            if len(noticia['resumo']) > 150:
+                resumo_display += "..."
+            print(f"   Resumo: {resumo_display}")
+
+        # Mostrar razões de credibilidade, se houver
+        if noticia.get('razoes_credibilidade'):
+            print(f"   Observações: {', '.join(noticia['razoes_credibilidade'])}")
+
         print()
 
     return 0

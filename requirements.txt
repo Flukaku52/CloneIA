@@ -6,3 +6,8 @@ moviepy==1.0.3
 pillow==11.2.1
 pydub==0.25.1
 elevenlabs==1.57.0
+nltk==3.8.1
+textblob==0.17.1
+googletrans==4.0.0-rc1
+google-api-python-client==2.123.0
+praw==7.7.1
