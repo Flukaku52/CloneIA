@@ -1,6 +1,19 @@
 {
   "rapidinha": {
-    "saudacao_inicial": "Cambada",
+    "saudacao_padrao": "Cambada",
+    "saudacoes_variadas": [
+      "Cambada",
+      "E aí cambada",
+      "Salve cambada",
+      "Fala cambada",
+      "Opa cambada",
+      "Eae cambada",
+      "Olá cambada",
+      "Beleza cambada",
+      "Bom dia cambada",
+      "Boa tarde cambada",
+      "Boa noite cambada"
+    ],
     "duracao_maxima_segundos": 180,
     "palavras_por_minuto": 150,
     "limite_palavras": 450,
