@@ -10,13 +10,10 @@ Script para automatizar todo o processo de criação e publicação da Rapidinha
 """
 import os
 import sys
-import json
 import logging
 import argparse
-import subprocess
 from typing import Dict, Any, Optional, List
-from datetime import datetime, timedelta
-from pathlib import Path
+from datetime import datetime
 
 # Configurar logging
 logging.basicConfig(
@@ -27,12 +24,93 @@ logger = logging.getLogger('rapidinha_instagram')
 
 # Importar módulos necessários
 try:
-    from rapidinha_automatica import verificar_dependencias
     from instagram_publisher import InstagramPublisher
 except ImportError as e:
     logger.error(f"Erro ao importar módulos necessários: {e}")
-    logger.error("Certifique-se de que os arquivos rapidinha_automatica.py e instagram_publisher.py estão disponíveis.")
+    logger.error("Certifique-se de que o arquivo instagram_publisher.py está disponível.")
     sys.exit(1)
+
+def verificar_dependencias():
+    """
+    Verifica se todas as dependências necessárias estão instaladas.
+
+    Returns:
+        bool: True se todas as dependências estão disponíveis, False caso contrário
+    """
+    dependencias = {
+        "moviepy": "Processamento de vídeo",
+        "requests": "Requisições HTTP",
+        "pillow": "Processamento de imagens",
+        "numpy": "Processamento numérico"
+    }
+
+    faltando = []
+
+    for modulo, descricao in dependencias.items():
+        try:
+            __import__(modulo)
+        except ImportError:
+            faltando.append(f"{modulo} ({descricao})")
+
+    if faltando:
+        logger.error("As seguintes dependências estão faltando:")
+        for dep in faltando:
+            logger.error(f"- {dep}")
+        logger.error("Instale-as usando: pip install " + " ".join([d.split()[0] for d in faltando]))
+        return False
+
+    return True
+
+def gerar_script_rapidinha(noticias: List[Dict[str, Any]], tweets: List[Dict[str, Any]]) -> str:
+    """
+    Gera um script para a Rapidinha Cripto com base nas notícias e tweets fornecidos.
+
+    Args:
+        noticias: Lista de notícias sobre criptomoedas
+        tweets: Lista de tweets sobre criptomoedas
+
+    Returns:
+        str: Script gerado
+    """
+    # Introdução padrão
+    introducao = "E aí cambada! Tô de volta com mais uma Rapidinha Cripto!\n\n"
+
+    # Corpo com as notícias
+    corpo = "Vamos às notícias!\n\n"
+
+    # Adicionar as notícias
+    for i, noticia in enumerate(noticias, 1):
+        titulo = noticia.get('titulo', 'Notícia sem título')
+        resumo = noticia.get('resumo', 'Sem detalhes disponíveis')
+
+        # Limitar o resumo a 200 caracteres
+        if len(resumo) > 200:
+            resumo = resumo[:197] + "..."
+
+        corpo += f"{i}. {titulo}\n"
+        corpo += f"{resumo}\n\n"
+
+    # Adicionar tweets interessantes
+    if tweets:
+        corpo += "E o que estão falando nas redes sociais?\n\n"
+
+        for i, tweet in enumerate(tweets, 1):
+            texto = tweet.get('text', 'Tweet sem texto')
+            autor = tweet.get('author_username', 'usuário')
+
+            # Limitar o texto a 150 caracteres
+            if len(texto) > 150:
+                texto = texto[:147] + "..."
+
+            corpo += f"@{autor} diz: \"{texto}\"\n\n"
+
+    # Conclusão padrão
+    conclusao = "E é isso por hoje, pessoal! Até a próxima rapidinha!"
+
+    # Juntar tudo
+    script = introducao + corpo + conclusao
+
+    return script
 
 def gerar_conteudo(args: argparse.Namespace) -> Optional[Dict[str, Any]]:
     """
@@ -51,9 +129,11 @@ def gerar_conteudo(args: argparse.Namespace) -> Optional[Dict[str, Any]]:
         logger.error("Algumas dependências não foram encontradas. Abortando.")
         return None
 
-    # Importar módulos
-    from gerador_script_rapidinha import GeradorScriptRapidinha
-    from gerar_reels_automatico import ReelsGenerator
+    # Importar módulos necessários
+    from buscador_noticias_cripto import NoticiasCriptoScraper
+    from buscador_tweets_cripto import TwitterCriptoScraper
+    from core.audio import AudioGenerator
+    from core.utils import ensure_directory, OUTPUT_DIR
 
     # Definir nome base para os arquivos de saída
     data_hora = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -64,87 +144,110 @@ def gerar_conteudo(args: argparse.Namespace) -> Optional[Dict[str, Any]]:
     logger.info("ETAPA 1: GERANDO SCRIPT PARA A RAPIDINHA")
     logger.info("="*50)
 
-    # Criar o gerador de scripts, usando padrões se fornecidos
-    gerador = GeradorScriptRapidinha(patterns_file=args.patterns)
+    # Buscar notícias e tweets
+    logger.info("Buscando notícias e tweets sobre criptomoedas...")
 
-    if args.patterns:
-        logger.info(f"Usando padrões do arquivo: {args.patterns}")
+    # Criar os buscadores
+    noticias_scraper = NoticiasCriptoScraper()
+    tweets_scraper = TwitterCriptoScraper()
 
-    script = gerador.gerar_script(
-        num_noticias=args.noticias,
-        num_tweets=args.tweets
-    )
-    caminho_script = gerador.salvar_script(script, nome_arquivo)
+    # Buscar notícias e tweets
+    noticias = noticias_scraper.buscar_todas_noticias(max_total=args.noticias, dias_max=7)
+    tweets = tweets_scraper.buscar_tweets_por_termos(max_total=args.tweets, dias_max=7)
 
-    if not caminho_script:
+    # Gerar o script
+    script = gerar_script_rapidinha(noticias, tweets)
+
+    # Salvar o script
+    scripts_dir = os.path.join(OUTPUT_DIR, "scripts")
+    ensure_directory(scripts_dir)
+    caminho_script = os.path.join(scripts_dir, nome_arquivo)
+
+    with open(caminho_script, 'w', encoding='utf-8') as f:
+        f.write(script)
+
+    if not os.path.exists(caminho_script):
         logger.error("Falha ao salvar o script. Abortando.")
         return None
 
     logger.info(f"Script gerado e salvo em {caminho_script}")
 
-    # Etapa 2: Gerar áudios e vídeos
+    # Etapa 2: Gerar áudios
     logger.info("\n" + "="*50)
-    logger.info("ETAPA 2: GERANDO ÁUDIOS E VÍDEOS")
+    logger.info("ETAPA 2: GERANDO ÁUDIOS")
     logger.info("="*50)
 
     # Extrair o prefixo do nome do arquivo
     nome_arquivo = os.path.basename(caminho_script)
     prefixo = os.path.splitext(nome_arquivo)[0]
 
-    # Criar o gerador de vídeos
-    reels_generator = ReelsGenerator(
-        script_path=caminho_script,
-        prefix=prefixo,
-        validate=not args.no_validate,
-        force=args.force,
-        skip_video=args.audio_only
+    # Gerar áudio
+    audio_generator = AudioGenerator(voice_profile="flukakuia")
+    audio_path = os.path.join(OUTPUT_DIR, "audio", f"{prefixo}.mp3")
+
+    # Garantir que o diretório existe
+    ensure_directory(os.path.dirname(audio_path))
+
+    # Gerar o áudio
+    audio_result = audio_generator.generate_audio(
+        script,
+        audio_path,
+        optimize=True
     )
 
-    # Processar o script
-    resultados = reels_generator.processar_script()
+    # Resultados
+    resultados = {
+        'audios': [audio_result] if audio_result else [],
+        'videos': []
+    }
 
-    # Verificar se temos vídeos gerados
-    if not args.audio_only and not resultados['videos']:
-        logger.error("Nenhum vídeo foi gerado. Abortando.")
-        return None
+    # Se não quisermos gerar vídeo, retornar aqui
+    if args.audio_only:
+        logger.info("Modo somente áudio ativado. Pulando geração de vídeo.")
+        return {
+            "script_path": caminho_script,
+            "script_content": script,
+            "audio_paths": resultados['audios'],
+            "video_paths": [],
+            "video_final": None,
+            "prefix": prefixo
+        }
 
-    # Etapa 3: Juntar os vídeos (se necessário)
-    video_final = None
-
-    if not args.audio_only and len(resultados['videos']) > 1 and not args.no_join:
+    # Etapa 3: Gerar vídeo com o HeyGen
+    if not args.audio_only and audio_result:
         logger.info("\n" + "="*50)
-        logger.info("ETAPA 3: JUNTANDO OS VÍDEOS")
+        logger.info("ETAPA 3: GERANDO VÍDEO COM HEYGEN")
         logger.info("="*50)
 
-        # Juntar os vídeos usando FFmpeg
-        video_final = os.path.join("output", "videos", f"{prefixo}_final.mp4")
-
-        # Criar arquivo de lista para o FFmpeg
-        lista_videos = os.path.join("output", "videos", f"{prefixo}_list.txt")
-        with open(lista_videos, 'w', encoding='utf-8') as f:
-            for video in resultados['videos']:
-                f.write(f"file '{os.path.abspath(video)}'\n")
-
-        # Executar FFmpeg para juntar os vídeos
         try:
-            cmd = [
-                "ffmpeg", "-y", "-f", "concat", "-safe", "0",
-                "-i", lista_videos, "-c", "copy", video_final
-            ]
+            # Importar o gerador de vídeo do HeyGen
+            from gerar_video_heygen import generate_heygen_video
 
-            logger.info(f"Executando comando: {' '.join(cmd)}")
-            subprocess.run(cmd, check=True)
+            # Gerar o vídeo
+            video_path = os.path.join(OUTPUT_DIR, "videos", f"{prefixo}.mp4")
 
-            logger.info(f"Vídeos juntados com sucesso em {video_final}")
-        except subprocess.CalledProcessError as e:
-            logger.error(f"Erro ao juntar vídeos: {e}")
+            # Garantir que o diretório existe
+            ensure_directory(os.path.dirname(video_path))
+
+            # Gerar o vídeo
+            logger.info(f"Gerando vídeo com o HeyGen usando o áudio: {audio_result}")
+            video_final = generate_heygen_video(
+                audio_path=audio_result,
+                script_path=caminho_script,
+                output_path=video_path
+            )
+
+            if video_final:
+                logger.info(f"Vídeo gerado com sucesso: {video_final}")
+                resultados['videos'].append(video_final)
+            else:
+                logger.error("Falha ao gerar o vídeo com o HeyGen")
+                video_final = None
+        except Exception as e:
+            logger.error(f"Erro ao gerar vídeo com o HeyGen: {e}")
             video_final = None
-        except FileNotFoundError:
-            logger.error("FFmpeg não encontrado. Não foi possível juntar os vídeos.")
-            video_final = None
-    elif not args.audio_only and resultados['videos']:
-        # Se temos apenas um vídeo, usar ele diretamente
-        video_final = resultados['videos'][0]
+    else:
+        video_final = None
 
     # Retornar informações sobre o conteúdo gerado
     return {
