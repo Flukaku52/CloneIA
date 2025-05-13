@@ -19,6 +19,14 @@ from urllib.parse import quote
 from textblob import TextBlob
 from googletrans import Translator
 
+# Importar o gerenciador de fontes confiáveis
+try:
+    from core.trusted_sources_manager import TrustedSourcesManager
+    TRUSTED_SOURCES_AVAILABLE = True
+except ImportError:
+    TRUSTED_SOURCES_AVAILABLE = False
+    logging.warning("Módulo trusted_sources_manager não encontrado. A verificação de fontes confiáveis não estará disponível.")
+
 # Configurar logging
 logging.basicConfig(
     level=logging.INFO,
@@ -41,6 +49,7 @@ except Exception as e:
 
 # Contas relevantes de criptomoedas para seguir
 CONTAS_CRIPTO = [
+    # Contas originais
     "bitcoinbrasil",
     "portaldobitcoin",
     "criptofacil",
@@ -57,7 +66,19 @@ CONTAS_CRIPTO = [
     "MercadoBitcoin",
     "NovaDax",
     "BitcoinToYou",
-    "BitPreco"
+    "BitPreco",
+
+    # Contas adicionadas pelo usuário
+    "bitdov",
+    "caueconomy",
+    "BSCnews",
+    "hi_disruptivas",
+    "0xCVYH",
+    "0xcindyv",
+    "RennoGuil",
+    "carol_bitcoin",
+    "ParadigmaEdu",
+    "castacrypto"
 ]
 
 # Termos de busca relevantes
@@ -133,7 +154,7 @@ class TwitterCriptoScraper:
     """
     def __init__(self, api_key: str = None, api_secret: str = None,
                  bearer_token: str = None, cache_dir: str = "cache",
-                 filtro_sentimento: str = None):
+                 filtro_sentimento: str = None, usar_fontes_confiaveis: bool = True):
         """
         Inicializa o scraper de tweets.
 
@@ -143,6 +164,7 @@ class TwitterCriptoScraper:
             bearer_token: Token de portador da API do Twitter
             cache_dir: Diretório para armazenar o cache de tweets
             filtro_sentimento: Filtro de sentimento ('positivo', 'negativo', 'neutro', None para todos)
+            usar_fontes_confiaveis: Se True, usa o banco de dados de fontes confiáveis
         """
         self.api_key = api_key or os.environ.get("TWITTER_API_KEY")
         self.api_secret = api_secret or os.environ.get("TWITTER_API_SECRET")
@@ -150,9 +172,20 @@ class TwitterCriptoScraper:
         self.cache_dir = cache_dir
         self.filtro_sentimento = filtro_sentimento
         self.use_api = bool(self.bearer_token)
+        self.usar_fontes_confiaveis = usar_fontes_confiaveis and TRUSTED_SOURCES_AVAILABLE
 
         # Inicializar analisador de sentimento
         self.analisador_sentimento = AnalisadorSentimento()
+
+        # Inicializar gerenciador de fontes confiáveis
+        self.trusted_sources = None
+        if self.usar_fontes_confiaveis:
+            try:
+                self.trusted_sources = TrustedSourcesManager()
+                logger.info(f"Gerenciador de fontes confiáveis inicializado com {len(self.trusted_sources.get_twitter_accounts())} contas")
+            except Exception as e:
+                logger.error(f"Erro ao inicializar gerenciador de fontes confiáveis: {e}")
+                self.usar_fontes_confiaveis = False
 
         self.session = requests.Session()
         self.session.headers.update({
@@ -170,6 +203,8 @@ class TwitterCriptoScraper:
         logger.info(f"Inicializado com {'API oficial' if self.use_api else 'método alternativo'}")
         if self.filtro_sentimento:
             logger.info(f"Filtrando tweets com sentimento: {self.filtro_sentimento}")
+        if self.usar_fontes_confiaveis:
+            logger.info("Usando banco de dados de fontes confiáveis")
 
     def _get_cache_path(self, termo: str) -> str:
         """
@@ -274,6 +309,28 @@ class TwitterCriptoScraper:
                     # Analisar sentimento
                     polaridade, sentimento = self.analisador_sentimento.analisar(texto, idioma)
 
+                    # Verificar confiabilidade da fonte
+                    confiabilidade = 5  # Valor padrão médio
+                    fonte_confiavel = False
+                    razoes_confiabilidade = []
+
+                    if self.usar_fontes_confiaveis and self.trusted_sources:
+                        username = author.get("username", "")
+                        if username:
+                            # Verificar se a conta está no banco de dados de fontes confiáveis
+                            confiabilidade_fonte = self.trusted_sources.get_source_confiabilidade("twitter", username)
+                            if confiabilidade_fonte > 0:
+                                confiabilidade = confiabilidade_fonte
+                                fonte_confiavel = confiabilidade >= 7
+                                razoes_confiabilidade.append(f"Fonte confiável (pontuação: {confiabilidade}/10)")
+
+                                # Obter informações detalhadas da fonte
+                                fonte_info = self.trusted_sources.get_twitter_account(username)
+                                if fonte_info:
+                                    categoria = fonte_info.get("categoria", "")
+                                    if categoria:
+                                        razoes_confiabilidade.append(f"Categoria: {categoria}")
+
                     # Criar objeto do tweet
                     tweet_obj = {
                         "id": tweet["id"],
@@ -291,6 +348,9 @@ class TwitterCriptoScraper:
                         "idioma": idioma,
                         "sentimento": sentimento,
                         "polaridade": polaridade,
+                        "confiabilidade": confiabilidade,
+                        "fonte_confiavel": fonte_confiavel,
+                        "razoes_confiabilidade": razoes_confiabilidade,
                         "timestamp": datetime.now().isoformat()
                     }
 
@@ -360,20 +420,52 @@ class TwitterCriptoScraper:
                 idioma = "pt"
                 polaridade, sentimento = self.analisador_sentimento.analisar(texto, idioma)
 
+                # Definir autor aleatório de uma lista de contas confiáveis
+                contas_exemplo = ["bitdov", "caueconomy", "BitcoinMagazine", "cointelegraph", "BSCnews"]
+                autor_username = random.choice(contas_exemplo)
+
+                # Verificar confiabilidade da fonte
+                confiabilidade = 5  # Valor padrão médio
+                fonte_confiavel = False
+                razoes_confiabilidade = []
+                fonte_info = None
+                autor_nome = autor_username
+
+                if self.usar_fontes_confiaveis and self.trusted_sources:
+                    # Verificar se a conta está no banco de dados de fontes confiáveis
+                    confiabilidade_fonte = self.trusted_sources.get_source_confiabilidade("twitter", autor_username)
+                    if confiabilidade_fonte > 0:
+                        confiabilidade = confiabilidade_fonte
+                        fonte_confiavel = confiabilidade >= 7
+                        razoes_confiabilidade.append(f"Fonte confiável (pontuação: {confiabilidade}/10)")
+
+                        # Obter informações detalhadas da fonte
+                        fonte_info = self.trusted_sources.get_twitter_account(autor_username)
+                        if fonte_info:
+                            autor_nome = fonte_info.get("name", autor_username)
+                            categoria = fonte_info.get("categoria", "")
+                            if categoria:
+                                razoes_confiabilidade.append(f"Categoria: {categoria}")
+                    else:
+                        autor_nome = f"Usuário {autor_username}"
+
                 # Criar objeto do tweet
                 tweet_obj = {
                     "id": f"mock_{i}_{int(time.time())}",
                     "text": texto,
                     "created_at": datetime.now().isoformat(),
-                    "author_name": "Usuário Exemplo",
-                    "author_username": "usuario_exemplo",
+                    "author_name": autor_nome,
+                    "author_username": autor_username,
                     "likes": random.randint(5, 100),
                     "retweets": random.randint(1, 20),
-                    "url": f"https://twitter.com/usuario_exemplo/status/mock_{i}_{int(time.time())}",
+                    "url": f"https://twitter.com/{autor_username}/status/mock_{i}_{int(time.time())}",
                     "source": "mock",
                     "idioma": idioma,
                     "sentimento": sentimento,
                     "polaridade": polaridade,
+                    "confiabilidade": confiabilidade,
+                    "fonte_confiavel": fonte_confiavel,
+                    "razoes_confiabilidade": razoes_confiabilidade,
                     "timestamp": datetime.now().isoformat()
                 }
 
@@ -557,6 +649,8 @@ def main():
                         help="Filtrar tweets por sentimento")
     parser.add_argument("--max", type=int, default=5, help="Número máximo de tweets a buscar")
     parser.add_argument("--dias", type=int, default=7, help="Número máximo de dias de antiguidade dos tweets")
+    parser.add_argument("--no-fontes-confiaveis", action="store_true", help="Desativar uso do banco de dados de fontes confiáveis")
+    parser.add_argument("--min-confiabilidade", type=int, default=7, help="Pontuação mínima de confiabilidade (1-10)")
 
     args = parser.parse_args()
 
@@ -565,7 +659,8 @@ def main():
         api_key=args.api_key,
         api_secret=args.api_secret,
         bearer_token=args.bearer_token,
-        filtro_sentimento=args.sentimento
+        filtro_sentimento=args.sentimento,
+        usar_fontes_confiaveis=not args.no_fontes_confiaveis
     )
 
     # Buscar tweets por termos
@@ -577,14 +672,31 @@ def main():
         dias_max=args.dias
     )
 
+    # Filtrar tweets por confiabilidade mínima
+    if args.min_confiabilidade > 0:
+        tweets_termos = [t for t in tweets_termos if t.get('confiabilidade', 0) >= args.min_confiabilidade]
+
     print(f"\nEncontrados {len(tweets_termos)} tweets por termos:\n")
     for i, tweet in enumerate(tweets_termos, 1):
         # Mostrar informações de sentimento
         sentimento_info = f"[{tweet.get('sentimento', 'desconhecido').upper()}]"
 
-        print(f"{i}. @{tweet.get('author_username', 'desconhecido')}: {tweet['text'][:100]}... {sentimento_info}")
+        # Mostrar informações de confiabilidade
+        confiabilidade_info = ""
+        if 'confiabilidade' in tweet:
+            confiabilidade = tweet['confiabilidade']
+            confiabilidade_info = f" [Confiabilidade: {confiabilidade}/10]"
+            if tweet.get('fonte_confiavel', False):
+                confiabilidade_info += " ✓"
+
+        print(f"{i}. @{tweet.get('author_username', 'desconhecido')}: {tweet['text'][:100]}... {sentimento_info}{confiabilidade_info}")
         print(f"   Likes: {tweet.get('likes', 0)}, Retweets: {tweet.get('retweets', 0)}")
         print(f"   URL: {tweet['url']}")
+
+        # Mostrar razões de confiabilidade, se houver
+        if tweet.get('razoes_confiabilidade'):
+            print(f"   Observações: {', '.join(tweet['razoes_confiabilidade'])}")
+
         print()
 
     # Buscar tweets por contas
@@ -596,14 +708,31 @@ def main():
         dias_max=args.dias
     )
 
+    # Filtrar tweets por confiabilidade mínima
+    if args.min_confiabilidade > 0:
+        tweets_contas = [t for t in tweets_contas if t.get('confiabilidade', 0) >= args.min_confiabilidade]
+
     print(f"\nEncontrados {len(tweets_contas)} tweets de contas:\n")
     for i, tweet in enumerate(tweets_contas, 1):
         # Mostrar informações de sentimento
         sentimento_info = f"[{tweet.get('sentimento', 'desconhecido').upper()}]"
 
-        print(f"{i}. @{tweet.get('author_username', 'desconhecido')}: {tweet['text'][:100]}... {sentimento_info}")
+        # Mostrar informações de confiabilidade
+        confiabilidade_info = ""
+        if 'confiabilidade' in tweet:
+            confiabilidade = tweet['confiabilidade']
+            confiabilidade_info = f" [Confiabilidade: {confiabilidade}/10]"
+            if tweet.get('fonte_confiavel', False):
+                confiabilidade_info += " ✓"
+
+        print(f"{i}. @{tweet.get('author_username', 'desconhecido')}: {tweet['text'][:100]}... {sentimento_info}{confiabilidade_info}")
         print(f"   Likes: {tweet.get('likes', 0)}, Retweets: {tweet.get('retweets', 0)}")
         print(f"   URL: {tweet['url']}")
+
+        # Mostrar razões de confiabilidade, se houver
+        if tweet.get('razoes_confiabilidade'):
+            print(f"   Observações: {', '.join(tweet['razoes_confiabilidade'])}")
+
         print()
 
     return 0

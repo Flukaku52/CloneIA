@@ -1,0 +1,270 @@
+{
+  "twitter": {
+    "accounts": [
+      {
+        "username": "bitdov",
+        "name": "Bit Dov",
+        "description": "Especialista em Bitcoin e criptomoedas",
+        "confiabilidade": 9,
+        "categoria": "especialista",
+        "idioma": "pt",
+        "tags": ["bitcoin", "criptomoedas", "análise"]
+      },
+      {
+        "username": "caueconomy",
+        "name": "Cau Economy",
+        "description": "Análises econômicas e de criptomoedas",
+        "confiabilidade": 8,
+        "categoria": "analista",
+        "idioma": "pt",
+        "tags": ["economia", "criptomoedas", "análise"]
+      },
+      {
+        "username": "BitcoinMagazine",
+        "name": "Bitcoin Magazine",
+        "description": "Revista especializada em Bitcoin",
+        "confiabilidade": 9,
+        "categoria": "mídia",
+        "idioma": "en",
+        "tags": ["bitcoin", "notícias", "análise"]
+      },
+      {
+        "username": "cointelegraph",
+        "name": "Cointelegraph",
+        "description": "Portal de notícias sobre criptomoedas",
+        "confiabilidade": 8,
+        "categoria": "mídia",
+        "idioma": "en",
+        "tags": ["criptomoedas", "notícias", "blockchain"]
+      },
+      {
+        "username": "BSCnews",
+        "name": "BSC News",
+        "description": "Notícias sobre Binance Smart Chain e ecossistema",
+        "confiabilidade": 7,
+        "categoria": "mídia",
+        "idioma": "en",
+        "tags": ["binance", "bsc", "defi"]
+      },
+      {
+        "username": "hi_disruptivas",
+        "name": "Disruptivas",
+        "description": "Conteúdo sobre tecnologias disruptivas e criptomoedas",
+        "confiabilidade": 8,
+        "categoria": "educador",
+        "idioma": "pt",
+        "tags": ["tecnologia", "criptomoedas", "educação"]
+      },
+      {
+        "username": "0xCVYH",
+        "name": "CVYH",
+        "description": "Análises e insights sobre o mercado cripto",
+        "confiabilidade": 8,
+        "categoria": "analista",
+        "idioma": "pt",
+        "tags": ["análise", "mercado", "trading"]
+      },
+      {
+        "username": "0xcindyv",
+        "name": "Cindy V",
+        "description": "Especialista em criptomoedas e blockchain",
+        "confiabilidade": 8,
+        "categoria": "especialista",
+        "idioma": "pt",
+        "tags": ["blockchain", "criptomoedas", "educação"]
+      },
+      {
+        "username": "RennoGuil",
+        "name": "Renno Guil",
+        "description": "Análises e comentários sobre o mercado cripto",
+        "confiabilidade": 8,
+        "categoria": "analista",
+        "idioma": "pt",
+        "tags": ["análise", "mercado", "bitcoin"]
+      },
+      {
+        "username": "carol_bitcoin",
+        "name": "Carol Bitcoin",
+        "description": "Educadora e especialista em Bitcoin",
+        "confiabilidade": 9,
+        "categoria": "educador",
+        "idioma": "pt",
+        "tags": ["bitcoin", "educação", "análise"]
+      },
+      {
+        "username": "ParadigmaEdu",
+        "name": "Paradigma Education",
+        "description": "Educação em criptomoedas e blockchain",
+        "confiabilidade": 9,
+        "categoria": "educador",
+        "idioma": "pt",
+        "tags": ["educação", "blockchain", "criptomoedas"]
+      },
+      {
+        "username": "castacrypto",
+        "name": "Casta Crypto",
+        "description": "Análises e notícias sobre criptomoedas",
+        "confiabilidade": 8,
+        "categoria": "analista",
+        "idioma": "pt",
+        "tags": ["análise", "criptomoedas", "mercado"]
+      },
+      {
+        "username": "DocumentingBTC",
+        "name": "Documenting Bitcoin",
+        "description": "Documentação e notícias sobre Bitcoin",
+        "confiabilidade": 9,
+        "categoria": "mídia",
+        "idioma": "en",
+        "tags": ["bitcoin", "documentação", "história"]
+      },
+      {
+        "username": "saylor",
+        "name": "Michael Saylor",
+        "description": "CEO da MicroStrategy e defensor do Bitcoin",
+        "confiabilidade": 8,
+        "categoria": "empresário",
+        "idioma": "en",
+        "tags": ["bitcoin", "investimento", "macroeconomia"]
+      },
+      {
+        "username": "VitalikButerin",
+        "name": "Vitalik Buterin",
+        "description": "Co-fundador do Ethereum",
+        "confiabilidade": 9,
+        "categoria": "desenvolvedor",
+        "idioma": "en",
+        "tags": ["ethereum", "blockchain", "desenvolvimento"]
+      },
+      {
+        "username": "CryptoHayes",
+        "name": "Arthur Hayes",
+        "description": "Co-fundador da BitMEX",
+        "confiabilidade": 7,
+        "categoria": "empresário",
+        "idioma": "en",
+        "tags": ["trading", "derivativos", "análise"]
+      },
+      {
+        "username": "aantonop",
+        "name": "Andreas Antonopoulos",
+        "description": "Autor e educador em Bitcoin e blockchain",
+        "confiabilidade": 9,
+        "categoria": "educador",
+        "idioma": "en",
+        "tags": ["bitcoin", "educação", "segurança"]
+      },
+      {
+        "username": "CaitlinLong_",
+        "name": "Caitlin Long",
+        "description": "Fundadora do Custodia Bank",
+        "confiabilidade": 8,
+        "categoria": "empresário",
+        "idioma": "en",
+        "tags": ["regulação", "bancos", "bitcoin"]
+      },
+      {
+        "username": "nic__carter",
+        "name": "Nic Carter",
+        "description": "Sócio da Castle Island Ventures",
+        "confiabilidade": 8,
+        "categoria": "investidor",
+        "idioma": "en",
+        "tags": ["bitcoin", "investimento", "análise"]
+      },
+      {
+        "username": "PeterMcCormack",
+        "name": "Peter McCormack",
+        "description": "Host do podcast What Bitcoin Did",
+        "confiabilidade": 7,
+        "categoria": "mídia",
+        "idioma": "en",
+        "tags": ["bitcoin", "podcast", "entrevistas"]
+      }
+    ]
+  },
+  "websites": {
+    "portais": [
+      {
+        "nome": "CriptoFácil",
+        "url": "https://www.criptofacil.com",
+        "confiabilidade": 8,
+        "categoria": "notícias",
+        "idioma": "pt",
+        "tags": ["criptomoedas", "notícias", "brasil"]
+      },
+      {
+        "nome": "Portal do Bitcoin",
+        "url": "https://portaldobitcoin.uol.com.br",
+        "confiabilidade": 9,
+        "categoria": "notícias",
+        "idioma": "pt",
+        "tags": ["bitcoin", "notícias", "brasil"]
+      },
+      {
+        "nome": "Cointelegraph Brasil",
+        "url": "https://br.cointelegraph.com",
+        "confiabilidade": 8,
+        "categoria": "notícias",
+        "idioma": "pt",
+        "tags": ["criptomoedas", "notícias", "brasil"]
+      },
+      {
+        "nome": "Livecoins",
+        "url": "https://livecoins.com.br",
+        "confiabilidade": 7,
+        "categoria": "notícias",
+        "idioma": "pt",
+        "tags": ["criptomoedas", "notícias", "brasil"]
+      },
+      {
+        "nome": "BeInCrypto Brasil",
+        "url": "https://beincrypto.com.br",
+        "confiabilidade": 7,
+        "categoria": "notícias",
+        "idioma": "pt",
+        "tags": ["criptomoedas", "notícias", "brasil"]
+      },
+      {
+        "nome": "CoinDesk",
+        "url": "https://www.coindesk.com",
+        "confiabilidade": 9,
+        "categoria": "notícias",
+        "idioma": "en",
+        "tags": ["criptomoedas", "notícias", "internacional"]
+      },
+      {
+        "nome": "Cointelegraph",
+        "url": "https://cointelegraph.com",
+        "confiabilidade": 8,
+        "categoria": "notícias",
+        "idioma": "en",
+        "tags": ["criptomoedas", "notícias", "internacional"]
+      },
+      {
+        "nome": "Bitcoin Magazine",
+        "url": "https://bitcoinmagazine.com",
+        "confiabilidade": 9,
+        "categoria": "notícias",
+        "idioma": "en",
+        "tags": ["bitcoin", "notícias", "internacional"]
+      },
+      {
+        "nome": "Decrypt",
+        "url": "https://decrypt.co",
+        "confiabilidade": 8,
+        "categoria": "notícias",
+        "idioma": "en",
+        "tags": ["criptomoedas", "notícias", "internacional"]
+      },
+      {
+        "nome": "The Block",
+        "url": "https://www.theblock.co",
+        "confiabilidade": 9,
+        "categoria": "notícias",
+        "idioma": "en",
+        "tags": ["criptomoedas", "notícias", "análise"]
+      }
+    ]
+  }
+}
