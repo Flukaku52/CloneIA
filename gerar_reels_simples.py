@@ -274,7 +274,7 @@ def gerar_video(audio_path, dry_run=False):
             return None
 
         # Verificar status do vídeo
-        url_status = f"https://api.heygen.com/v1/video.status?video_id={video_id}"
+        url_status = f"https://api.heygen.com/v1/video_status.get?video_id={video_id}"
 
         max_attempts = 30
         attempts = 0
