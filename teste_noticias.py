@@ -34,83 +34,83 @@ def gerar_noticias_teste():
 
     return [
         {
-            "titulo": "Bitcoin ultrapassa US$ 120.000 e atinge novo recorde histórico",
+            "titulo": "Carteira de Bitcoin para idosos é lançada com interface simplificada",
             "link": "https://exemplo.com/noticia1",
             "data": f"{datas[0].day} de {_nome_mes(datas[0].month)} de {datas[0].year}",
             "data_iso": datas[0].isoformat(),
-            "resumo": "O Bitcoin superou a marca de US$ 120.000 pela primeira vez na história, impulsionado pela crescente adoção institucional e redução da oferta após o halving de 2024.",
+            "resumo": "Uma nova carteira de Bitcoin foi lançada especificamente para idosos, com interface simplificada e recursos de segurança adicionais para facilitar o uso por pessoas com pouca experiência em tecnologia.",
             "portal": "CriptoFácil"
         },
         {
-            "titulo": "Banco do Brasil lança plataforma de investimentos em criptomoedas para todos os clientes",
+            "titulo": "Caixa Econômica lança curso gratuito de criptomoedas para clientes",
             "link": "https://exemplo.com/noticia2",
             "data": f"{datas[1].day} de {_nome_mes(datas[1].month)} de {datas[1].year}",
             "data_iso": datas[1].isoformat(),
-            "resumo": "O Banco do Brasil anunciou que todos os seus clientes já podem investir em Bitcoin e outras criptomoedas diretamente pelo aplicativo do banco, com taxas reduzidas.",
+            "resumo": "A Caixa Econômica Federal anunciou o lançamento de um curso gratuito sobre criptomoedas para todos os seus clientes, com o objetivo de educar os brasileiros sobre investimentos digitais de forma segura.",
             "portal": "Portal do Bitcoin"
         },
         {
-            "titulo": "Mais de 50 cidades brasileiras já aceitam Bitcoin para pagamento de impostos",
+            "titulo": "Supermercados começam a aceitar pagamentos em Bitcoin em todo o Brasil",
             "link": "https://exemplo.com/noticia3",
             "data": f"{datas[2].day} de {_nome_mes(datas[2].month)} de {datas[2].year}",
             "data_iso": datas[2].isoformat(),
-            "resumo": "Um levantamento recente mostra que mais de 50 cidades brasileiras já aceitam Bitcoin como forma de pagamento para impostos municipais, seguindo a tendência global de adoção de criptomoedas.",
+            "resumo": "Uma das maiores redes de supermercados do Brasil anunciou que começará a aceitar Bitcoin como forma de pagamento em todas as suas lojas a partir do próximo mês, sem taxas adicionais para os consumidores.",
             "portal": "Livecoins"
         },
         {
-            "titulo": "Guia completo: como ganhar renda passiva com staking de criptomoedas em 2025",
+            "titulo": "Aposentados descobrem Bitcoin: número de investidores acima de 60 anos cresce 300%",
             "link": "https://exemplo.com/noticia4",
             "data": f"{datas[3].day} de {_nome_mes(datas[3].month)} de {datas[3].year}",
             "data_iso": datas[3].isoformat(),
-            "resumo": "Confira neste guia atualizado como fazer staking de criptomoedas em 2025 e ganhar rendimentos passivos que podem chegar a 15% ao ano, dependendo da moeda escolhida.",
+            "resumo": "Um estudo recente revelou que o número de aposentados investindo em Bitcoin cresceu 300% nos últimos seis meses, com muitos buscando proteger suas economias contra a inflação.",
             "portal": "Cointelegraph Brasil"
         },
         {
-            "titulo": "Real Digital entra em operação oficial no Brasil após fase de testes",
+            "titulo": "Governo lança programa 'Meu Primeiro Bitcoin' para jovens de baixa renda",
             "link": "https://exemplo.com/noticia5",
-            "data": f"{datas[2].day} de {_nome_mes(datas[2].month)} de {datas[2].year}",
-            "data_iso": datas[2].isoformat(),
-            "resumo": "O Banco Central do Brasil anunciou o lançamento oficial do Real Digital, a moeda digital do país, após dois anos de testes bem-sucedidos com instituições financeiras.",
+            "data": f"{datas[0].day} de {_nome_mes(datas[0].month)} de {datas[0].year}",
+            "data_iso": datas[0].isoformat(),
+            "resumo": "O governo federal anunciou o programa 'Meu Primeiro Bitcoin', que oferecerá educação financeira e uma pequena quantia em Bitcoin para jovens de baixa renda, com o objetivo de promover inclusão financeira.",
             "portal": "Portal do Bitcoin"
         },
         {
-            "titulo": "Bitcoin para iniciantes: como comprar sua primeira criptomoeda em 2025",
+            "titulo": "Como proteger suas criptomoedas: guia completo para iniciantes",
             "link": "https://exemplo.com/noticia6",
             "data": f"{datas[4].day} de {_nome_mes(datas[4].month)} de {datas[4].year}",
             "data_iso": datas[4].isoformat(),
-            "resumo": "Este guia atualizado explica passo a passo como comprar Bitcoin pela primeira vez em 2025, com as melhores plataformas disponíveis no Brasil e dicas de segurança.",
+            "resumo": "Este guia explica de forma simples como proteger suas criptomoedas contra hackers e golpes, com dicas práticas que qualquer pessoa pode seguir, mesmo sem conhecimentos técnicos avançados.",
             "portal": "CriptoFácil"
         },
         {
-            "titulo": "Ethereum 3.0 é lançado com melhorias significativas de velocidade e eficiência",
+            "titulo": "Bitcoin atinge US$ 125.000 após grandes empresas anunciarem novas compras",
             "link": "https://exemplo.com/noticia7",
             "data": f"{datas[1].day} de {_nome_mes(datas[1].month)} de {datas[1].year}",
             "data_iso": datas[1].isoformat(),
-            "resumo": "A rede Ethereum completou sua atualização para a versão 3.0, trazendo melhorias que aumentam a velocidade das transações em até 10 vezes e reduzem as taxas em mais de 90%.",
+            "resumo": "O preço do Bitcoin ultrapassou US$ 125.000 após várias grandes empresas anunciarem novas compras da criptomoeda para suas reservas corporativas, estabelecendo um novo recorde histórico.",
             "portal": "Cointelegraph Brasil"
         },
         {
-            "titulo": "Novo golpe com criptomoedas atinge milhares de brasileiros; saiba como se proteger",
+            "titulo": "Alerta: novo golpe no WhatsApp promete dobrar investimentos em Bitcoin",
             "link": "https://exemplo.com/noticia8",
             "data": f"{datas[0].day} de {_nome_mes(datas[0].month)} de {datas[0].year}",
             "data_iso": datas[0].isoformat(),
-            "resumo": "Um novo esquema de fraude envolvendo falsos investimentos em criptomoedas já afetou mais de 10 mil brasileiros em 2025. Especialistas explicam como identificar e evitar cair nesse tipo de golpe.",
+            "resumo": "A Polícia Federal alerta para um novo golpe que circula pelo WhatsApp prometendo dobrar investimentos em Bitcoin em 24 horas. Saiba como identificar e se proteger desta fraude que já fez milhares de vítimas.",
             "portal": "Livecoins"
         },
         {
-            "titulo": "Pix agora permite transferências instantâneas usando Bitcoin e outras criptomoedas",
+            "titulo": "Escolas públicas incluirão educação sobre Bitcoin e criptomoedas no currículo",
             "link": "https://exemplo.com/noticia9",
-            "data": f"{datas[3].day} de {_nome_mes(datas[3].month)} de {datas[3].year}",
-            "data_iso": datas[3].isoformat(),
-            "resumo": "O Banco Central atualizou o sistema Pix para permitir transferências usando Bitcoin e outras criptomoedas, com conversão automática para reais no momento da transação.",
+            "data": f"{datas[2].day} de {_nome_mes(datas[2].month)} de {datas[2].year}",
+            "data_iso": datas[2].isoformat(),
+            "resumo": "O Ministério da Educação anunciou que escolas públicas de todo o país incluirão noções básicas sobre Bitcoin e criptomoedas no currículo de educação financeira a partir do próximo ano letivo.",
             "portal": "Portal do Bitcoin"
         },
         {
-            "titulo": "NFTs em 2025: o que mudou e como investir nesse mercado renovado",
+            "titulo": "Comprei R$ 100 em Bitcoin há 5 anos: quanto vale hoje e o que aprendi",
             "link": "https://exemplo.com/noticia10",
-            "data": f"{datas[5].day} de {_nome_mes(datas[5].month)} de {datas[5].year}",
-            "data_iso": datas[5].isoformat(),
-            "resumo": "O mercado de NFTs passou por grandes transformações desde 2021 e agora oferece novas oportunidades de investimento, principalmente em setores como imóveis digitais e licenciamento de conteúdo.",
+            "data": f"{datas[3].day} de {_nome_mes(datas[3].month)} de {datas[3].year}",
+            "data_iso": datas[3].isoformat(),
+            "resumo": "Um investidor brasileiro compartilha sua experiência após investir apenas R$ 100 em Bitcoin há 5 anos, mostrando quanto vale hoje seu investimento e as lições que aprendeu durante essa jornada.",
             "portal": "CriptoFácil"
         }
     ]
@@ -155,48 +155,48 @@ def gerar_tweets_teste():
     return [
         {
             "id": "tweet1",
-            "text": "Acabei de comprar mais Bitcoin a US$ 120K! Mesmo com o preço alto, acredito que ainda vai valorizar muito mais até o fim de 2025. #Bitcoin #Investimentos",
+            "text": "Minha avó de 78 anos acabou de comprar seu primeiro Bitcoin usando a nova carteira para idosos! Ela disse que é mais fácil que usar o caixa eletrônico do banco 😂 #BitcoinParaTodos",
             "created_at": datas[0].isoformat(),
-            "author_username": "usuario_cripto",
-            "likes": 520,
-            "retweets": 145,
-            "url": "https://twitter.com/usuario_cripto/status/123456789"
+            "author_username": "neto_digital",
+            "likes": 3520,
+            "retweets": 1245,
+            "url": "https://twitter.com/neto_digital/status/123456789"
         },
         {
             "id": "tweet2",
-            "text": "O Bitcoin está em alta histórica! Já ultrapassou os US$ 120.000 e parece que vai continuar subindo. Quem comprou após o halving de 2024 já dobrou o investimento!",
+            "text": "ATENÇÃO: Estão circulando mensagens no WhatsApp prometendo dobrar seu Bitcoin em 24h. É GOLPE! Ninguém consegue garantir retornos assim. Sempre desconfie de promessas milagrosas.",
             "created_at": datas[1].isoformat(),
-            "author_username": "analista_bitcoin",
-            "likes": 950,
-            "retweets": 480,
-            "url": "https://twitter.com/analista_bitcoin/status/123456790"
+            "author_username": "seguranca_cripto",
+            "likes": 4950,
+            "retweets": 2480,
+            "url": "https://twitter.com/seguranca_cripto/status/123456790"
         },
         {
             "id": "tweet3",
-            "text": "Dica para iniciantes em 2025: mesmo com Bitcoin em alta, nunca invista mais do que você pode perder. Comece com valores pequenos e vá aprendendo aos poucos.",
+            "text": "Dica para quem está começando: você não precisa comprar 1 Bitcoin inteiro! Pode começar com R$50 ou R$100. É como comprar meio quilo de arroz em vez do pacote inteiro.",
             "created_at": datas[2].isoformat(),
             "author_username": "cripto_educador",
-            "likes": 1220,
-            "retweets": 630,
+            "likes": 5220,
+            "retweets": 2630,
             "url": "https://twitter.com/cripto_educador/status/123456791"
         },
         {
             "id": "tweet4",
-            "text": "O staking de Ethereum 3.0 está rendendo cerca de 8% ao ano em 2025. É uma ótima forma de ganhar renda passiva enquanto segura seus ETH.",
+            "text": "Fiz o curso gratuito de criptomoedas da Caixa e recomendo muito! Explicação bem simples, sem termos complicados. Perfeito para quem não entende nada do assunto.",
             "created_at": datas[3].isoformat(),
-            "author_username": "eth_brasil",
-            "likes": 495,
-            "retweets": 232,
-            "url": "https://twitter.com/eth_brasil/status/123456792"
+            "author_username": "maria_investidora",
+            "likes": 2495,
+            "retweets": 1232,
+            "url": "https://twitter.com/maria_investidora/status/123456792"
         },
         {
             "id": "tweet5",
-            "text": "O Banco do Brasil acaba de lançar sua plataforma de investimentos em cripto! Testei e é super fácil de usar. Ótimo para quem está começando no mundo das criptomoedas.",
+            "text": "Comprei um pão de queijo no supermercado pagando com Bitcoin! Processo super rápido, só escaneei o QR code e pronto. O futuro chegou e tem gosto de queijo 🧀 #BitcoinNoDiaADia",
             "created_at": datas[4].isoformat(),
-            "author_username": "tech_influencer",
-            "likes": 1780,
-            "retweets": 920,
-            "url": "https://twitter.com/tech_influencer/status/123456793"
+            "author_username": "vida_cripto",
+            "likes": 3780,
+            "retweets": 1920,
+            "url": "https://twitter.com/vida_cripto/status/123456793"
         }
     ]
 
