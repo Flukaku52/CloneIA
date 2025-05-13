@@ -25,7 +25,7 @@ def criar_diretorios():
         "output/audio",
         "output/videos"
     ]
-    
+
     for diretorio in diretorios:
         os.makedirs(diretorio, exist_ok=True)
         logger.debug(f"Diretório criado/verificado: {diretorio}")
@@ -33,68 +33,68 @@ def criar_diretorios():
 def gerar_audio(script_path, dry_run=False):
     """
     Gera o áudio para o script.
-    
+
     Args:
         script_path: Caminho para o arquivo de script
         dry_run: Se True, simula a geração sem fazer chamadas de API
-        
+
     Returns:
         str: Caminho para o arquivo de áudio
     """
     logger.info(f"Gerando áudio para o script: {script_path}")
-    
+
     if dry_run:
         logger.info("[SIMULAÇÃO] Gerando áudio...")
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         audio_path = os.path.join("output", "audio", f"rapidinha_audio_{timestamp}.mp3")
         logger.info(f"[SIMULAÇÃO] Áudio seria salvo em: {audio_path}")
         return audio_path
-    
+
     try:
         # Importar o gerador de áudio
-        from elevenlabs import generate, save, set_api_key, Voice, VoiceSettings
-        
+        import elevenlabs
+
         # Verificar API key
         api_key = os.environ.get("ELEVENLABS_API_KEY")
         if not api_key:
             logger.error("API key do ElevenLabs não encontrada.")
             return None
-        
-        set_api_key(api_key)
-        
+
+        elevenlabs.set_api_key(api_key)
+
         # Ler o script
         with open(script_path, "r", encoding="utf-8") as f:
             texto = f.read()
-        
+
         # ID da voz FlukakuIA
         voice_id = "Wd9qqUMXJRZXwRVXLXXh"
-        
+
         # Configurações de voz otimizadas
-        voice_settings = VoiceSettings(
-            stability=0.71,
-            similarity_boost=0.75,
-            style=0.0,
-            use_speaker_boost=True
-        )
-        
+        voice_settings = {
+            "stability": 0.71,
+            "similarity_boost": 0.75,
+            "style": 0.0,
+            "use_speaker_boost": True
+        }
+
         # Gerar áudio
-        audio = generate(
+        audio = elevenlabs.generate(
             text=texto,
-            voice=Voice(
-                voice_id=voice_id,
-                settings=voice_settings
-            ),
-            model="eleven_multilingual_v2"
+            voice=voice_id,
+            model="eleven_multilingual_v2",
+            voice_settings=voice_settings
         )
-        
+
         # Salvar áudio
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         audio_path = os.path.join("output", "audio", f"rapidinha_audio_{timestamp}.mp3")
-        save(audio, audio_path)
-        
+
+        with open(audio_path, "wb") as f:
+            f.write(audio)
+
         logger.info(f"Áudio gerado com sucesso: {audio_path}")
         return audio_path
-    
+
     except Exception as e:
         logger.error(f"Erro ao gerar áudio: {e}")
         return None
@@ -102,47 +102,47 @@ def gerar_audio(script_path, dry_run=False):
 def gerar_video(audio_path, dry_run=False):
     """
     Gera o vídeo para o áudio.
-    
+
     Args:
         audio_path: Caminho para o arquivo de áudio
         dry_run: Se True, simula a geração sem fazer chamadas de API
-        
+
     Returns:
         str: Caminho para o arquivo de vídeo
     """
     logger.info(f"Gerando vídeo para o áudio: {audio_path}")
-    
+
     if dry_run:
         logger.info("[SIMULAÇÃO] Gerando vídeo...")
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         video_path = os.path.join("output", "videos", f"rapidinha_video_{timestamp}.mp4")
         logger.info(f"[SIMULAÇÃO] Vídeo seria salvo em: {video_path}")
         return video_path
-    
+
     try:
         # Importar bibliotecas necessárias
         import requests
         import json
         import time
-        
+
         # Verificar API key
         api_key = os.environ.get("HEYGEN_API_KEY")
         if not api_key:
             logger.error("API key do HeyGen não encontrada.")
             return None
-        
+
         # ID do avatar padrão do Flukaku
         avatar_id = "189d9626f12f473f8f6e927c5ec482fa"
-        
+
         # Configurar headers
         headers = {
             "Content-Type": "application/json",
             "X-Api-Key": api_key
         }
-        
+
         # Criar vídeo
         url = "https://api.heygen.com/v1/video.generate"
-        
+
         payload = {
             "background": "#000000",
             "ratio": "9:16",
@@ -163,76 +163,76 @@ def gerar_video(audio_path, dry_run=False):
                 }
             ]
         }
-        
+
         # Fazer upload do áudio
         files = {
             'file': open(audio_path, 'rb')
         }
-        
+
         response = requests.post(
             url,
             headers=headers,
             data={"data": json.dumps(payload)},
             files=files
         )
-        
+
         if response.status_code != 200:
             logger.error(f"Erro ao criar vídeo: {response.text}")
             return None
-        
+
         # Obter ID do vídeo
         video_id = response.json().get("data", {}).get("video_id")
         if not video_id:
             logger.error("ID do vídeo não encontrado na resposta.")
             return None
-        
+
         # Verificar status do vídeo
         url_status = f"https://api.heygen.com/v1/video.status?video_id={video_id}"
-        
+
         max_attempts = 30
         attempts = 0
-        
+
         while attempts < max_attempts:
             attempts += 1
-            
+
             response = requests.get(url_status, headers=headers)
-            
+
             if response.status_code != 200:
                 logger.error(f"Erro ao verificar status do vídeo: {response.text}")
                 return None
-            
+
             status = response.json().get("data", {}).get("status")
-            
+
             if status == "completed":
                 # Obter URL do vídeo
                 video_url = response.json().get("data", {}).get("video_url")
-                
+
                 if not video_url:
                     logger.error("URL do vídeo não encontrada na resposta.")
                     return None
-                
+
                 # Baixar vídeo
                 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
                 video_path = os.path.join("output", "videos", f"rapidinha_video_{timestamp}.mp4")
-                
+
                 response = requests.get(video_url)
-                
+
                 with open(video_path, "wb") as f:
                     f.write(response.content)
-                
+
                 logger.info(f"Vídeo gerado com sucesso: {video_path}")
                 return video_path
-            
+
             elif status == "failed":
                 logger.error("Falha ao gerar vídeo.")
                 return None
-            
+
             # Aguardar antes de verificar novamente
             time.sleep(10)
-        
+
         logger.error("Tempo limite excedido ao aguardar a geração do vídeo.")
         return None
-    
+
     except Exception as e:
         logger.error(f"Erro ao gerar vídeo: {e}")
         return None
@@ -240,29 +240,29 @@ def gerar_video(audio_path, dry_run=False):
 def abrir_arquivo(file_path):
     """
     Abre um arquivo com o aplicativo padrão do sistema.
-    
+
     Args:
         file_path: Caminho para o arquivo
     """
     if not os.path.exists(file_path):
         logger.error(f"Arquivo não encontrado: {file_path}")
         return
-    
+
     try:
         import platform
         import subprocess
-        
+
         system = platform.system()
-        
+
         if system == "Darwin":  # macOS
             subprocess.call(["open", file_path])
         elif system == "Windows":
             subprocess.call(["start", file_path], shell=True)
         else:  # Linux e outros
             subprocess.call(["xdg-open", file_path])
-        
+
         logger.info(f"Arquivo aberto: {file_path}")
-    
+
     except Exception as e:
         logger.error(f"Erro ao abrir arquivo: {e}")
 
@@ -276,48 +276,48 @@ def main():
     parser.add_argument("--dry-run", action="store_true", help="Simular operações sem fazer chamadas de API")
     parser.add_argument("--no-abrir", action="store_true", help="Não abrir os arquivos gerados")
     parser.add_argument("--debug", action="store_true", help="Ativar modo de depuração")
-    
+
     args = parser.parse_args()
-    
+
     # Configurar nível de log
     if args.debug:
         logging.getLogger().setLevel(logging.DEBUG)
-    
+
     # Verificar se o script existe
     if not os.path.exists(args.script):
         logger.error(f"Script não encontrado: {args.script}")
         return 1
-    
+
     # Criar diretórios necessários
     criar_diretorios()
-    
+
     # Gerar áudio
     audio_path = gerar_audio(args.script, args.dry_run)
     if not audio_path:
         logger.error("Falha ao gerar áudio")
         return 1
-    
+
     # Gerar vídeo
     video_path = gerar_video(audio_path, args.dry_run)
     if not video_path:
         logger.error("Falha ao gerar vídeo")
         return 1
-    
+
     # Exibir resultado
     logger.info("Reels gerado com sucesso!")
     logger.info(f"Script: {args.script}")
     logger.info(f"Áudio: {audio_path}")
     logger.info(f"Vídeo: {video_path}")
-    
+
     if args.dry_run:
         logger.info("NOTA: Este foi um teste em modo de simulação. Nenhum recurso de API foi consumido.")
-    
+
     # Abrir os arquivos se solicitado
     if not args.no_abrir:
         abrir_arquivo(args.script)
         if not args.dry_run:
             abrir_arquivo(video_path)
-    
+
     return 0
 
 if __name__ == "__main__":
