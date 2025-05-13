@@ -118,18 +118,24 @@
 
 ## Avatares
 
-### 1. Flukaku Rapidinha Novo
-- **ID**: 4f8680b8f3654e8da9f8b274abd1266b
-- **Status**: Novo avatar criado para substituir o anterior
+### 1. Flukaku Rapidinha (Atual)
+- **ID**: 189d9626f12f473f8f6e927c5ec482fa
+- **Status**: Ativo - Avatar principal em uso
 - **Tipo**: Avatar personalizado baseado em vídeos de referência
-- **Observação**: Adicionado em 04/05/2025 para testes futuros
+- **Observação**: Configurado como avatar padrão em 12/05/2025
 
-### 2. Flukaku Rapidinha (Antigo)
-- **ID**: 84aa751d70e24c8eb5a12cac86762e6a
-- **Status**: Criado, mas apresentando problemas ("not ready")
+### 2. Flukaku Rapidinha (Anterior)
+- **ID**: 01cbe2535df5453a97f4a872ea532b33
+- **Status**: Substituído pelo novo avatar
+- **Tipo**: Avatar personalizado baseado em vídeos de referência
+- **Observação**: Usado anteriormente como avatar padrão
+
+### 3. Flukaku Rapidinha (Legado)
+- **ID**: ae9ff9b6dc47436c8e9a30c25a0d7b29
+- **Status**: Legado - não mais utilizado
 - **Tipo**: Avatar personalizado baseado em vídeos de referência
 
-### 3. Avatares Padrão
+### 4. Avatares Padrão
 - **Daisy-inshirt-20220818**: Avatar feminino padrão do HeyGen
 - **Outros avatares padrão**: Disponíveis através da API do HeyGen
 

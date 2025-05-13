@@ -73,7 +73,7 @@ heygen_generator = HeyGenVideoGenerator()
 # Verificar se o avatar está configurado
 if not heygen_generator.avatar_id:
     print("Avatar não configurado. Usando o ID padrão.")
-    heygen_generator.avatar_id = "01cbe2535df5453a97f4a872ea532b33"  # ID do seu avatar
+    heygen_generator.avatar_id = "189d9626f12f473f8f6e927c5ec482fa"  # ID do avatar atual
 
 print(f"Usando avatar com ID: {heygen_generator.avatar_id}")
 
