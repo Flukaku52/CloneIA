@@ -8,6 +8,17 @@ import logging
 import argparse
 from datetime import datetime
 
+# Carregar variáveis de ambiente do arquivo .env
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+    logger_env = logging.getLogger('env_loader')
+    logger_env.info("Arquivo .env carregado com sucesso")
+except ImportError:
+    print("Pacote python-dotenv não encontrado. As variáveis de ambiente precisam ser definidas manualmente.")
+except Exception as e:
+    print(f"Erro ao carregar arquivo .env: {e}")
+
 # Configurar logging
 logging.basicConfig(
     level=logging.INFO,
