@@ -63,16 +63,16 @@ def gerar_audio(script_path, dry_run=False):
 
     try:
         # Importar o gerador de áudio
-        from elevenlabs import Client
+        import elevenlabs
+        import os
+        import json
+        import requests
 
         # Verificar API key
         api_key = os.environ.get("ELEVENLABS_API_KEY")
         if not api_key:
             logger.error("API key do ElevenLabs não encontrada.")
             return None
-
-        # Criar cliente
-        client = Client(api_key=api_key)
 
         # Ler o script
         with open(script_path, "r", encoding="utf-8") as f:
@@ -89,13 +89,29 @@ def gerar_audio(script_path, dry_run=False):
             "use_speaker_boost": True
         }
 
-        # Gerar áudio
-        audio = client.text_to_speech.convert(
-            text=texto,
-            voice_id=voice_id,
-            model_id="eleven_multilingual_v2",
-            voice_settings=voice_settings
-        )
+        # Usar a API REST diretamente
+        url = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}"
+
+        headers = {
+            "Accept": "audio/mpeg",
+            "Content-Type": "application/json",
+            "xi-api-key": api_key
+        }
+
+        payload = {
+            "text": texto,
+            "model_id": "eleven_multilingual_v2",
+            "voice_settings": voice_settings
+        }
+
+        response = requests.post(url, json=payload, headers=headers)
+
+        if response.status_code != 200:
+            logger.error(f"Erro ao gerar áudio: {response.text}")
+            return None
+
+        # O áudio está no conteúdo da resposta
+        audio = response.content
 
         # Salvar áudio
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
