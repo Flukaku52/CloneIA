@@ -280,20 +280,28 @@ def gerar_video(audio_path, dry_run=False):
 
         # Verificar status do vídeo
         url_status = f"https://api.heygen.com/v1/video_status.get?video_id={video_id}"
+        logger.info(f"Verificando status do vídeo: {url_status}")
 
         max_attempts = 30
         attempts = 0
 
         while attempts < max_attempts:
             attempts += 1
+            logger.info(f"Tentativa {attempts}/{max_attempts}")
 
-            response = requests.get(url_status, headers=headers)
+            try:
+                response = requests.get(url_status, headers=headers)
+                logger.info(f"Resposta: {response.status_code} - {response.text}")
 
-            if response.status_code != 200:
-                logger.error(f"Erro ao verificar status do vídeo: {response.text}")
+                if response.status_code != 200:
+                    logger.error(f"Erro ao verificar status do vídeo: {response.text}")
+                    return None
+
+                status = response.json().get("data", {}).get("status")
+                logger.info(f"Status do vídeo: {status}")
+            except Exception as e:
+                logger.error(f"Erro ao verificar status do vídeo: {e}")
                 return None
-
-            status = response.json().get("data", {}).get("status")
 
             if status == "completed":
                 # Obter URL do vídeo
