@@ -178,17 +178,19 @@ def gerar_video(audio_path, dry_run=False):
         url = "https://api.heygen.com/v2/video/generate"
 
         payload = {
-            "background": "#000000",
-            "ratio": "9:16",
-            "clips": [
+            "dimension": {
+                "width": 1080,
+                "height": 1920
+            },
+            "video_inputs": [
                 {
-                    "avatar": {
+                    "character": {
+                        "type": "avatar",
                         "avatar_id": avatar_id,
-                        "avatar_style": "normal",
-                        "voice_id": None
+                        "avatar_style": "normal"
                     },
-                    "audio": {
-                        "upload": True
+                    "voice": {
+                        "type": "audio"
                     },
                     "background": {
                         "type": "color",
@@ -198,16 +200,42 @@ def gerar_video(audio_path, dry_run=False):
             ]
         }
 
-        # Fazer upload do áudio
-        files = {
-            'file': open(audio_path, 'rb')
+        # Ler o arquivo de áudio
+        with open(audio_path, 'rb') as audio_file:
+            audio_data = audio_file.read()
+
+        # Fazer upload do áudio para o endpoint de upload
+        upload_url = "https://api.heygen.com/v1/upload/audio"
+
+        upload_files = {
+            'file': (os.path.basename(audio_path), audio_data, 'audio/mpeg')
         }
 
+        upload_response = requests.post(
+            upload_url,
+            headers=headers,
+            files=upload_files
+        )
+
+        if upload_response.status_code != 200:
+            logger.error(f"Erro ao fazer upload do áudio: {upload_response.text}")
+            return None
+
+        # Obter o ID do áudio
+        audio_asset_id = upload_response.json().get("data", {}).get("asset_id")
+
+        if not audio_asset_id:
+            logger.error("ID do áudio não encontrado na resposta.")
+            return None
+
+        # Atualizar o payload com o ID do áudio
+        payload["video_inputs"][0]["voice"]["audio_asset_id"] = audio_asset_id
+
+        # Enviar a requisição para gerar o vídeo
         response = requests.post(
             url,
             headers=headers,
-            data={"data": json.dumps(payload)},
-            files=files
+            json=payload
         )
 
         if response.status_code != 200:
