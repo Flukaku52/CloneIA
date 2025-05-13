@@ -171,8 +171,7 @@ def gerar_video(audio_path, dry_run=False):
         # Configurar headers
         headers = {
             "Content-Type": "application/json",
-            "X-Api-Key": api_key,
-            "Authorization": f"Bearer {api_key}"
+            "X-Api-Key": api_key
         }
 
         # Criar vídeo
