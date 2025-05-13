@@ -81,8 +81,8 @@ def gerar_audio(script_path, dry_run=False):
         with open(script_path, "r", encoding="utf-8") as f:
             texto = f.read()
 
-        # ID da voz FlukakuIA
-        voice_id = "Wd9qqUMXJRZXwRVXLXXh"
+        # Usar a voz FlukakuIA
+        voice_id = "oG30eP3GaYrCwnabbDCw"  # FlukakuIA
 
         # Configurações de voz otimizadas
         voice_settings = {
