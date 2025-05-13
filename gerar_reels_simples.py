@@ -282,8 +282,9 @@ def gerar_video(audio_path, dry_run=False):
         url_status = f"https://api.heygen.com/v1/video_status.get?video_id={video_id}"
         logger.info(f"Verificando status do vídeo: {url_status}")
 
-        max_attempts = 30
+        max_attempts = 60  # Aumentar para 60 tentativas
         attempts = 0
+        wait_time = 20  # Aguardar 20 segundos entre as verificações
 
         while attempts < max_attempts:
             attempts += 1
@@ -328,7 +329,7 @@ def gerar_video(audio_path, dry_run=False):
                 return None
 
             # Aguardar antes de verificar novamente
-            time.sleep(10)
+            time.sleep(wait_time)
 
         logger.error("Tempo limite excedido ao aguardar a geração do vídeo.")
         return None
