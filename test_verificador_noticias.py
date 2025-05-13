@@ -81,6 +81,17 @@ NOTICIAS_SIMULADAS = [
         "confiavel": True,
         "razoes_credibilidade": []
     },
+    {
+        "titulo": "Ethereum valoriza 15% e atinge $8.500",
+        "resumo": "A segunda maior criptomoeda do mercado valorizou 15% nas últimas 24 horas, atingindo o valor de $8.500.",
+        "link": "https://portal3.com/ethereum-valoriza",
+        "data": "12 de maio de 2025",
+        "data_iso": "2025-05-12T14:30:00",
+        "portal": "Portal 3",
+        "credibilidade": 8,
+        "confiavel": True,
+        "razoes_credibilidade": []
+    },
 
     # Grupo 3: Notícia única sobre Cardano
     {

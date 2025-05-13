@@ -55,12 +55,36 @@ class VerificadorNoticias:
 
         # Remover palavras comuns que não agregam significado
         stop_words = {'o', 'a', 'os', 'as', 'um', 'uma', 'uns', 'umas', 'de', 'do', 'da', 'dos', 'das',
-                     'em', 'no', 'na', 'nos', 'nas', 'por', 'para', 'com', 'e', 'mas', 'ou', 'que'}
+                     'em', 'no', 'na', 'nos', 'nas', 'por', 'para', 'com', 'e', 'mas', 'ou', 'que',
+                     'se', 'ao', 'aos', 'à', 'às', 'pelo', 'pela', 'pelos', 'pelas', 'este', 'esta',
+                     'estes', 'estas', 'esse', 'essa', 'esses', 'essas', 'isso', 'aquilo'}
 
         palavras = texto.split()
         palavras_filtradas = [palavra for palavra in palavras if palavra not in stop_words]
 
         return ' '.join(palavras_filtradas)
+
+    def _extrair_palavras_chave(self, texto: str) -> set:
+        """
+        Extrai palavras-chave de um texto.
+
+        Args:
+            texto: Texto para extrair palavras-chave
+
+        Returns:
+            set: Conjunto de palavras-chave
+        """
+        # Normalizar o texto
+        texto_norm = self._normalizar_texto(texto)
+
+        # Dividir em palavras
+        palavras = texto_norm.split()
+
+        # Filtrar palavras muito curtas
+        palavras = [p for p in palavras if len(p) > 3]
+
+        # Converter para conjunto para eliminar duplicatas
+        return set(palavras)
 
     def _calcular_similaridade(self, texto1: str, texto2: str) -> float:
         """
@@ -100,6 +124,23 @@ class VerificadorNoticias:
             for n in noticias
         ]
 
+        # Extrair palavras-chave de cada notícia
+        palavras_chave = []
+        for i, noticia in enumerate(noticias):
+            # Combinar título e resumo para extrair palavras-chave
+            texto_completo = noticia['titulo']
+            if noticia.get('resumo'):
+                texto_completo += " " + noticia['resumo']
+
+            # Extrair palavras-chave
+            palavras = self._extrair_palavras_chave(texto_completo)
+            palavras_chave.append(palavras)
+
+            # Adicionar palavras-chave específicas para criptomoedas mencionadas
+            for cripto in ['bitcoin', 'btc', 'ethereum', 'eth', 'cardano', 'ada', 'ripple', 'xrp', 'solana', 'sol']:
+                if cripto in texto_completo.lower():
+                    palavras_chave[i].add(cripto)
+
         # Matriz de similaridade para evitar recálculos
         similaridades = {}
 
@@ -118,12 +159,32 @@ class VerificadorNoticias:
                         None, resumos_normalizados[i], resumos_normalizados[j]
                     ).ratio()
 
+                # Calcular similaridade de palavras-chave (coeficiente de Jaccard)
+                palavras_i = palavras_chave[i]
+                palavras_j = palavras_chave[j]
+
+                # Evitar divisão por zero
+                if palavras_i or palavras_j:
+                    similaridade_palavras = len(palavras_i.intersection(palavras_j)) / len(palavras_i.union(palavras_j))
+                else:
+                    similaridade_palavras = 0.0
+
                 # Calcular similaridade combinada (média ponderada)
-                similaridade = (similaridade_titulo * 0.7) + (similaridade_resumo * 0.3)
+                similaridade = (similaridade_titulo * 0.4) + (similaridade_resumo * 0.3) + (similaridade_palavras * 0.3)
 
                 # Armazenar na matriz de similaridade
                 similaridades[(i, j)] = similaridade
                 similaridades[(j, i)] = similaridade  # Simetria
+
+                # Log para depuração de alta similaridade
+                if similaridade >= self.limiar_similaridade:
+                    logger.debug(f"Alta similaridade ({similaridade:.2f}) entre:")
+                    logger.debug(f"  - {noticias[i]['titulo']} ({noticias[i]['portal']})")
+                    logger.debug(f"  - {noticias[j]['titulo']} ({noticias[j]['portal']})")
+                    logger.debug(f"  - Similaridade título: {similaridade_titulo:.2f}")
+                    logger.debug(f"  - Similaridade resumo: {similaridade_resumo:.2f}")
+                    logger.debug(f"  - Similaridade palavras: {similaridade_palavras:.2f}")
+                    logger.debug(f"  - Palavras em comum: {palavras_i.intersection(palavras_j)}")
 
         # Agrupar notícias com base nas similaridades calculadas
         for i, noticia1 in enumerate(noticias):
@@ -158,6 +219,11 @@ class VerificadorNoticias:
                 logger.info(f"Grupo {i+1}: {len(grupo)} notícias similares")
                 for noticia in grupo:
                     logger.info(f"  - {noticia['titulo']} ({noticia['portal']})")
+
+                # Mostrar palavras-chave em comum
+                indices = [noticias.index(n) for n in grupo]
+                palavras_comuns = set.intersection(*[palavras_chave[idx] for idx in indices])
+                logger.info(f"  - Palavras-chave em comum: {palavras_comuns}")
 
         return grupos
 
