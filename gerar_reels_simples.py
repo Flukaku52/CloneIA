@@ -213,12 +213,22 @@ def gerar_video(audio_path, dry_run=False):
             "X-Api-Key": api_key
         }
 
-        # Enviar o áudio diretamente no corpo da requisição
-        upload_response = requests.post(
-            upload_url,
-            headers=upload_headers,
-            data=audio_data
-        )
+        # Salvar o áudio em um arquivo temporário
+        temp_audio_path = os.path.join("output", "audio", "temp_audio.mp3")
+        with open(temp_audio_path, "wb") as f:
+            f.write(audio_data)
+
+        # Enviar o áudio como um arquivo
+        with open(temp_audio_path, "rb") as f:
+            upload_response = requests.post(
+                upload_url,
+                headers=upload_headers,
+                data=f.read()
+            )
+
+        # Remover o arquivo temporário
+        if os.path.exists(temp_audio_path):
+            os.remove(temp_audio_path)
 
         if upload_response.status_code != 200:
             logger.error(f"Erro ao fazer upload do áudio: {upload_response.text}")
