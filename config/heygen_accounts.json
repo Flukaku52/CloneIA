@@ -1,0 +1,20 @@
+{
+    "accounts": {
+        "conta1": {
+            "api_key": "",
+            "avatar_id": "",
+            "description": "Conta 1 - Dados a serem fornecidos"
+        },
+        "conta2": {
+            "api_key": "OTU2YjcxM2ZhZGY2NDE5Mjg3MzYzMmZlNjEyYjZiNzUtMTc0Njc1NzMxNQ==",
+            "avatar_id": "431f819b1a8e42bb8f095e98e1e805a4",
+            "description": "Conta 2 - Reserva"
+        },
+        "conta3": {
+            "api_key": "OGU5OTA4MGFhMTZkNDExNDhmNmZlNGI1ODY2ZDNhNGUtMTc0NzE5OTM4Mg==",
+            "avatar_id": "bd9548bed4984738a93b0db0c6c3edc9",
+            "description": "Conta 3 - Padrão atual"
+        }
+    },
+    "active_account": "conta3"
+}

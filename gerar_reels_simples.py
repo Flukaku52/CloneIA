@@ -26,6 +26,15 @@ logging.basicConfig(
 )
 logger = logging.getLogger('reels_simples')
 
+# Importar gerenciador de contas
+try:
+    from core.account_manager import AccountManager
+    account_manager = AccountManager()
+    logger.info("Gerenciador de contas carregado com sucesso")
+except ImportError:
+    logger.warning("Módulo account_manager não encontrado. Usando configurações padrão.")
+    account_manager = None
+
 def criar_diretorios():
     """
     Cria os diretórios necessários para o projeto.
@@ -165,20 +174,27 @@ def gerar_video(audio_path, dry_run=False):
         import json
         import time
 
-        # Verificar API key
-        api_key = os.environ.get("HEYGEN_API_KEY")
-        if not api_key:
-            logger.error("API key do HeyGen não encontrada.")
-            return None
+        # Obter credenciais do gerenciador de contas ou do ambiente
+        if account_manager:
+            api_key, avatar_id = account_manager.get_heygen_account()
+            active_account = account_manager.get_active_heygen_account_id()
+            logger.info(f"Usando conta HeyGen: {active_account}")
+        else:
+            # Verificar API key
+            api_key = os.environ.get("HEYGEN_API_KEY")
+            if not api_key:
+                logger.error("API key do HeyGen não encontrada.")
+                return None
 
-        # Usar a chave diretamente se necessário
-        if api_key == "sua_chave_aqui":
-            api_key = "OTU2YjcxM2ZhZGY2NDE5Mjg3MzYzMmZlNjEyYjZiNzUtMTc0Njc1NzMxNQ=="
+            # Usar a chave diretamente se necessário
+            if api_key == "sua_chave_aqui":
+                api_key = "OTU2YjcxM2ZhZGY2NDE5Mjg3MzYzMmZlNjEyYjZiNzUtMTc0Njc1NzMxNQ=="
+
+            # ID do avatar padrão do Flukaku
+            avatar_id = "431f819b1a8e42bb8f095e98e1e805a4"
 
         logger.info(f"Usando API key do HeyGen: {api_key[:10]}...")
-
-        # ID do avatar padrão do Flukaku
-        avatar_id = "431f819b1a8e42bb8f095e98e1e805a4"
+        logger.info(f"Usando avatar ID: {avatar_id}")
 
         # Configurar headers
         headers = {
@@ -402,11 +418,39 @@ def main():
     parser.add_argument("--no-abrir", action="store_true", help="Não abrir os arquivos gerados")
     parser.add_argument("--debug", action="store_true", help="Ativar modo de depuração")
 
+    # Argumentos para gerenciamento de contas
+    if account_manager:
+        parser.add_argument("--conta", choices=["conta1", "conta2", "conta3"],
+                           help="Conta HeyGen a ser utilizada")
+        parser.add_argument("--listar-contas", action="store_true",
+                           help="Listar contas HeyGen disponíveis")
+
     args = parser.parse_args()
 
     # Configurar nível de log
     if args.debug:
         logging.getLogger().setLevel(logging.DEBUG)
+
+    # Listar contas se solicitado
+    if account_manager and hasattr(args, 'listar_contas') and args.listar_contas:
+        contas = account_manager.list_heygen_accounts()
+        conta_ativa = account_manager.get_active_heygen_account_id()
+
+        print("\nContas HeyGen disponíveis:")
+        for conta_id, conta_info in contas.items():
+            status = " (ATIVA)" if conta_id == conta_ativa else ""
+            print(f"  - {conta_id}{status}: {conta_info.get('description', '')}")
+            print(f"    Avatar ID: {conta_info.get('avatar_id', '')}")
+
+        return 0
+
+    # Definir conta ativa se solicitado
+    if account_manager and hasattr(args, 'conta') and args.conta:
+        if account_manager.set_active_heygen_account(args.conta):
+            logger.info(f"Conta HeyGen ativa definida: {args.conta}")
+        else:
+            logger.error(f"Falha ao definir conta HeyGen ativa: {args.conta}")
+            return 1
 
     # Verificar se o script existe
     if not os.path.exists(args.script):
