@@ -413,10 +413,6 @@ def main():
     """
     # Configurar argumentos da linha de comando
     parser = argparse.ArgumentParser(description="Gerador simples de Reels")
-    parser.add_argument("script", help="Caminho para o arquivo de script")
-    parser.add_argument("--dry-run", action="store_true", help="Simular operações sem fazer chamadas de API")
-    parser.add_argument("--no-abrir", action="store_true", help="Não abrir os arquivos gerados")
-    parser.add_argument("--debug", action="store_true", help="Ativar modo de depuração")
 
     # Argumentos para gerenciamento de contas
     if account_manager:
@@ -424,6 +420,12 @@ def main():
                            help="Conta HeyGen a ser utilizada")
         parser.add_argument("--listar-contas", action="store_true",
                            help="Listar contas HeyGen disponíveis")
+
+    # Argumentos para geração de vídeo
+    parser.add_argument("script", nargs="?", help="Caminho para o arquivo de script")
+    parser.add_argument("--dry-run", action="store_true", help="Simular operações sem fazer chamadas de API")
+    parser.add_argument("--no-abrir", action="store_true", help="Não abrir os arquivos gerados")
+    parser.add_argument("--debug", action="store_true", help="Ativar modo de depuração")
 
     args = parser.parse_args()
 
@@ -452,8 +454,13 @@ def main():
             logger.error(f"Falha ao definir conta HeyGen ativa: {args.conta}")
             return 1
 
-    # Verificar se o script existe
-    if not os.path.exists(args.script):
+    # Verificar se o script foi fornecido e existe
+    if not args.script:
+        if not hasattr(args, 'listar_contas') or not args.listar_contas:
+            logger.error("Nenhum script fornecido.")
+            parser.print_help()
+            return 1
+    elif not os.path.exists(args.script):
         logger.error(f"Script não encontrado: {args.script}")
         return 1
 
