@@ -1,0 +1,56 @@
+{
+    "documentos": [
+        {
+            "id": "fluxo_trabalho_padrao",
+            "caminho": "docs/fluxo_trabalho_padrao.md",
+            "descricao": "Documento que descreve o fluxo de trabalho padrão para criação de Reels, com foco na sincronização perfeita entre áudio e vídeo",
+            "prioridade": "alta",
+            "categoria": "processo"
+        },
+        {
+            "id": "sincronizacao",
+            "caminho": "docs/sincronizacao.md",
+            "descricao": "Guia detalhado sobre sincronização de áudio e vídeo",
+            "prioridade": "alta",
+            "categoria": "tecnico"
+        }
+    ],
+    "exemplos_script": [
+        {
+            "id": "rapidinha_bitcoin_arizona",
+            "caminho": "scripts/rapidinha_bitcoin_arizona.txt",
+            "descricao": "Exemplo de script sobre Bitcoin e Arizona",
+            "prioridade": "alta",
+            "categoria": "conteudo"
+        }
+    ],
+    "configuracoes": {
+        "estilo_escrita": {
+            "tom": "informal",
+            "saudacao_padrao": "E aí cambada, Rapidinha na área e sem enrolação, vamo lá!",
+            "despedida_padrao": "Por hoje é só isso, galera! Vou trazer mais novidades em breve. Valeu!",
+            "marcador_corte": "[CORTE]",
+            "evitar_termos": ["US$", "notícia 1", "notícia 2"],
+            "substituir_termos": {
+                "US$": "dólares",
+                "Reais": "reais"
+            }
+        },
+        "formato_conteudo": {
+            "max_noticias": 4,
+            "max_palavras_por_noticia": 100,
+            "max_duracao_total": 180,
+            "temas_preferidos": [
+                "adoção de criptomoedas",
+                "tecnologia blockchain",
+                "eventos importantes",
+                "regulamentação"
+            ],
+            "temas_evitar": [
+                "previsões de preço",
+                "conteúdo técnico complexo",
+                "análise técnica detalhada"
+            ]
+        }
+    }
+}

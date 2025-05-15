@@ -21,15 +21,18 @@ class ContentManager:
     """
     Classe para gerenciar parâmetros de conteúdo para os vídeos Rapidinha.
     """
-    def __init__(self, config_path: str = "config/content_params.json"):
+    def __init__(self, config_path: str = "config/content_params.json", knowledge_base_path: str = "config/knowledge_base.json"):
         """
         Inicializa o gerenciador de conteúdo.
 
         Args:
             config_path: Caminho para o arquivo de configuração
+            knowledge_base_path: Caminho para a base de conhecimento
         """
         self.config_path = config_path
+        self.knowledge_base_path = knowledge_base_path
         self.params = self._load_params()
+        self.knowledge_base = self._load_knowledge_base()
 
         # Parâmetros específicos para Rapidinha
         self.rapidinha_params = self.params.get("rapidinha", {})
@@ -38,6 +41,23 @@ class ContentManager:
         self.duracao_maxima = self.rapidinha_params.get("duracao_maxima_segundos", 180)
         self.palavras_por_minuto = self.rapidinha_params.get("palavras_por_minuto", 150)
         self.limite_palavras = self.rapidinha_params.get("limite_palavras", 450)
+
+        # Configurações da base de conhecimento
+        if self.knowledge_base and "configuracoes" in self.knowledge_base:
+            config = self.knowledge_base["configuracoes"]
+            if "estilo_escrita" in config:
+                estilo = config["estilo_escrita"]
+                self.marcador_corte = estilo.get("marcador_corte", "[CORTE]")
+                if "saudacao_padrao" in estilo:
+                    self.saudacao_padrao = estilo["saudacao_padrao"]
+                    self.saudacoes_variadas = [self.saudacao_padrao]
+
+            if "formato_conteudo" in config:
+                formato = config["formato_conteudo"]
+                if "max_duracao_total" in formato:
+                    self.duracao_maxima = formato["max_duracao_total"]
+                if "max_palavras_por_noticia" in formato:
+                    self.palavras_por_noticia = formato["max_palavras_por_noticia"]
 
         logger.info(f"Gerenciador de conteúdo inicializado. Saudação padrão: '{self.saudacao_padrao}', "
                    f"Número de variações: {len(self.saudacoes_variadas)}, "
@@ -60,6 +80,27 @@ class ContentManager:
         except Exception as e:
             logger.error(f"Erro ao carregar parâmetros de conteúdo: {e}")
             return self._get_default_params()
+
+    def _load_knowledge_base(self) -> Dict[str, Any]:
+        """
+        Carrega a base de conhecimento do arquivo de configuração.
+
+        Returns:
+            Dict[str, Any]: Base de conhecimento
+        """
+        try:
+            if os.path.exists(self.knowledge_base_path):
+                with open(self.knowledge_base_path, 'r', encoding='utf-8') as f:
+                    knowledge_base = json.load(f)
+                    logger.info(f"Base de conhecimento carregada: {len(knowledge_base.get('documentos', []))} documentos, "
+                               f"{len(knowledge_base.get('exemplos_script', []))} exemplos de script")
+                    return knowledge_base
+            else:
+                logger.warning(f"Arquivo de base de conhecimento não encontrado: {self.knowledge_base_path}")
+                return {}
+        except Exception as e:
+            logger.error(f"Erro ao carregar base de conhecimento: {e}")
+            return {}
 
     def _get_default_params(self) -> Dict[str, Any]:
         """
@@ -296,8 +337,8 @@ class ContentManager:
             if aviso_legal:
                 conclusao = f"{conclusao}\n\n{aviso_legal}"
 
-        # Montar script completo
-        script = f"{introducao}\n\n{conteudo}\n\n{conclusao}"
+        # Montar script completo com marcadores de corte
+        script = self.format_script_with_cuts(introducao, conteudo, conclusao)
 
         # Verificar comprimento
         valido, info = self.validate_script_length(script)
@@ -311,3 +352,34 @@ class ContentManager:
             logger.warning(f"Script contém palavras proibidas: {', '.join(palavras_proibidas)}")
 
         return script
+
+    def format_script_with_cuts(self, introducao: str, conteudo: str, conclusao: str) -> str:
+        """
+        Formata o script completo com marcadores de corte.
+
+        Args:
+            introducao: Texto de introdução
+            conteudo: Conteúdo principal do vídeo
+            conclusao: Texto de conclusão
+
+        Returns:
+            str: Script formatado com marcadores de corte
+        """
+        # Obter o marcador de corte da base de conhecimento ou usar o padrão
+        marcador_corte = getattr(self, 'marcador_corte', '[CORTE]')
+
+        # Verificar se o conteúdo já tem marcadores de corte
+        if marcador_corte in conteudo:
+            # Se já tem, apenas juntar as partes
+            return f"{introducao}\n\n{marcador_corte}\n\n{conteudo}\n\n{marcador_corte}\n\n{conclusao}"
+        else:
+            # Se não tem, dividir o conteúdo em parágrafos e adicionar marcadores
+            paragrafos = conteudo.split('\n\n')
+
+            # Se tiver mais de um parágrafo, adicionar marcadores entre eles
+            if len(paragrafos) > 1:
+                conteudo_com_cortes = f"\n\n{marcador_corte}\n\n".join(paragrafos)
+                return f"{introducao}\n\n{marcador_corte}\n\n{conteudo_com_cortes}\n\n{marcador_corte}\n\n{conclusao}"
+            else:
+                # Se for apenas um parágrafo, não adicionar marcadores extras
+                return f"{introducao}\n\n{marcador_corte}\n\n{conteudo}\n\n{marcador_corte}\n\n{conclusao}"
