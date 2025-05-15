@@ -352,7 +352,8 @@ def main():
 
     # Encontrar arquivos de áudio
     if args.timestamp:
-        audio_files = sorted(glob.glob(f"output/audio/rapidinha_secao_*_{args.timestamp}.mp3"))
+        # Usar um padrão mais flexível para encontrar todos os arquivos com o timestamp base
+        audio_files = sorted(glob.glob(f"output/audio/rapidinha_secao_*_{args.timestamp}*.mp3"))
     else:
         # Encontrar o timestamp mais recente
         all_audio_files = glob.glob("output/audio/rapidinha_secao_*.mp3")
