@@ -13,6 +13,13 @@
             "descricao": "Guia detalhado sobre sincronização de áudio e vídeo",
             "prioridade": "alta",
             "categoria": "tecnico"
+        },
+        {
+            "id": "melhorias_voz",
+            "caminho": "docs/melhorias_voz.md",
+            "descricao": "Recomendações para melhorar a fluidez e naturalidade da voz FlukakuIA",
+            "prioridade": "alta",
+            "categoria": "qualidade"
         }
     ],
     "exemplos_script": [
@@ -22,6 +29,15 @@
             "descricao": "Exemplo de script sobre Bitcoin e Arizona",
             "prioridade": "alta",
             "categoria": "conteudo"
+        },
+        {
+            "id": "rapidinha_ceara_bitcoin_ucrania",
+            "caminho": "scripts/rapidinha_ceara_bitcoin_ucrania.txt",
+            "descricao": "Exemplo de script sobre Ceará usando stablecoins, empresas adicionando Bitcoin e reserva da Ucrânia",
+            "prioridade": "alta",
+            "categoria": "conteudo",
+            "avaliacao": 7,
+            "observacoes": "Bom conteúdo, mas pode melhorar na fluidez da fala. Inclui termos técnicos como USDC e expressões com tom de empolgação."
         }
     ],
     "configuracoes": {
