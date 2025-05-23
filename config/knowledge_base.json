@@ -20,6 +20,13 @@
             "descricao": "Recomendações para melhorar a fluidez e naturalidade da voz FlukakuIA",
             "prioridade": "alta",
             "categoria": "qualidade"
+        },
+        {
+            "id": "analise_estilo_autor",
+            "caminho": "docs/analise_estilo_autor.md",
+            "descricao": "Análise detalhada do estilo de comunicação do autor com base no script original Pizza Day",
+            "prioridade": "máxima",
+            "categoria": "estilo"
         }
     ],
     "exemplos_script": [
@@ -38,6 +45,15 @@
             "categoria": "conteudo",
             "avaliacao": 7,
             "observacoes": "Bom conteúdo, mas pode melhorar na fluidez da fala. Inclui termos técnicos como USDC e expressões com tom de empolgação."
+        },
+        {
+            "id": "rapidinha_pizza_day_original",
+            "caminho": "scripts/rapidinha_pizza_day_original.txt",
+            "descricao": "Exemplo PREMIUM de script original do autor sobre Pizza Day e alta histórica do Bitcoin",
+            "prioridade": "máxima",
+            "categoria": "conteudo",
+            "avaliacao": 10,
+            "observacoes": "Script original do autor, com fluidez natural, expressões características e tom empolgado. Contém alongamento de vogais ('cambaaaaaada'), analogias ('guarda-chuva'), citações e expressões motivacionais. Excelente exemplo de estilo e tom a ser seguido pela IA."
         }
     ],
     "configuracoes": {
