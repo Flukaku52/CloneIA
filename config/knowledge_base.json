@@ -1,88 +1,100 @@
 {
-    "documentos": [
-        {
-            "id": "fluxo_trabalho_padrao",
-            "caminho": "docs/fluxo_trabalho_padrao.md",
-            "descricao": "Documento que descreve o fluxo de trabalho padrão para criação de Reels, com foco na sincronização perfeita entre áudio e vídeo",
-            "prioridade": "alta",
-            "categoria": "processo"
-        },
-        {
-            "id": "sincronizacao",
-            "caminho": "docs/sincronizacao.md",
-            "descricao": "Guia detalhado sobre sincronização de áudio e vídeo",
-            "prioridade": "alta",
-            "categoria": "tecnico"
-        },
-        {
-            "id": "melhorias_voz",
-            "caminho": "docs/melhorias_voz.md",
-            "descricao": "Recomendações para melhorar a fluidez e naturalidade da voz FlukakuIA",
-            "prioridade": "alta",
-            "categoria": "qualidade"
-        },
-        {
-            "id": "analise_estilo_autor",
-            "caminho": "docs/analise_estilo_autor.md",
-            "descricao": "Análise detalhada do estilo de comunicação do autor com base no script original Pizza Day",
-            "prioridade": "máxima",
-            "categoria": "estilo"
-        }
-    ],
-    "exemplos_script": [
-        {
-            "id": "rapidinha_bitcoin_arizona",
-            "caminho": "scripts/rapidinha_bitcoin_arizona.txt",
-            "descricao": "Exemplo de script sobre Bitcoin e Arizona",
-            "prioridade": "alta",
-            "categoria": "conteudo"
-        },
-        {
-            "id": "rapidinha_ceara_bitcoin_ucrania",
-            "caminho": "scripts/rapidinha_ceara_bitcoin_ucrania.txt",
-            "descricao": "Exemplo de script sobre Ceará usando stablecoins, empresas adicionando Bitcoin e reserva da Ucrânia",
-            "prioridade": "alta",
-            "categoria": "conteudo",
-            "avaliacao": 7,
-            "observacoes": "Bom conteúdo, mas pode melhorar na fluidez da fala. Inclui termos técnicos como USDC e expressões com tom de empolgação."
-        },
-        {
-            "id": "rapidinha_pizza_day_original",
-            "caminho": "scripts/rapidinha_pizza_day_original.txt",
-            "descricao": "Exemplo PREMIUM de script original do autor sobre Pizza Day e alta histórica do Bitcoin",
-            "prioridade": "máxima",
-            "categoria": "conteudo",
-            "avaliacao": 10,
-            "observacoes": "Script original do autor, com fluidez natural, expressões características e tom empolgado. Contém alongamento de vogais ('cambaaaaaada'), analogias ('guarda-chuva'), citações e expressões motivacionais. Excelente exemplo de estilo e tom a ser seguido pela IA."
-        }
-    ],
-    "configuracoes": {
-        "estilo_escrita": {
-            "tom": "informal",
-            "saudacao_padrao": "E aí cambada, Rapidinha na área e sem enrolação, vamo lá!",
-            "despedida_padrao": "Por hoje é só isso, galera! Vou trazer mais novidades em breve. Valeu!",
-            "marcador_corte": "[CORTE]",
-            "evitar_termos": ["US$", "notícia 1", "notícia 2"],
-            "substituir_termos": {
-                "US$": "dólares",
-                "Reais": "reais"
-            }
-        },
-        "formato_conteudo": {
-            "max_noticias": 4,
-            "max_palavras_por_noticia": 100,
-            "max_duracao_total": 180,
-            "temas_preferidos": [
-                "adoção de criptomoedas",
-                "tecnologia blockchain",
-                "eventos importantes",
-                "regulamentação"
-            ],
-            "temas_evitar": [
-                "previsões de preço",
-                "conteúdo técnico complexo",
-                "análise técnica detalhada"
-            ]
-        }
+  "documentos": [
+    {
+      "id": "fluxo_trabalho_padrao",
+      "caminho": "docs/fluxo_trabalho_padrao.md",
+      "descricao": "Documento que descreve o fluxo de trabalho padr\u00e3o para cria\u00e7\u00e3o de Reels, com foco na sincroniza\u00e7\u00e3o perfeita entre \u00e1udio e v\u00eddeo",
+      "prioridade": "alta",
+      "categoria": "processo"
+    },
+    {
+      "id": "sincronizacao",
+      "caminho": "docs/sincronizacao.md",
+      "descricao": "Guia detalhado sobre sincroniza\u00e7\u00e3o de \u00e1udio e v\u00eddeo",
+      "prioridade": "alta",
+      "categoria": "tecnico"
+    },
+    {
+      "id": "melhorias_voz",
+      "caminho": "docs/melhorias_voz.md",
+      "descricao": "Recomenda\u00e7\u00f5es para melhorar a fluidez e naturalidade da voz FlukakuIA",
+      "prioridade": "alta",
+      "categoria": "qualidade"
+    },
+    {
+      "id": "analise_estilo_autor",
+      "caminho": "docs/analise_estilo_autor.md",
+      "descricao": "An\u00e1lise detalhada do estilo de comunica\u00e7\u00e3o do autor com base no script original Pizza Day",
+      "prioridade": "m\u00e1xima",
+      "categoria": "estilo"
+    },
+    {
+      "id": "analise_videos_referencia",
+      "caminho": "docs/analise_estilo.md",
+      "descricao": "An\u00e1lise detalhada do estilo de comunica\u00e7\u00e3o com base nos v\u00eddeos de refer\u00eancia",
+      "prioridade": "m\u00e1xima",
+      "categoria": "estilo",
+      "criado_em": "2025-05-23T15:48:15.507079"
     }
+  ],
+  "exemplos_script": [
+    {
+      "id": "rapidinha_bitcoin_arizona",
+      "caminho": "scripts/rapidinha_bitcoin_arizona.txt",
+      "descricao": "Exemplo de script sobre Bitcoin e Arizona",
+      "prioridade": "alta",
+      "categoria": "conteudo"
+    },
+    {
+      "id": "rapidinha_ceara_bitcoin_ucrania",
+      "caminho": "scripts/rapidinha_ceara_bitcoin_ucrania.txt",
+      "descricao": "Exemplo de script sobre Cear\u00e1 usando stablecoins, empresas adicionando Bitcoin e reserva da Ucr\u00e2nia",
+      "prioridade": "alta",
+      "categoria": "conteudo",
+      "avaliacao": 7,
+      "observacoes": "Bom conte\u00fado, mas pode melhorar na fluidez da fala. Inclui termos t\u00e9cnicos como USDC e express\u00f5es com tom de empolga\u00e7\u00e3o."
+    },
+    {
+      "id": "rapidinha_pizza_day_original",
+      "caminho": "scripts/rapidinha_pizza_day_original.txt",
+      "descricao": "Exemplo PREMIUM de script original do autor sobre Pizza Day e alta hist\u00f3rica do Bitcoin",
+      "prioridade": "m\u00e1xima",
+      "categoria": "conteudo",
+      "avaliacao": 10,
+      "observacoes": "Script original do autor, com fluidez natural, express\u00f5es caracter\u00edsticas e tom empolgado. Cont\u00e9m alongamento de vogais ('cambaaaaaada'), analogias ('guarda-chuva'), cita\u00e7\u00f5es e express\u00f5es motivacionais. Excelente exemplo de estilo e tom a ser seguido pela IA."
+    }
+  ],
+  "configuracoes": {
+    "estilo_escrita": {
+      "tom": "informal",
+      "saudacao_padrao": "E a\u00ed cambada, Rapidinha na \u00e1rea e sem enrola\u00e7\u00e3o, vamo l\u00e1!",
+      "despedida_padrao": "Por hoje \u00e9 s\u00f3 isso, galera! Vou trazer mais novidades em breve. Valeu!",
+      "marcador_corte": "[CORTE]",
+      "evitar_termos": [
+        "US$",
+        "not\u00edcia 1",
+        "not\u00edcia 2"
+      ],
+      "substituir_termos": {
+        "US$": "d\u00f3lares",
+        "Reais": "reais"
+      }
+    },
+    "formato_conteudo": {
+      "max_noticias": 4,
+      "max_palavras_por_noticia": 100,
+      "max_duracao_total": 180,
+      "temas_preferidos": [
+        "ado\u00e7\u00e3o de criptomoedas",
+        "tecnologia blockchain",
+        "eventos importantes",
+        "regulamenta\u00e7\u00e3o"
+      ],
+      "temas_evitar": [
+        "previs\u00f5es de pre\u00e7o",
+        "conte\u00fado t\u00e9cnico complexo",
+        "an\u00e1lise t\u00e9cnica detalhada"
+      ]
+    }
+  }
 }
