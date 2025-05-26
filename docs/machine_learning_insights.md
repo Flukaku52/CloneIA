@@ -1,22 +1,22 @@
 # Insights de Machine Learning - Análise de Vídeos de Referência
 
-Este documento consolida os insights extraídos da análise de 15 vídeos de referência do autor para alimentar o sistema de machine learning da IA.
+Este documento consolida os insights extraídos da análise de 16 vídeos de referência do autor para alimentar o sistema de machine learning da IA.
 
 ## Resumo Executivo
 
-Com base na análise detalhada de 15 vídeos de referência, identificamos padrões específicos de comunicação, estilo e características técnicas que devem ser incorporados ao sistema de machine learning para que a IA possa emular com maestria o estilo do autor.
+Com base na análise detalhada de 16 vídeos de referência, identificamos padrões específicos de comunicação, estilo e características técnicas que devem ser incorporados ao sistema de machine learning para que a IA possa emular com maestria o estilo do autor.
 
 ## Características Técnicas Identificadas
 
 ### Duração dos Vídeos
-- **Duração média**: 3,66 minutos (220 segundos)
+- **Duração média**: 3,64 minutos (218 segundos)
 - **Faixa de duração**: 2,23 a 8,08 minutos
 - **Padrão identificado**: Vídeos mais longos permitem desenvolvimento mais detalhado dos tópicos
 
 ### Características de Áudio
 - **Formato predominante**: Estéreo (2 canais)
 - **Taxa de amostragem**: 48.000 Hz (padrão profissional)
-- **Bitrate médio**: 221 kbps
+- **Bitrate médio**: 223 kbps
 - **Qualidade**: Alta fidelidade para preservar nuances da voz
 
 ### Características Visuais
@@ -166,5 +166,5 @@ O objetivo é criar um sistema que não apenas reproduza as características té
 
 ---
 
-*Documento gerado em: 23 de maio de 2025*
-*Base de dados: 15 vídeos de referência analisados*
+*Documento gerado em: 26 de maio de 2025*
+*Base de dados: 16 vídeos de referência analisados*

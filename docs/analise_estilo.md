@@ -1,11 +1,11 @@
 # Análise de Estilo de Comunicação
 
-Este documento apresenta uma análise detalhada do estilo de comunicação com base em 15 vídeos de referência.
+Este documento apresenta uma análise detalhada do estilo de comunicação com base em 16 vídeos de referência.
 
 ## Resumo
 
-- **Número de vídeos analisados**: 15
-- **Duração média**: 219.63 segundos (3.66 minutos)
+- **Número de vídeos analisados**: 16
+- **Duração média**: 218.25 segundos (3.64 minutos)
 - **Duração mínima**: 134.05 segundos (2.23 minutos)
 - **Duração máxima**: 484.67 segundos (8.08 minutos)
 
@@ -33,12 +33,12 @@ Com base na análise dos vídeos de referência, recomendamos as seguintes confi
 
 1. **Duração Ideal**:
    - Vídeos entre 134 e 485 segundos
-   - Média ideal: 220 segundos
+   - Média ideal: 218 segundos
 
 2. **Configurações de Áudio**:
    - Canais: estéreo
    - Taxa de amostragem: 48000 Hz
-   - Bitrate médio: 221 kbps
+   - Bitrate médio: 223 kbps
 
 3. **Configurações de Vídeo**:
    - Resolução: 590x1280
@@ -131,7 +131,15 @@ Para emular o estilo de comunicação observado nos vídeos de referência, o si
 - **Resolução**: 478x854
 - **FPS**: 30.0
 
-### Vídeo 9: FILE 2025-05-07 16:10:59.mp4
+### Vídeo 9: VIDEO-2025-05-24-00-39-14.mp4
+
+- **Duração**: 197.53 segundos (3.29 minutos)
+- **Tamanho**: 33.10 MB
+- **Formato**: mov,mp4,m4a,3gp,3g2,mj2
+- **Resolução**: 478x850
+- **FPS**: 30.0
+
+### Vídeo 10: FILE 2025-05-07 16:10:59.mp4
 
 - **Duração**: 299.11 segundos (4.99 minutos)
 - **Tamanho**: 42.88 MB
@@ -139,7 +147,7 @@ Para emular o estilo de comunicação observado nos vídeos de referência, o si
 - **Resolução**: 590x1280
 - **FPS**: 90000.0
 
-### Vídeo 10: FILE 2025-05-07 16:35:27.mp4
+### Vídeo 11: FILE 2025-05-07 16:35:27.mp4
 
 - **Duração**: 220.96 segundos (3.68 minutos)
 - **Tamanho**: 25.05 MB
@@ -147,7 +155,7 @@ Para emular o estilo de comunicação observado nos vídeos de referência, o si
 - **Resolução**: 390x854
 - **FPS**: 90000.0
 
-### Vídeo 11: FILE 2025-05-07 15:58:16.mp4
+### Vídeo 12: FILE 2025-05-07 15:58:16.mp4
 
 - **Duração**: 191.19 segundos (3.19 minutos)
 - **Tamanho**: 21.66 MB
@@ -155,7 +163,7 @@ Para emular o estilo de comunicação observado nos vídeos de referência, o si
 - **Resolução**: 390x854
 - **FPS**: 90000.0
 
-### Vídeo 12: reels4.mp4
+### Vídeo 13: reels4.mp4
 
 - **Duração**: 134.05 segundos (2.23 minutos)
 - **Tamanho**: 14.07 MB
@@ -163,7 +171,7 @@ Para emular o estilo de comunicação observado nos vídeos de referência, o si
 - **Resolução**: 478x854
 - **FPS**: 30.0
 
-### Vídeo 13: FILE 2025-05-03 17:47:33.mp4
+### Vídeo 14: FILE 2025-05-03 17:47:33.mp4
 
 - **Duração**: 148.52 segundos (2.48 minutos)
 - **Tamanho**: 21.45 MB
@@ -171,7 +179,7 @@ Para emular o estilo de comunicação observado nos vídeos de referência, o si
 - **Resolução**: 590x1280
 - **FPS**: 120.0
 
-### Vídeo 14: reels2.mp4
+### Vídeo 15: reels2.mp4
 
 - **Duração**: 152.74 segundos (2.55 minutos)
 - **Tamanho**: 48.65 MB
@@ -179,7 +187,7 @@ Para emular o estilo de comunicação observado nos vídeos de referência, o si
 - **Resolução**: 720x1280
 - **FPS**: 30.0
 
-### Vídeo 15: FILE 2025-05-03 17:47:26.mp4
+### Vídeo 16: FILE 2025-05-03 17:47:26.mp4
 
 - **Duração**: 191.52 segundos (3.19 minutos)
 - **Tamanho**: 28.10 MB
@@ -191,4 +199,4 @@ Para emular o estilo de comunicação observado nos vídeos de referência, o si
 
 ---
 
-*Análise gerada em: 2025-05-23 15:49:22*
+*Análise gerada em: 2025-05-26 01:43:37*
