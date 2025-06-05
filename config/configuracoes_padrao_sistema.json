@@ -1,0 +1,97 @@
+{
+    "configuracoes_padrao_sistema": {
+        "versao": "1.0",
+        "data_aprovacao": "2025-06-05 18:20:00",
+        "status": "configuracoes_oficiais_aprovadas",
+        
+        "audio_padrao": {
+            "provider": "elevenlabs",
+            "voice_profile": "fluido",
+            "voice_id": "oG30eP3GaYrCwnabbDCw",
+            "voice_name": "FlukakuFluido",
+            "parametros": {
+                "stability": 0.2,
+                "similarity_boost": 0.7,
+                "style": 1.0,
+                "use_speaker_boost": true,
+                "model_id": "eleven_multilingual_v2"
+            },
+            "qualidade_aprovada": "9.8/10",
+            "observacoes": "Configuração padrão oficial para todos os projetos"
+        },
+        
+        "video_padrao": {
+            "provider": "heygen",
+            "perfil": "perfil2",
+            "avatar_id": "bd9548bed4984738a93b0db0c6c3edc9",
+            "avatar_name": "flukakudabet",
+            "folder_name": "augment",
+            "tempo_verificacao": 25,
+            "max_tentativas": 20,
+            "observacoes": "Avatar correto do Flukaku com 600 créditos disponíveis"
+        },
+        
+        "texto_padrao": {
+            "formato_introducao": "EAÍCAMBADA, tô de volta com notícias, eu mesmo RenatoIA",
+            "formato_encerramento": "E por hoje é isso cambada\nO sistema tradicional reage\nOs governos se movimentam\nE a tecnologia melhora\n\nSigo de olho",
+            "uso_virgulas": true,
+            "pausas_naturais": true,
+            "observacoes": "Formato aprovado 9.8/10 - usar como padrão"
+        },
+        
+        "estrutura_projeto": {
+            "tipo_conteudo": "rapidinha_cripto",
+            "duracao_target": "3_minutos",
+            "segmentos": 5,
+            "publico_alvo": "iniciantes_cripto",
+            "tom": "educativo_acessivel"
+        },
+        
+        "diretorios_importantes": {
+            "videos_finais": "output/reel_correto/videos/",
+            "audios_finais": "output/reel_correto/audio/",
+            "configuracoes": "config/",
+            "ml_training": "ml_training/roteiros_exemplos/",
+            "relatorios": "output/reel_correto/relatorio_*.txt",
+            "scripts_core": "scripts/core/",
+            "scripts_tests": "scripts/tests/",
+            "scripts_utils": "scripts/utils/",
+            "scripts_generators": "scripts/generators/"
+        },
+        
+        "apis_configuradas": {
+            "elevenlabs": {
+                "api_key_ativa": "sk_d4e4dde07c2c95dac15248131f2781ef15b5781579b75527",
+                "status": "funcionando",
+                "creditos_suficientes": true
+            },
+            "heygen": {
+                "perfil_ativo": "perfil2",
+                "api_key_ativa": "OGU5OTA4MGFhMTZkNDExNDhmNmZlNGI1ODY2ZDNhNGUtMTc0NzE5OTM4Mg==",
+                "creditos_restantes": "~550",
+                "status": "funcionando"
+            }
+        },
+        
+        "comandos_padrao": {
+            "teste_audio": "export ELEVENLABS_API_KEY=\"sk_d4e4dde07c2c95dac15248131f2781ef15b5781579b75527\" && python scripts/core/test_audio_only.py",
+            "teste_primeiro_segmento": "export HEYGEN_API_KEY=\"OGU5OTA4MGFhMTZkNDExNDhmNmZlNGI1ODY2ZDNhNGUtMTc0NzE5OTM4Mg==\" && export ELEVENLABS_API_KEY=\"sk_d4e4dde07c2c95dac15248131f2781ef15b5781579b75527\" && python scripts/core/test_primeiro_segmento.py",
+            "gerar_reel_completo": "export HEYGEN_API_KEY=\"OGU5OTA4MGFhMTZkNDExNDhmNmZlNGI1ODY2ZDNhNGUtMTc0NzE5OTM4Mg==\" && export ELEVENLABS_API_KEY=\"sk_d4e4dde07c2c95dac15248131f2781ef15b5781579b75527\" && python scripts/core/generate_reel_correto.py",
+            "gerar_encerramento": "export HEYGEN_API_KEY=\"OGU5OTA4MGFhMTZkNDExNDhmNmZlNGI1ODY2ZDNhNGUtMTc0NzE5OTM4Mg==\" && export ELEVENLABS_API_KEY=\"sk_d4e4dde07c2c95dac15248131f2781ef15b5781579b75527\" && python scripts/core/generate_encerramento.py"
+        },
+        
+        "proximos_passos": {
+            "melhorias_planejadas": [
+                "Adicionar mais samples de voz no ElevenLabs",
+                "Criar templates de roteiro automático",
+                "Implementar geração de roteiro por IA",
+                "Adicionar mais avatares personalizados"
+            ],
+            "manutencao": [
+                "Monitorar créditos das APIs",
+                "Backup das configurações aprovadas",
+                "Atualizar exemplos de ML conforme novos roteiros"
+            ]
+        }
+    }
+}

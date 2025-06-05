@@ -1,0 +1,61 @@
+{
+    "profiles": {
+        "perfil1": {
+            "name": "Perfil 1 - Conta Principal",
+            "api_key": "OTU2YjcxM2ZhZGY2NDE5Mjg3MzYzMmZlNjEyYjZiNzUtMTc0Njc1NzMxNQ==",
+            "decoded_key": "956b713fadf64192873632fe612b6b75-1746757315",
+            "remaining_quota": 360,
+            "avatars": [
+                {
+                    "id": "ae9ff9b6dc47436c8e9a30c25a0d7b29",
+                    "name": "1000161632.mp4",
+                    "description": "Avatar principal testado e funcionando"
+                },
+                {
+                    "id": "01cbe2535df5453a97f4a872ea532b33",
+                    "name": "Vídeo do WhatsApp de 2025-05-12 à(s) 14.59.51_2ba88f1a.mp4",
+                    "description": "Avatar alternativo"
+                },
+                {
+                    "id": "189d9626f12f473f8f6e927c5ec482fa",
+                    "name": "video_2025-05-13_12-20-34.mp4",
+                    "description": "Avatar alternativo"
+                },
+                {
+                    "id": "431f819b1a8e42bb8f095e98e1e805a4",
+                    "name": "video_2025-05-13_16-17-21.mp4",
+                    "description": "Avatar alternativo"
+                }
+            ],
+            "status": "active",
+            "last_checked": "2025-06-02 17:00:00"
+        },
+        "perfil2": {
+            "name": "Perfil 2 - Conta Flukaku",
+            "api_key": "OGU5OTA4MGFhMTZkNDExNDhmNmZlNGI1ODY2ZDNhNGUtMTc0NzE5OTM4Mg==",
+            "decoded_key": "8e99080aa16d41148f6fe4b5866d3a4e-1747199382",
+            "remaining_quota": 600,
+            "avatars": [
+                {
+                    "id": "bd9548bed4984738a93b0db0c6c3edc9",
+                    "name": "flukakudabet",
+                    "description": "Avatar principal do Flukaku - ESTE É O AVATAR CORRETO!"
+                }
+            ],
+            "status": "active",
+            "last_checked": "2025-06-02 17:00:00"
+        }
+    },
+    "default_profile": "perfil2",
+    "recommended_avatar": {
+        "profile": "perfil2",
+        "avatar_id": "bd9548bed4984738a93b0db0c6c3edc9",
+        "avatar_name": "flukakudabet",
+        "reason": "Avatar correto do Flukaku com mais créditos disponíveis"
+    },
+    "usage_notes": {
+        "perfil1": "Usar como backup ou para testes",
+        "perfil2": "Usar como principal - tem o avatar correto do Flukaku"
+    },
+    "last_updated": "2025-06-02 17:00:00"
+}

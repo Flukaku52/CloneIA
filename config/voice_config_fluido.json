@@ -7,5 +7,16 @@
         "style": 1.0,
         "use_speaker_boost": true,
         "model_id": "eleven_multilingual_v2"
-    }
+    },
+    "status": "configuracao_padrao_oficial",
+    "qualidade_aprovada": "9.8/10",
+    "description": "Perfil de voz otimizado para fluidez - CONFIGURAÇÃO PADRÃO APROVADA",
+    "texto_otimizado_exemplo": "EAÍCAMBADA, tô de volta com notícias, eu mesmo RenatoIA",
+    "observacoes": {
+        "eai_cambada": "Junto e rápido para energia",
+        "virgulas": "Pausas naturais para ritmo",
+        "renato_ia": "Junto para fluidez (sem acento no A)"
+    },
+    "last_updated": "2025-06-05 18:20:00",
+    "aprovado_em": "2025-06-05 18:20:00"
 }

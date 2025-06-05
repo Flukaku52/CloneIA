@@ -1,18 +1,14 @@
-# Clone IA para "Rapidinha no Cripto"
+# Clone IA para "Rapidinha Cripto" (Versão Otimizada)
 
-Este projeto cria um clone de IA que imita o estilo de comunicação de Renato Santanna Silva para o quadro "Rapidinha no Cripto", gerando automaticamente conteúdo completo (script, áudio e vídeo) sobre as principais notícias do mundo cripto para um público leigo.
+Este projeto cria um clone de IA que imita o estilo de comunicação de Renato Santanna Silva para o quadro "Rapidinha Cripto", gerando automaticamente conteúdo completo (áudio e vídeo) com o estilo e voz do apresentador.
 
 ## Funcionalidades
 
-- **Geração de Conteúdo**: Gera scripts no estilo "Rapidinha no Cripto", mantendo os trejeitos e características de comunicação do apresentador.
-- **Coleta de Notícias Reais**: Integração com APIs para coletar notícias reais sobre criptomoedas.
-- **Explicações com IA**: Usa a API da OpenAI para gerar explicações personalizadas para as notícias.
-- **Análise de Vídeos**: Extrai e analisa o estilo de comunicação a partir de vídeos existentes.
 - **Clonagem de Voz**: Usa a API da ElevenLabs para clonar a voz do apresentador.
 - **Geração de Áudio**: Converte os scripts em áudio usando a voz clonada.
 - **Geração de Vídeo**: Cria vídeos com o clone visual do apresentador usando a API do HeyGen.
 - **Formato Conciso**: Gera conteúdo otimizado para vídeos de aproximadamente 3 minutos.
-- **Interface de Linha de Comando**: Facilita a geração e visualização de scripts, áudios e vídeos.
+- **Interface de Linha de Comando**: Facilita a geração e visualização de áudios e vídeos.
 
 ## Requisitos
 
@@ -42,76 +38,24 @@ Antes de usar o projeto, configure as chaves de API no arquivo `.env`:
 
 ```
 # Chaves de API para serviços
-OPENAI_API_KEY=sua_chave_api_aqui
 ELEVENLABS_API_KEY=sua_chave_elevenlabs_aqui
 HEYGEN_API_KEY=sua_chave_heygen_aqui
-CRYPTOCOMPARE_API_KEY=sua_chave_cryptocompare_aqui
-NEWSAPI_KEY=sua_chave_newsapi_aqui
 ```
 
 Você pode obter essas chaves gratuitamente nos respectivos sites:
-- [OpenAI](https://platform.openai.com/)
 - [ElevenLabs](https://elevenlabs.io/)
 - [HeyGen](https://www.heygen.com/)
-- [CryptoCompare](https://min-api.cryptocompare.com/)
-- [NewsAPI](https://newsapi.org/)
 
 ## Uso
 
-### Geração de Scripts
-
-#### Gerar um novo script com notícias reais e explicações de IA
-```
-python rapidinha_generator_ai.py
-```
-
-#### Gerar um script com notícias simuladas
-```
-python rapidinha_generator_ai.py --mock
-```
-
-### Geração de Áudio
-
-#### Extrair amostras de áudio dos vídeos de referência
-```
-python audio_generator.py --extract
-```
-
-#### Clonar voz usando as amostras extraídas
-```
-python audio_generator.py --clone
-```
-
-#### Gerar áudio a partir de um texto
-```
-python audio_generator.py --text "Texto para gerar áudio"
-```
-
 ### Geração de Vídeo
-
-#### Gerar um vídeo simples (apenas com imagem e áudio)
-```
-python rapidinha_video_creator.py create --simple
-```
-
-#### Gerar um vídeo completo com HeyGen (clone visual)
-```
-python rapidinha_heygen_creator.py create
-```
-
-#### Gerar um vídeo com HeyGen usando um script existente
-```
-python rapidinha_heygen_creator.py create --mock
-```
-
-### Versão Otimizada (Recomendada)
 
 #### Gerar um vídeo completo usando o gerador otimizado
 ```
 python rapidinha_generator_optimized.py --script "Seu script aqui"
 ```
 
-#### Testar apenas a geração de vídeo com o HeyGen otimizado
+#### Testar apenas a geração de vídeo com o HeyGen
 ```
 python test_optimized_generator.py --generate
 ```
@@ -142,58 +86,23 @@ E é isso por hoje, pessoal! Até a próxima rapidinha!
 
 ## Uso dos Vídeos de Referência
 
-Para melhorar a qualidade do clone de IA, você pode usar seus vídeos existentes do quadro "Rapidinha no Cripto":
+Para melhorar a qualidade do clone de IA, você pode usar seus vídeos existentes do quadro "Rapidinha Cripto":
 
 1. Coloque seus vídeos na pasta `reference/videos`
 
-2. Processe os vídeos para extrair o estilo de comunicação:
-```
-python video_processor.py --all
-```
+2. Extraia amostras de voz dos vídeos e adicione-as ao ElevenLabs para melhorar a qualidade da voz clonada
 
-3. Atualize o prompt da IA com base na análise:
-```
-python update_ai_prompt.py
-```
+3. Crie um avatar personalizado no HeyGen usando um dos vídeos de referência
 
-4. Gere um novo script usando o prompt atualizado:
-```
-python clone_rapidinha_ai.py --generate
-```
-
-### Processamento de Vídeos Passo a Passo
-
-Se preferir, você pode executar cada etapa do processamento separadamente:
-
-1. Extrair áudio dos vídeos:
-```
-python video_processor.py --extract
-```
-
-2. Transcrever o áudio:
-```
-python video_processor.py --transcribe
-```
-
-3. Analisar as transcrições:
-```
-python video_processor.py --analyze
-```
+4. Atualize o arquivo de configuração com o ID do seu avatar personalizado
 
 ## Estrutura do Projeto
 
 ```
 CloneIA/
-├── rapidinha_generator_ai.py         # Gerador de scripts com IA
-├── audio_generator.py                # Gerador de áudio com voz clonada
-├── rapidinha_video_creator.py        # Gerador de vídeos simples
-├── heygen_video_generator.py         # Integração com a API do HeyGen
-├── heygen_video_generator_optimized.py # Versão otimizada da integração com HeyGen
+├── heygen_video_generator_optimized.py # Integração otimizada com a API do HeyGen
 ├── rapidinha_generator_optimized.py  # Gerador otimizado de vídeos completos
 ├── test_optimized_generator.py       # Script para testar o gerador otimizado
-├── rapidinha_heygen_creator.py       # Criador de vídeos usando o HeyGen
-├── ai_explainer.py                   # Módulo para gerar explicações com IA
-├── crypto_news_collector.py          # Coletor de notícias reais
 ├── setup.py                          # Script de configuração
 ├── core/                             # Módulos principais otimizados
 │   ├── audio.py                      # Geração de áudio otimizada
@@ -203,8 +112,6 @@ CloneIA/
 ├── config/                           # Configurações
 │   ├── voice_config.json             # Configuração da voz clonada
 │   └── avatar_config.json            # Configuração do avatar
-├── data/                             # Dados coletados
-├── scripts/                          # Scripts gerados
 ├── output/                           # Saídas geradas
 │   ├── audio/                        # Áudios gerados
 │   └── videos/                       # Vídeos gerados
@@ -217,16 +124,17 @@ CloneIA/
 
 ## Personalização
 
-O estilo de comunicação está configurado no arquivo `rapidinha_generator_ai.py`. Você pode ajustar as frases e explicações para refinar ainda mais a imitação do seu jeito de falar.
+Você pode personalizar o projeto de várias maneiras:
 
-O prompt para a IA está configurado no arquivo `ai_explainer.py`. Você pode ajustá-lo manualmente ou usar o processo de análise de vídeos para atualizá-lo automaticamente.
+1. **Configuração do Avatar**: Edite o arquivo `config/avatar_config.json` para usar seu próprio avatar do HeyGen.
+
+2. **Configuração da Voz**: Edite o arquivo `config/voice_config.json` para usar seu próprio perfil de voz do ElevenLabs.
+
+3. **Estilo de Fala**: Ajuste os parâmetros de geração de áudio no arquivo `core/audio.py` para controlar a velocidade, entonação e estilo da fala.
 
 ## Próximos Passos
 
-- ✅ Implementar coleta de notícias reais de fontes confiáveis
-- ✅ Integrar com API de IA para gerar explicações personalizadas
-- ✅ Analisar vídeos existentes para capturar o estilo de comunicação
-- ✅ Adicionar integração com APIs de geração de voz para criar áudio automaticamente
+- ✅ Implementar integração com APIs de geração de voz para criar áudio automaticamente
 - ✅ Implementar geração automática de vídeo com clone visual
 - Melhorar a qualidade visual dos vídeos com elementos gráficos
 - Criar interface web para gerenciamento de conteúdo

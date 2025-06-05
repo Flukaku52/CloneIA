@@ -1,0 +1,108 @@
+{
+    "configuracoes_finais_reel": {
+        "data_configuracao": "2025-06-02 17:05:00",
+        "status": "CONFIGURAÇÕES TESTADAS E APROVADAS - PRONTAS PARA PRODUÇÃO",
+        "
+        
+        "elevenlabs": {
+            "api_key": "sk_d4e4dde07c2c95dac15248131f2781ef15b5781579b75527",
+            "voice_profile": "fluido",
+            "voice_id": "oG30eP3GaYrCwnabbDCw",
+            "voice_name": "FlukakuFluido",
+            "parametros": {
+                "stability": 0.2,
+                "similarity_boost": 0.7,
+                "style": 1.0,
+                "use_speaker_boost": true,
+                "model_id": "eleven_multilingual_v2"
+            },
+            "status": "FUNCIONANDO PERFEITAMENTE",
+            "proxima_melhoria": "Adicionar mais samples de 7-12 segundos (20-40 samples) para maior naturalidade"
+        },
+        
+        "heygen": {
+            "perfil_ativo": "perfil2",
+            "api_key": "OGU5OTA4MGFhMTZkNDExNDhmNmZlNGI1ODY2ZDNhNGUtMTc0NzE5OTM4Mg==",
+            "decoded_key": "8e99080aa16d41148f6fe4b5866d3a4e-1747199382",
+            "creditos_restantes": 600,
+            "avatar_id": "bd9548bed4984738a93b0db0c6c3edc9",
+            "avatar_name": "flukakudabet",
+            "folder_name": "augment",
+            "status": "AVATAR CORRETO CONFIRMADO"
+        },
+        
+        "texto_otimizado": {
+            "introducao": "EAÍCAMBADA, tô de volta com notícias, eu mesmo RenatoIA",
+            "observacoes": {
+                "e_ai_cambada": "Junto e rápido (EAÍCAMBADA)",
+                "virgulas": "Pausas naturais para ritmo",
+                "renato_ia": "Junto para fluidez (RenatoIA - sem acento)",
+                "resultado": "VERSÃO APROVADA 9.8/10 - FINAL!"
+            }
+        },
+        
+        "script_completo_reel": {
+            "01_introducao": "E AÍ CAMBADA tô de volta com notícias eu mesmo RenatoIA",
+            
+            "02_jpmorgan": "JPMorgan critica reserva de Bitcoin\n\nJamie Dimon CEO do JPMorgan voltou a atacar o Bitcoin\nDessa vez ele reagiu à proposta de o governo americano criar uma reserva estratégica de BTC\nA fala foi direta O governo deveria investir em mísseis não em moeda digital\n\nÉ mais uma demonstração de como parte do sistema financeiro tradicional ainda se sente ameaçada pelo avanço das criptos\nNão é a primeira vez que Dimon critica mas agora a crítica vem justamente quando o Bitcoin começa a ser discutido como ativo de Estado",
+            
+            "03_paquistao": "Paquistão cria reserva nacional de Bitcoin\n\nEnquanto isso do outro lado do mundo o Paquistão anunciou a criação de uma reserva estratégica de Bitcoin\nO plano envolve direcionar dois mil megawatts de energia para minerar e guardar BTC como parte das reservas do país\n\nÉ uma mudança de postura importante\nO país está tratando o Bitcoin como uma reserva de valor oficial como se fosse ouro\nEsse movimento coloca o Paquistão entre os primeiros a investir em infraestrutura estatal para cripto",
+            
+            "04_beam": "Nova carteira cripto sem senha\n\nFoi lançada a BEAM uma carteira de criptomoedas que não exige senha nem frase-semente\nO login é feito com a conta do X antigo Twitter direto do navegador e o usuário pode enviar cripto mesmo sem ter ETH pra pagar taxa de rede\n\nA proposta é resolver dois problemas antigos a complexidade de uso e o medo de perder acesso\nÉ um passo importante pra adoção em massa principalmente pra quem está dando os primeiros passos no mundo cripto",
+            
+            "05_encerramento": "E por hoje é isso cambada\nO sistema tradicional reage\nOs governos se movimentam\nE a tecnologia melhora\n\nSigo de olho"
+        },
+        
+        "testes_realizados": {
+            "teste_1": {
+                "texto": "EAÍCAMBADA tô de volta com notícias eu mesmo RenatoIA",
+                "resultado": "Muito junto, sem naturalidade",
+                "status": "rejeitado"
+            },
+            "teste_2": {
+                "texto": "E AÍ CAMBADA tô de volta com notícias eu mesmo Renato I A",
+                "resultado": "Muito espaçado e arrastado",
+                "status": "rejeitado"
+            },
+            "teste_3": {
+                "texto": "E AÍ CAMBADA tô de volta com notícias eu mesmo RenatoIA",
+                "resultado": "Meio termo ideal - aprovado",
+                "status": "APROVADO",
+                "arquivo_video": "primeiro_segmento_video_1748894607.mp4",
+                "arquivo_audio": "primeiro_segmento_audio_1748894605.mp3"
+            }
+        },
+        
+        "arquivos_configuracao": {
+            "heygen_profiles": "config/heygen_profiles.json",
+            "avatar_config": "config/avatar_config.json",
+            "voice_config_fluido": "config/voice_config_fluido.json",
+            "env_file": ".env"
+        },
+        
+        "comandos_para_execucao": {
+            "variaveis_ambiente": {
+                "HEYGEN_API_KEY": "OGU5OTA4MGFhMTZkNDExNDhmNmZlNGI1ODY2ZDNhNGUtMTc0NzE5OTM4Mg==",
+                "ELEVENLABS_API_KEY": "sk_d4e4dde07c2c95dac15248131f2781ef15b5781579b75527"
+            },
+            "comando_teste": "export HEYGEN_API_KEY=\"OGU5OTA4MGFhMTZkNDExNDhmNmZlNGI1ODY2ZDNhNGUtMTc0NzE5OTM4Mg==\" && export ELEVENLABS_API_KEY=\"sk_d4e4dde07c2c95dac15248131f2781ef15b5781579b75527\" && python test_primeiro_segmento.py",
+            "comando_reel_completo": "export HEYGEN_API_KEY=\"OGU5OTA4MGFhMTZkNDExNDhmNmZlNGI1ODY2ZDNhNGUtMTc0NzE5OTM4Mg==\" && export ELEVENLABS_API_KEY=\"sk_d4e4dde07c2c95dac15248131f2781ef15b5781579b75527\" && python generate_reel_correto.py"
+        },
+        
+        "proximos_passos": {
+            "1": "Usuário adicionar mais samples (7-12 segundos) no ElevenLabs",
+            "2": "Testar novamente o primeiro segmento com voz melhorada",
+            "3": "Se aprovado, gerar todos os 5 segmentos do reel",
+            "4": "Editar no CapCut juntando os segmentos",
+            "5": "Exportar reel final da Rapidinha Cripto"
+        },
+        
+        "observacoes_importantes": {
+            "avatar": "Avatar 'flukakudabet' confirmado e funcionando no Perfil 2",
+            "creditos": "600 créditos disponíveis no HeyGen Perfil 2",
+            "voz": "Perfil 'fluido' funcionando, mas pode melhorar com mais samples",
+            "texto": "Formato 'E AÍ CAMBADA' + 'RenatoIA' aprovado pelo usuário",
+            "processo": "Gerar áudio primeiro (ElevenLabs) → depois vídeo (HeyGen)"
+        }
+    }
+}

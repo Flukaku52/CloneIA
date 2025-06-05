@@ -1,0 +1,11 @@
+{
+    "voice_id": "oG30eP3GaYrCwnabbDCw",
+    "voice_name": "FlukakuIAPro",
+    "settings": {
+        "stability": 0.03,
+        "similarity_boost": 0.85,
+        "style": 1.0,
+        "use_speaker_boost": true,
+        "model_id": "eleven_multilingual_v2"
+    }
+}
