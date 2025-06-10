@@ -1,0 +1,33 @@
+{
+    "formato_padrao": "portrait",
+    "dimensoes": {
+        "portrait": {
+            "width": 1080,
+            "height": 1920,
+            "aspect_ratio": "9:16",
+            "descricao": "Formato vertical ideal para reels/stories",
+            "plataformas": ["Instagram Reels", "TikTok", "YouTube Shorts"]
+        },
+        "landscape": {
+            "width": 1920,
+            "height": 1080,
+            "aspect_ratio": "16:9",
+            "descricao": "Formato horizontal tradicional",
+            "plataformas": ["YouTube", "Twitter", "LinkedIn"]
+        },
+        "square": {
+            "width": 1080,
+            "height": 1080,
+            "aspect_ratio": "1:1",
+            "descricao": "Formato quadrado",
+            "plataformas": ["Instagram Feed", "Facebook"]
+        }
+    },
+    "configuracao_ativa": {
+        "formato": "portrait",
+        "width": 1080,
+        "height": 1920,
+        "background_color": "#121212",
+        "fps": 30
+    }
+}

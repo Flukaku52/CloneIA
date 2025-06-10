@@ -284,8 +284,8 @@ class HeyGenVideoGenerator:
                     }
                 ],
                 "dimension": {
-                    "width": 1280,
-                    "height": 720
+                    "width": 1080,
+                    "height": 1920
                 },
                 "caption": False  # Não adicionar legendas
             }

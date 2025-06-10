@@ -30,7 +30,14 @@
             "folder_name": "augment",
             "tempo_verificacao": 25,
             "max_tentativas": 20,
-            "observacoes": "Novo avatar para teste - ID fornecido pelo usuário"
+            "formato": "portrait",
+            "dimensoes": {
+                "width": 1080,
+                "height": 1920,
+                "aspect_ratio": "9:16"
+            },
+            "background_color": "#121212",
+            "observacoes": "Formato portrait (9:16) para reels - 1080x1920"
         },
         
         "texto_padrao": {
