@@ -1,0 +1,31 @@
+{
+    "avatares_disponiveis": [
+        {
+            "id": "bde6a19874124e12b230248bff9ed903",
+            "nome": "novo_avatar_teste", 
+            "descricao": "Avatar principal atual",
+            "status": "ativo",
+            "ultimo_uso": "2025-06-10",
+            "total_usos": 1
+        },
+        {
+            "id": "bd9548bed4984738a93b0db0c6c3edc9",
+            "nome": "flukakudabet",
+            "descricao": "Avatar backup/rei jamb",
+            "status": "ativo", 
+            "ultimo_uso": "2025-06-09",
+            "total_usos": 1
+        }
+    ],
+    "configuracao_rotacao": {
+        "modo_rotacao": "sequencial",
+        "proximo_avatar_index": 0,
+        "historico_ultimos_usos": []
+    },
+    "estatisticas": {
+        "total_reels_gerados": 1,
+        "avatar_mais_usado": "bde6a19874124e12b230248bff9ed903",
+        "criado_em": "2025-06-10",
+        "atualizado_em": "2025-06-10"
+    }
+}

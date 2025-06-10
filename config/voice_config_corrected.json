@@ -1,0 +1,32 @@
+{
+    "voice_id": "oG30eP3GaYrCwnabbDCw",
+    "voice_name": "FlukakuCorrected",
+    "settings": {
+        "stability": 0.4,
+        "similarity_boost": 0.3,
+        "style": 0.6,
+        "use_speaker_boost": true,
+        "model_id": "eleven_multilingual_v2"
+    },
+    "status": "corrected_based_on_analysis",
+    "description": "Configuração corrigida baseada na análise técnica comparativa",
+    "technical_corrections": {
+        "stability_increased": "0.15 → 0.4 para reduzir ritmo acelerado",
+        "similarity_decreased": "0.6 → 0.3 para permitir mais variação natural", 
+        "style_decreased": "0.85 → 0.6 para reduzir energia constante",
+        "objective": "Matching natural rhythm and breathing patterns"
+    },
+    "problems_addressed": [
+        "Ritmo muito acelerado (202.8% faster)",
+        "Energia muito consistente (171.2% more)",
+        "Padrão de respiração perdido (-58.5%)",
+        "Muito tempo falando (+58.3%)"
+    ],
+    "expected_improvements": [
+        "Ritmo mais relaxado e conversacional",
+        "Variações naturais de energia", 
+        "Pausas para respiração preservadas",
+        "Proporção natural fala/silêncio"
+    ],
+    "last_updated": "2025-06-09 19:05:00"
+}

@@ -1,0 +1,31 @@
+{
+    "voice_id": "oG30eP3GaYrCwnabbDCw",
+    "voice_name": "FlukakuBalanced",
+    "settings": {
+        "stability": 0.25,
+        "similarity_boost": 0.45,
+        "style": 0.75,
+        "use_speaker_boost": true,
+        "model_id": "eleven_multilingual_v2"
+    },
+    "status": "balanced_natural_pauses",
+    "description": "Configuração balanceada: ritmo natural sem pausas artificiais",
+    "fine_tuning_notes": {
+        "stability_balanced": "0.4 → 0.25 (reduz pausas excessivas, mantém ritmo relaxado)",
+        "similarity_increased": "0.3 → 0.45 (volta um pouco da naturalidade)",
+        "style_increased": "0.6 → 0.75 (recupera energia, mas sem robotização)",
+        "target": "Pausas naturais do Renato, não pausas artificiais da IA"
+    },
+    "evolution": {
+        "v1_natural": "Stability 0.15 - muito rápido, robótico",
+        "v2_corrected": "Stability 0.4 - pausas excessivas, mecânico", 
+        "v3_balanced": "Stability 0.25 - meio-termo ideal"
+    },
+    "expected_result": [
+        "Ritmo relaxado como o Renato",
+        "Pausas naturais (não artificiais)",
+        "Energia variada mas não robótica",
+        "Fluidez conversacional autêntica"
+    ],
+    "last_updated": "2025-06-09 19:10:00"
+}

@@ -1,0 +1,49 @@
+{
+  "gerado_em": "2025-06-10T01:12:41.255435",
+  "versao_ia": "1.0",
+  "baseado_em_padroes": "padroes_roteiro_v1.json",
+  "total_segmentos": 5,
+  "roteiro": {
+    "intro": {
+      "id": "intro",
+      "title": "Abertura",
+      "text": "E aí cambada! Mais um dia, mais notícias do cripto. Bora lá!",
+      "gerado_automaticamente": true,
+      "timestamp": "2025-06-10T01:12:41.255337"
+    },
+    "noticia1": {
+      "id": "noticia1",
+      "title": "BlackRock compra mais R$ 500 milhões em Bitcoin",
+      "text": "BlackRock compra mais R$ 500 milhões em Bitcoin.\nSeguinte:conforme dados de SEC filings, O maior gestor de ativos do mundo aumentou sua posição em Bitcoin através do ETF IBIT, comprando mais 8.000 BTC na última semana.\nEm outras palavras isso mostra que o Bitcoin tá consolidando como reserva de valor institucional\nEntão assim: mais legitimidade pro Bitcoin, mas será que não tá ficando muito centralizado?",
+      "categoria": "bitcoin",
+      "fonte": "SEC filings",
+      "gerado_automaticamente": true,
+      "timestamp": "2025-06-10T01:12:41.255405"
+    },
+    "noticia2": {
+      "id": "noticia2",
+      "title": "Banco Central lança piloto do Drex em 5 cidades",
+      "text": "Banco Central lança piloto do Drex em 5 cidades.\nAgora uma que pouca gente tá falando:segundo Banco Central, Programa piloto vai testar pagamentos instantâneos com moeda digital em São Paulo, Rio, Brasília, Salvador e Recife.\nO que isso quer dizer? moedas digitais de bancos centrais são o futuro dos pagamentos\nEntão assim: inclusão é importante, mas vigilância excessiva é um risco real.",
+      "categoria": "cbdc",
+      "fonte": "Banco Central",
+      "gerado_automaticamente": true,
+      "timestamp": "2025-06-10T01:12:41.255415"
+    },
+    "noticia3": {
+      "id": "noticia3",
+      "title": "CVM aprova novo marco regulatório para exchanges",
+      "text": "CVM aprova novo marco regulatório para exchanges.\nSeguinte:segundo CVM, Novas regras exigem segregação de ativos dos clientes e seguro obrigatório para todas as corretoras de criptomoedas.\nNa prática, isso significa isso define como o mercado cripto vai funcionar no Brasil\nMas a gente tem que clareza é boa, mas a gente tem que garantir que não limite demais.",
+      "categoria": "regulamentacao",
+      "fonte": "CVM",
+      "gerado_automaticamente": true,
+      "timestamp": "2025-06-10T01:12:41.255422"
+    },
+    "encerramento": {
+      "id": "encerramento",
+      "title": "Fechamento",
+      "text": "Por hoje fica por aqui, cambada. Em breve tô de volta com mais novidades.",
+      "gerado_automaticamente": true,
+      "timestamp": "2025-06-10T01:12:41.255425"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+    "preserve_natural_flow": true,
+    "allow_breathing_spaces": true,
+    "maintain_pauses": true,
+    "greeting_optimizations": {
+        "fala cambada": "Fala cambada",
+        "e aí cambada": "E aí cambada"
+    },
+    "pronunciation_adjustments": {
+        "Bitcoin": "Bitcoin",
+        "cripto": "cripto",
+        "galera": "galera"
+    },
+    "rhythm_preservation": {
+        "keep_natural_commas": true,
+        "preserve_sentence_breaks": true,
+        "maintain_breathing_spots": true
+    },
+    "carioca_style": {
+        "relaxed_pronunciation": true,
+        "conversational_tone": true,
+        "natural_contractions": true
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "voice_id": "oG30eP3GaYrCwnabbDCw",
+    "voice_name": "FlukakuCariocaFluido",
+    "settings": {
+        "stability": 0.1,
+        "similarity_boost": 0.5,
+        "style": 0.7,
+        "use_speaker_boost": true,
+        "model_id": "eleven_multilingual_v2"
+    },
+    "status": "teste_sotaque_carioca_fluido",
+    "description": "Perfil otimizado para sotaque carioca mais fluido",
+    "observacoes": {
+        "stability": "Reduzida para 0.1 (mais variação natural)",
+        "similarity_boost": "Reduzida para 0.5 (menos robótico)",
+        "style": "Reduzida para 0.7 (mais natural)",
+        "objetivo": "Sotaque mais carioca e fala mais fluida"
+    },
+    "texto_otimizado_carioca": "E aí cambada! Tô de volta aqui ó, bora pras notícias",
+    "last_updated": "2025-01-27 15:35:00",
+    "teste_para": "Corrigir sotaque nordestino e melhorar fluidez"
+}

@@ -1,0 +1,26 @@
+{
+    "voice_id": "25NR0sM9ehsgXaoknsxO",
+    "voice_name": "FlukakuFinal97",
+    "settings": {
+        "stability": 0.3,
+        "similarity_boost": 0.7,
+        "style": 0.8,
+        "use_speaker_boost": true,
+        "model_id": "eleven_multilingual_v2"
+    },
+    "status": "production_ready",
+    "description": "Configuração final aprovada - 9.7/10",
+    "quality_score": 9.7,
+    "notes": {
+        "achievement": "Resultado excelente após treinar novo perfil no ElevenLabs",
+        "voice_quality": "Natural, fluida, com pausas corretas",
+        "similarity": "Muito próxima da voz original do Renato"
+    },
+    "evolution": {
+        "initial_score": "~3/10 (robótico)",
+        "middle_attempts": "~6/10 (melhorando)",
+        "final_score": "9.7/10 (excelente!)"
+    },
+    "recommendation": "Use esta configuração para produção",
+    "last_updated": "2025-06-09 23:37:00"
+}

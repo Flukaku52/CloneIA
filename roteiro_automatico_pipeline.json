@@ -1,0 +1,27 @@
+[
+  {
+    "id": "intro",
+    "title": "Abertura",
+    "text": "Fala cambada! Tô aqui de novo e vamos às notícias que tão movimentando."
+  },
+  {
+    "id": "noticia1",
+    "title": "Brasil lidera adoção de Bitcoin na América Latina",
+    "text": "Brasil lidera adoção de Bitcoin na América Latina.\nSeguinte:segundo Chainalysis, Pesquisa da Chainalysis mostra que o Brasil concentra 45% do volume de transações de criptomoedas na região, superando Argentina e México.\nO que isso quer dizer? isso mostra que o Bitcoin tá consolidando como reserva de valor institucional\nPor outro lado, adoção institucional é boa, mas concentração também preocupa."
+  },
+  {
+    "id": "noticia2",
+    "title": "Receita Federal cria nova regra para declarar NFTs",
+    "text": "Receita Federal cria nova regra para declarar NFTs.\nSeguinte:conforme dados de Receita Federal, A partir de 2025, NFTs precisarão ser declarados como bens e direitos, com regras específicas para cálculo de ganho de capital.\nNa prática, isso significa isso define como o mercado cripto vai funcionar no Brasil\nIsso levanta uma questão importante: equilíbrio entre proteção e liberdade é fundamental."
+  },
+  {
+    "id": "noticia3",
+    "title": "Ethereum atinge novo recorde de transações no Brasil",
+    "text": "Ethereum atinge novo recorde de transações no Brasil.\nPresta atenção nessa aqui:de acordo com Etherscan, Rede Ethereum processou mais de 2 milhões de transações originárias do Brasil em dezembro, crescimento de 340% em relação ao ano anterior.\nNa prática, isso significa é uma tendência que tá ganhando força globalmente\nMas a gente tem que novidades são empolgantes, mas prudência nunca é demais."
+  },
+  {
+    "id": "encerramento",
+    "title": "Fechamento",
+    "text": "Por hoje fica por aqui, cambada. Em breve tô de volta com mais novidades."
+  }
+]

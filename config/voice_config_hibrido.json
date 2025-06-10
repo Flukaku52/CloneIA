@@ -1,0 +1,19 @@
+{
+    "voice_id": "oG30eP3GaYrCwnabbDCw",
+    "voice_name": "FlukakuHibrido",
+    "settings": {
+        "stability": 0.2,
+        "similarity_boost": 0.7,
+        "style": 1.0,
+        "use_speaker_boost": true,
+        "model_id": "eleven_multilingual_v2"
+    },
+    "status": "hibrido_fala_cambada",
+    "description": "Perfil híbrido: usa 'Fala cambada' com configurações originais fluidas",
+    "observacoes": {
+        "greeting": "Fala cambada (mais natural)",
+        "settings": "Configurações do perfil fluido original que funcionaram melhor",
+        "objetivo": "Combinar melhor saudação com melhor qualidade geral"
+    },
+    "last_updated": "2025-01-09 16:08:00"
+}

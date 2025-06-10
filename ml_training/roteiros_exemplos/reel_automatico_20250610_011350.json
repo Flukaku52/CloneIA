@@ -1,0 +1,88 @@
+{
+  "metadata": {
+    "gerado_automaticamente": true,
+    "timestamp": "2025-06-10T01:13:50.712245",
+    "noticias_fonte": [
+      {
+        "titulo": "Brasil lidera adoção de Bitcoin na América Latina",
+        "conteudo": "Pesquisa da Chainalysis mostra que o Brasil concentra 45% do volume de transações de criptomoedas na região, superando Argentina e México.",
+        "fonte": "Chainalysis",
+        "categoria": "bitcoin",
+        "relevancia": 9,
+        "data": "2025-06-10",
+        "url": "exemplo.com/noticia1",
+        "pontuacao_final": 19
+      },
+      {
+        "titulo": "Receita Federal cria nova regra para declarar NFTs",
+        "conteudo": "A partir de 2025, NFTs precisarão ser declarados como bens e direitos, com regras específicas para cálculo de ganho de capital.",
+        "fonte": "Receita Federal",
+        "categoria": "regulamentacao",
+        "relevancia": 7,
+        "data": "2025-06-10",
+        "url": "exemplo.com/noticia3",
+        "pontuacao_final": 17
+      },
+      {
+        "titulo": "Ethereum atinge novo recorde de transações no Brasil",
+        "conteudo": "Rede Ethereum processou mais de 2 milhões de transações originárias do Brasil em dezembro, crescimento de 340% em relação ao ano anterior.",
+        "fonte": "Etherscan",
+        "categoria": "ethereum",
+        "relevancia": 6,
+        "data": "2025-06-10",
+        "url": "exemplo.com/noticia4",
+        "pontuacao_final": 15
+      }
+    ],
+    "versao_ia": "1.0",
+    "baseado_em_padroes": "padroes_roteiro_v1.json"
+  },
+  "roteiro": {
+    "intro": {
+      "id": "intro",
+      "title": "Abertura",
+      "text": "Fala cambada! Tô aqui de novo e vamos às notícias que tão movimentando.",
+      "gerado_automaticamente": true,
+      "timestamp": "2025-06-10T01:13:50.711987"
+    },
+    "noticia1": {
+      "id": "noticia1",
+      "title": "Brasil lidera adoção de Bitcoin na América Latina",
+      "text": "Brasil lidera adoção de Bitcoin na América Latina.\nSeguinte:segundo Chainalysis, Pesquisa da Chainalysis mostra que o Brasil concentra 45% do volume de transações de criptomoedas na região, superando Argentina e México.\nO que isso quer dizer? isso mostra que o Bitcoin tá consolidando como reserva de valor institucional\nPor outro lado, adoção institucional é boa, mas concentração também preocupa.",
+      "categoria": "bitcoin",
+      "fonte": "Chainalysis",
+      "gerado_automaticamente": true,
+      "timestamp": "2025-06-10T01:13:50.712032"
+    },
+    "noticia2": {
+      "id": "noticia2",
+      "title": "Receita Federal cria nova regra para declarar NFTs",
+      "text": "Receita Federal cria nova regra para declarar NFTs.\nSeguinte:conforme dados de Receita Federal, A partir de 2025, NFTs precisarão ser declarados como bens e direitos, com regras específicas para cálculo de ganho de capital.\nNa prática, isso significa isso define como o mercado cripto vai funcionar no Brasil\nIsso levanta uma questão importante: equilíbrio entre proteção e liberdade é fundamental.",
+      "categoria": "regulamentacao",
+      "fonte": "Receita Federal",
+      "gerado_automaticamente": true,
+      "timestamp": "2025-06-10T01:13:50.712041"
+    },
+    "noticia3": {
+      "id": "noticia3",
+      "title": "Ethereum atinge novo recorde de transações no Brasil",
+      "text": "Ethereum atinge novo recorde de transações no Brasil.\nPresta atenção nessa aqui:de acordo com Etherscan, Rede Ethereum processou mais de 2 milhões de transações originárias do Brasil em dezembro, crescimento de 340% em relação ao ano anterior.\nNa prática, isso significa é uma tendência que tá ganhando força globalmente\nMas a gente tem que novidades são empolgantes, mas prudência nunca é demais.",
+      "categoria": "ethereum",
+      "fonte": "Etherscan",
+      "gerado_automaticamente": true,
+      "timestamp": "2025-06-10T01:13:50.712049"
+    },
+    "encerramento": {
+      "id": "encerramento",
+      "title": "Fechamento",
+      "text": "Por hoje fica por aqui, cambada. Em breve tô de volta com mais novidades.",
+      "gerado_automaticamente": true,
+      "timestamp": "2025-06-10T01:13:50.712051"
+    }
+  },
+  "estatisticas": {
+    "total_segmentos": 5,
+    "noticias_processadas": 3,
+    "tempo_geracao": "automatico"
+  }
+}

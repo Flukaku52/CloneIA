@@ -1,0 +1,42 @@
+{
+    "voice_id": "oG30eP3GaYrCwnabbDCw",
+    "voice_name": "FlukakuNaturalStyle",
+    "settings": {
+        "stability": 0.15,
+        "similarity_boost": 0.6,
+        "style": 0.85,
+        "use_speaker_boost": true,
+        "model_id": "eleven_multilingual_v2"
+    },
+    "natural_profile": {
+        "silence_ratio_range": [
+            0.59,
+            0.65
+        ],
+        "expressiveness_range": [
+            0.025,
+            0.03
+        ],
+        "duration_preference": [
+            14,
+            50
+        ],
+        "speech_pattern": "conversational_carioca",
+        "natural_pauses": true,
+        "breathing_spaces": true
+    },
+    "status": "natural_benchmark",
+    "description": "Configuração baseada no estilo natural do Renato",
+    "benchmark_samples": [
+        "exemplo1.aifc (38.3s, 65% silêncio)",
+        "exemplo 2.aifc (30.7s, 59% silêncio)",
+        "exemplo 3.aifc (50.8s, 63% silêncio)",
+        "exemplo 4.aifc (14.7s, 65% silêncio)"
+    ],
+    "optimization_notes": {
+        "pauses_are_natural": "65% silêncio é o padrão natural, não defeito",
+        "conversational_style": "Estilo carioca relaxado e conversacional",
+        "breathing_included": "Respirações fazem parte da autenticidade"
+    },
+    "last_updated": "2025-06-09 18:55:50"
+}

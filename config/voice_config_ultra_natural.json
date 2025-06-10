@@ -1,0 +1,21 @@
+{
+    "voice_id": "oG30eP3GaYrCwnabbDCw",
+    "voice_name": "FlukakuUltraNatural",
+    "settings": {
+        "stability": 0.05,
+        "similarity_boost": 0.3,
+        "style": 0.4,
+        "use_speaker_boost": true,
+        "model_id": "eleven_multilingual_v2"
+    },
+    "status": "teste_ultra_natural",
+    "description": "Configurações extremas para máxima naturalidade e fluidez",
+    "observacoes": {
+        "stability": "0.05 (mínima para máxima variação)",
+        "similarity_boost": "0.3 (muito baixa para menos robótico)",
+        "style": "0.4 (muito baixa para máxima naturalidade)",
+        "objetivo": "Eliminar roboticidade do 'e aí cambada'"
+    },
+    "last_updated": "2025-01-27 15:40:00",
+    "teste_para": "Resolver problema de roboticidade na saudação"
+}

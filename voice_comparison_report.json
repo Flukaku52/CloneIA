@@ -1,0 +1,121 @@
+{
+  "timestamp": "2025-06-09T19:02:50.945278",
+  "similarity_score": 0.668370088506645,
+  "comparison": {
+    "detailed_comparison": {
+      "duration": {
+        "benchmark_avg": 33.608,
+        "generated": 46.8375625,
+        "difference": 0.3936432544651145,
+        "absolute_diff": 0.3936432544651145
+      },
+      "total_speech_time": {
+        "benchmark_avg": 18.083109374997957,
+        "generated": 28.62081249999533,
+        "difference": 0.5827373434869351,
+        "absolute_diff": 0.5827373434869351
+      },
+      "total_silence_time": {
+        "benchmark_avg": 15.524890625002042,
+        "generated": 18.216750000004666,
+        "difference": 0.17338990903637172,
+        "absolute_diff": 0.17338990903637172
+      },
+      "silence_ratio": {
+        "benchmark_avg": 0.4649507375088749,
+        "generated": 0.3889346291238932,
+        "difference": -0.1634928189539704,
+        "absolute_diff": 0.1634928189539704
+      },
+      "avg_speech_segment": {
+        "benchmark_avg": 0.0007115633836114702,
+        "generated": 0.0007429731711749132,
+        "difference": 0.04414131878293133,
+        "absolute_diff": 0.04414131878293133
+      },
+      "avg_silence_segment": {
+        "benchmark_avg": 0.0006065829851643245,
+        "generated": 0.00046892522454701214,
+        "difference": -0.22693595868079683,
+        "absolute_diff": 0.22693595868079683
+      },
+      "rhythm_pattern": {
+        "benchmark_avg": 0.014579103342148068,
+        "generated": 0.044152760294469184,
+        "difference": 2.0284948925408224,
+        "absolute_diff": 2.0284948925408224
+      },
+      "zero_crossing_rate": {
+        "benchmark_avg": 1813.823784982096,
+        "generated": 1734.4198900188285,
+        "difference": -0.04377707229349928,
+        "absolute_diff": 0.04377707229349928
+      },
+      "speech_rate": {
+        "benchmark_avg": 1.6051477874733753,
+        "generated": 1.8331961126283203,
+        "difference": 0.14207310100285495,
+        "absolute_diff": 0.14207310100285495
+      },
+      "amplitude_variation": {
+        "benchmark_avg": 1.2160742531816908,
+        "generated": 1.5859948248998397,
+        "difference": 0.30419241893196775,
+        "absolute_diff": 0.30419241893196775
+      },
+      "energy_consistency": {
+        "benchmark_avg": -0.21607425318169088,
+        "generated": -0.5859948248998397,
+        "difference": 1.7120067911430459,
+        "absolute_diff": 1.7120067911430459
+      },
+      "breathing_pattern_score": {
+        "benchmark_avg": 0.00012521644981519902,
+        "generated": 5.191703657555227e-05,
+        "difference": -0.5853349140522407,
+        "absolute_diff": 0.5853349140522407
+      },
+      "speech_to_pause_ratio": {
+        "benchmark_avg": 0.9999504859220087,
+        "generated": 0.9999740414817122,
+        "difference": 2.355672585745275e-05,
+        "absolute_diff": 2.355672585745275e-05
+      },
+      "natural_flow_score": {
+        "benchmark_avg": 0.007072728356041337,
+        "generated": 0.007395054436129139,
+        "difference": 0.04557302474118519,
+        "absolute_diff": 0.04557302474118519
+      }
+    },
+    "critical_differences": [
+      {
+        "metric": "rhythm_pattern",
+        "severity": 2.0284948925408224,
+        "description": "Padrão rítmico da fala: MUITO MAIS que o natural (202.8%)"
+      },
+      {
+        "metric": "energy_consistency",
+        "severity": 1.7120067911430459,
+        "description": "energy_consistency: MUITO MAIS que o natural (171.2%)"
+      },
+      {
+        "metric": "breathing_pattern_score",
+        "severity": 0.5853349140522407,
+        "description": "Padrão de respiração natural: MUITO MENOS que o natural (-58.5%)"
+      },
+      {
+        "metric": "total_speech_time",
+        "severity": 0.5827373434869351,
+        "description": "total_speech_time: MUITO MAIS que o natural (58.3%)"
+      }
+    ],
+    "overall_similarity_score": 0.668370088506645
+  },
+  "recommendations": [
+    "🎯 CRÍTICO: Ritmo da fala diferente - ajustar stability e style",
+    "🎯 CRÍTICO: Padrão de respiração perdido - não remover pausas de respiração"
+  ],
+  "benchmark_count": 4,
+  "analysis_complete": true
+}

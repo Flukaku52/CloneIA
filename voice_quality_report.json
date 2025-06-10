@@ -1,0 +1,522 @@
+{
+  "analysis_date": "2025-06-09T18:14:23.785672",
+  "total_videos": 16,
+  "quality_distribution": {
+    "poor": 16
+  },
+  "diversity_analysis": {
+    "duration_range": {
+      "min": 134.0488125,
+      "max": 484.5653125,
+      "avg": 218.17862890625003,
+      "std": 83.05532443995041
+    },
+    "tonal_diversity": {
+      "range": 0.024978168919240363,
+      "avg": 0.0416619816997745
+    },
+    "speech_pattern_diversity": {
+      "silence_range": 0.18604814883201765,
+      "avg_silence": 0.5487339036666403
+    }
+  },
+  "detailed_analyses": [
+    {
+      "video_name": "FILE 2025-05-03 18:00:43.mp4",
+      "analysis": {
+        "duration": 484.5653125,
+        "signal_to_noise": 0.5963641410631069,
+        "energy_consistency": 0.01374209630433243,
+        "silence_ratio": 0.5798403079048297,
+        "tonal_variety": 0.044185900030663375,
+        "background_noise": 0.12346968591719117,
+        "clipping_ratio": 2.063705292565695e-06,
+        "dynamic_range": 1.9605020302694722,
+        "sample_rate": 16000,
+        "total_samples": 7753045
+      },
+      "quality_assessment": {
+        "quality": "poor",
+        "score": 10,
+        "issues": [
+          "too_long",
+          "poor_snr",
+          "inconsistent_energy",
+          "too_much_silence",
+          "background_noise"
+        ],
+        "strengths": [
+          "expressive",
+          "no_distortion"
+        ]
+      }
+    },
+    {
+      "video_name": "FILE 2025-05-07 16:02:47.mp4",
+      "analysis": {
+        "duration": 242.1973125,
+        "signal_to_noise": 0.5795101183066144,
+        "energy_consistency": -0.06534036437553326,
+        "silence_ratio": 0.5877707664489464,
+        "tonal_variety": 0.04340508117448489,
+        "background_noise": 0.04704765848697631,
+        "clipping_ratio": 2.554735201696344e-05,
+        "dynamic_range": 1.9990074271828044,
+        "sample_rate": 16000,
+        "total_samples": 3875157
+      },
+      "quality_assessment": {
+        "quality": "poor",
+        "score": 10,
+        "issues": [
+          "too_long",
+          "poor_snr",
+          "inconsistent_energy",
+          "too_much_silence",
+          "background_noise"
+        ],
+        "strengths": [
+          "expressive",
+          "no_distortion"
+        ]
+      }
+    },
+    {
+      "video_name": "FILE 2025-04-30 18:28:39.mp4",
+      "analysis": {
+        "duration": 164.8616875,
+        "signal_to_noise": 0.6098238218177243,
+        "energy_consistency": -0.05326342071856094,
+        "silence_ratio": 0.5580837270029764,
+        "tonal_variety": 0.03225670638175168,
+        "background_noise": 0.031161552257624014,
+        "clipping_ratio": 5.383300471190433e-05,
+        "dynamic_range": 1.9939245916653947,
+        "sample_rate": 16000,
+        "total_samples": 2637787
+      },
+      "quality_assessment": {
+        "quality": "poor",
+        "score": 10,
+        "issues": [
+          "too_long",
+          "poor_snr",
+          "inconsistent_energy",
+          "too_much_silence",
+          "background_noise"
+        ],
+        "strengths": [
+          "expressive",
+          "no_distortion"
+        ]
+      }
+    },
+    {
+      "video_name": "FILE 2025-05-03 17:31:54.mp4",
+      "analysis": {
+        "duration": 186.5386875,
+        "signal_to_noise": 0.5940412084151687,
+        "energy_consistency": 0.033484901477560225,
+        "silence_ratio": 0.5582655608638825,
+        "tonal_variety": 0.033558657087114745,
+        "background_noise": 0.0036643556850706016,
+        "clipping_ratio": 1.0721636496986718e-05,
+        "dynamic_range": 1.964932243715734,
+        "sample_rate": 16000,
+        "total_samples": 2984619
+      },
+      "quality_assessment": {
+        "quality": "poor",
+        "score": 20,
+        "issues": [
+          "too_long",
+          "poor_snr",
+          "inconsistent_energy",
+          "too_much_silence"
+        ],
+        "strengths": [
+          "expressive",
+          "clean_audio",
+          "no_distortion"
+        ]
+      }
+    },
+    {
+      "video_name": "FILE 2025-05-07 16:21:04.mp4",
+      "analysis": {
+        "duration": 180.2026875,
+        "signal_to_noise": 0.6234129409454455,
+        "energy_consistency": 0.22495830506041192,
+        "silence_ratio": 0.5390718021339166,
+        "tonal_variety": 0.04692625899385951,
+        "background_noise": 0.04095152803642141,
+        "clipping_ratio": 1.0058118583830776e-05,
+        "dynamic_range": 1.9036246136555213,
+        "sample_rate": 16000,
+        "total_samples": 2883243
+      },
+      "quality_assessment": {
+        "quality": "poor",
+        "score": 10,
+        "issues": [
+          "too_long",
+          "poor_snr",
+          "inconsistent_energy",
+          "too_much_silence",
+          "background_noise"
+        ],
+        "strengths": [
+          "expressive",
+          "no_distortion"
+        ]
+      }
+    },
+    {
+      "video_name": "FILE 2025-05-03 17:41:17.mp4",
+      "analysis": {
+        "duration": 256.0213125,
+        "signal_to_noise": 0.6241843684675049,
+        "energy_consistency": 0.16496560608504074,
+        "silence_ratio": 0.5300039718373055,
+        "tonal_variety": 0.04776735489038695,
+        "background_noise": 0.1448896034050004,
+        "clipping_ratio": 9.520691758815977e-06,
+        "dynamic_range": 1.9557549504950495,
+        "sample_rate": 16000,
+        "total_samples": 4096341
+      },
+      "quality_assessment": {
+        "quality": "poor",
+        "score": 10,
+        "issues": [
+          "too_long",
+          "poor_snr",
+          "inconsistent_energy",
+          "too_much_silence",
+          "background_noise"
+        ],
+        "strengths": [
+          "expressive",
+          "no_distortion"
+        ]
+      }
+    },
+    {
+      "video_name": "FILE 2025-05-07 16:15:05.mp4",
+      "analysis": {
+        "duration": 281.728,
+        "signal_to_noise": 0.6215807081629661,
+        "energy_consistency": 0.21438371069017637,
+        "silence_ratio": 0.5318813713936847,
+        "tonal_variety": 0.04857300559075969,
+        "background_noise": 0.04118247113279212,
+        "clipping_ratio": 1.6416543616537937e-05,
+        "dynamic_range": 1.9972625239529154,
+        "sample_rate": 16000,
+        "total_samples": 4507648
+      },
+      "quality_assessment": {
+        "quality": "poor",
+        "score": 10,
+        "issues": [
+          "too_long",
+          "poor_snr",
+          "inconsistent_energy",
+          "too_much_silence",
+          "background_noise"
+        ],
+        "strengths": [
+          "expressive",
+          "no_distortion"
+        ]
+      }
+    },
+    {
+      "video_name": "reel3.mp4",
+      "analysis": {
+        "duration": 159.59075,
+        "signal_to_noise": 0.6012936928837358,
+        "energy_consistency": -0.03629373435991767,
+        "silence_ratio": 0.5672810767541352,
+        "tonal_variety": 0.029678348662494646,
+        "background_noise": 0.002673333317028005,
+        "clipping_ratio": 5.796075273786231e-05,
+        "dynamic_range": 1.9963321820460311,
+        "sample_rate": 16000,
+        "total_samples": 2553452
+      },
+      "quality_assessment": {
+        "quality": "poor",
+        "score": 20,
+        "issues": [
+          "too_long",
+          "poor_snr",
+          "inconsistent_energy",
+          "too_much_silence"
+        ],
+        "strengths": [
+          "expressive",
+          "clean_audio",
+          "no_distortion"
+        ]
+      }
+    },
+    {
+      "video_name": "VIDEO-2025-05-24-00-39-14.mp4",
+      "analysis": {
+        "duration": 197.5253125,
+        "signal_to_noise": 0.6101349594632858,
+        "energy_consistency": 0.010409069339788135,
+        "silence_ratio": 0.6187861998699534,
+        "tonal_variety": 0.030310065186850116,
+        "background_noise": 0.053049355825179494,
+        "clipping_ratio": 5.37905743093053e-06,
+        "dynamic_range": 1.9816782843865464,
+        "sample_rate": 16000,
+        "total_samples": 3160405
+      },
+      "quality_assessment": {
+        "quality": "poor",
+        "score": 10,
+        "issues": [
+          "too_long",
+          "poor_snr",
+          "inconsistent_energy",
+          "too_much_silence",
+          "background_noise"
+        ],
+        "strengths": [
+          "expressive",
+          "no_distortion"
+        ]
+      }
+    },
+    {
+      "video_name": "FILE 2025-05-07 16:10:59.mp4",
+      "analysis": {
+        "duration": 299.0293125,
+        "signal_to_noise": 0.6040511904045639,
+        "energy_consistency": 0.14531819885059727,
+        "silence_ratio": 0.5481101455563825,
+        "tonal_variety": 0.047492923207634534,
+        "background_noise": 0.03833696485544134,
+        "clipping_ratio": 1.3167605433330219e-05,
+        "dynamic_range": 1.995464536161602,
+        "sample_rate": 16000,
+        "total_samples": 4784469
+      },
+      "quality_assessment": {
+        "quality": "poor",
+        "score": 10,
+        "issues": [
+          "too_long",
+          "poor_snr",
+          "inconsistent_energy",
+          "too_much_silence",
+          "background_noise"
+        ],
+        "strengths": [
+          "expressive",
+          "no_distortion"
+        ]
+      }
+    },
+    {
+      "video_name": "FILE 2025-05-07 16:35:27.mp4",
+      "analysis": {
+        "duration": 220.8426875,
+        "signal_to_noise": 0.6190969478895398,
+        "energy_consistency": 0.129288018166542,
+        "silence_ratio": 0.5335630594515384,
+        "tonal_variety": 0.040134124355987115,
+        "background_noise": 0.032357578996068774,
+        "clipping_ratio": 6.792165124326337e-06,
+        "dynamic_range": 1.9887195862691334,
+        "sample_rate": 16000,
+        "total_samples": 3533483
+      },
+      "quality_assessment": {
+        "quality": "poor",
+        "score": 10,
+        "issues": [
+          "too_long",
+          "poor_snr",
+          "inconsistent_energy",
+          "too_much_silence",
+          "background_noise"
+        ],
+        "strengths": [
+          "expressive",
+          "no_distortion"
+        ]
+      }
+    },
+    {
+      "video_name": "FILE 2025-05-07 15:58:16.mp4",
+      "analysis": {
+        "duration": 191.0613125,
+        "signal_to_noise": 0.6803324822056963,
+        "energy_consistency": 0.29588893174405084,
+        "silence_ratio": 0.4327380510379358,
+        "tonal_variety": 0.05465651758173501,
+        "background_noise": 0.08841972302073936,
+        "clipping_ratio": 1.2103444542180667e-05,
+        "dynamic_range": 1.992111755916183,
+        "sample_rate": 16000,
+        "total_samples": 3056981
+      },
+      "quality_assessment": {
+        "quality": "poor",
+        "score": 10,
+        "issues": [
+          "too_long",
+          "poor_snr",
+          "inconsistent_energy",
+          "too_little_silence",
+          "background_noise"
+        ],
+        "strengths": [
+          "expressive",
+          "no_distortion"
+        ]
+      }
+    },
+    {
+      "video_name": "reels4.mp4",
+      "analysis": {
+        "duration": 134.0488125,
+        "signal_to_noise": 0.5854194544836023,
+        "energy_consistency": -0.6661043191143192,
+        "silence_ratio": 0.577161491079975,
+        "tonal_variety": 0.030576357134205392,
+        "background_noise": 0.03971410590411427,
+        "clipping_ratio": 6.713972195762645e-05,
+        "dynamic_range": 1.9944418995266453,
+        "sample_rate": 16000,
+        "total_samples": 2144781
+      },
+      "quality_assessment": {
+        "quality": "poor",
+        "score": 10,
+        "issues": [
+          "too_long",
+          "poor_snr",
+          "inconsistent_energy",
+          "too_much_silence",
+          "background_noise"
+        ],
+        "strengths": [
+          "expressive",
+          "no_distortion"
+        ]
+      }
+    },
+    {
+      "video_name": "FILE 2025-05-03 17:47:33.mp4",
+      "analysis": {
+        "duration": 148.4373125,
+        "signal_to_noise": 0.632967066521396,
+        "energy_consistency": 0.1399274236382021,
+        "silence_ratio": 0.5237627668582319,
+        "tonal_variety": 0.04792182384067229,
+        "background_noise": 0.046948726114635034,
+        "clipping_ratio": 1.2631594903067246e-05,
+        "dynamic_range": 1.9774038627647443,
+        "sample_rate": 16000,
+        "total_samples": 2374997
+      },
+      "quality_assessment": {
+        "quality": "poor",
+        "score": 10,
+        "issues": [
+          "too_long",
+          "poor_snr",
+          "inconsistent_energy",
+          "too_much_silence",
+          "background_noise"
+        ],
+        "strengths": [
+          "expressive",
+          "no_distortion"
+        ]
+      }
+    },
+    {
+      "video_name": "reels2.mp4",
+      "analysis": {
+        "duration": 152.740875,
+        "signal_to_noise": 0.623978774169337,
+        "energy_consistency": -0.054009919114828886,
+        "silence_ratio": 0.5763576711211063,
+        "tonal_variety": 0.04342362086741489,
+        "background_noise": 0.030854536108295947,
+        "clipping_ratio": 5.851413382305162e-05,
+        "dynamic_range": 1.993711075833435,
+        "sample_rate": 16000,
+        "total_samples": 2443854
+      },
+      "quality_assessment": {
+        "quality": "poor",
+        "score": 10,
+        "issues": [
+          "too_long",
+          "poor_snr",
+          "inconsistent_energy",
+          "too_much_silence",
+          "background_noise"
+        ],
+        "strengths": [
+          "expressive",
+          "no_distortion"
+        ]
+      }
+    },
+    {
+      "video_name": "FILE 2025-05-03 17:47:26.mp4",
+      "analysis": {
+        "duration": 191.4666875,
+        "signal_to_noise": 0.6259033292104063,
+        "energy_consistency": 0.1374115044223999,
+        "silence_ratio": 0.517064489351444,
+        "tonal_variety": 0.045724962210377244,
+        "background_noise": 0.08531245524891196,
+        "clipping_ratio": 1.4689239348750942e-05,
+        "dynamic_range": 1.9776228775692584,
+        "sample_rate": 16000,
+        "total_samples": 3063467
+      },
+      "quality_assessment": {
+        "quality": "poor",
+        "score": 10,
+        "issues": [
+          "too_long",
+          "poor_snr",
+          "inconsistent_energy",
+          "too_much_silence",
+          "background_noise"
+        ],
+        "strengths": [
+          "expressive",
+          "no_distortion"
+        ]
+      }
+    }
+  ],
+  "recommendations": [
+    "🎯 PRIORIDADE ALTA: Melhore a qualidade dos samples existentes - grave novos vídeos em ambiente mais silencioso",
+    "📊 Quantidade adequada, mas pode adicionar 5-10 samples específicos",
+    "🎵 Grave samples com diferentes emoções: animado, sério, explicativo, entusiasmado",
+    "🎤 SAMPLES IDEAIS para adicionar:",
+    "   • 3-5 saudações diferentes ('Fala cambada', 'E aí galera', 'Bora lá')",
+    "   • 2-3 encerramentos ('É isso aí', 'Até a próxima', 'Valeu galera')",
+    "   • 5-7 explicações técnicas sobre crypto (diferentes ritmos)",
+    "   • 2-3 reações entusiasmadas ('Olha só isso!', 'Que absurdo!')",
+    "   • 3-4 transições ('Agora vamos falar', 'Outra coisa importante')",
+    "⚙️ Para GRAVAR novos samples:",
+    "   • Use ambiente silencioso (sem eco)",
+    "   • Mantenha distância consistente do microfone",
+    "   • Fale em seu ritmo natural (não forçe)",
+    "   • Grave cada sample 2-3x e escolha o melhor",
+    "   • Duração ideal: 10-30 segundos por sample"
+  ]
+}

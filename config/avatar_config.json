@@ -1,8 +1,11 @@
 {
-    "avatar_id": "bd9548bed4984738a93b0db0c6c3edc9",
-    "avatar_name": "flukakudabet",
+    "avatar_id": "bde6a19874124e12b230248bff9ed903",
+    "avatar_name": "novo_avatar_teste",
     "profile": "perfil2",
-    "previous_avatar_id": "ae9ff9b6dc47436c8e9a30c25a0d7b29",
-    "updated_at": "2025-06-02 17:00:00",
-    "notes": "Avatar correto do Flukaku encontrado no Perfil 2 com 600 créditos"
+    "previous_avatar_id": "bd9548bed4984738a93b0db0c6c3edc9",
+    "backup_avatar_id": "bd9548bed4984738a93b0db0c6c3edc9",
+    "backup_avatar_name": "flukakudabet",
+    "updated_at": "2025-01-27 15:30:00",
+    "notes": "Novo avatar para teste - ID fornecido pelo usuário",
+    "status": "teste_ativo"
 }

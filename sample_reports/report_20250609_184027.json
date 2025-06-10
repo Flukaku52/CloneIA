@@ -1,0 +1,28 @@
+{
+  "timestamp": "20250609_184027",
+  "sample_path": "output/samples/sample 1.m4a",
+  "analysis": {
+    "duration": 4.3293125,
+    "signal_to_noise": 0.6198680108994212,
+    "silence_ratio": 0.5046124529010091,
+    "background_noise": 0.08890311213685093,
+    "clipping_ratio": 2.887294460725577e-05,
+    "tonal_variety": 0.0406153536542168
+  },
+  "evaluation": {
+    "approved": false,
+    "score": 0,
+    "feedback": [
+      "✅ Sem distorção",
+      "✅ Boa expressividade: 0.041"
+    ],
+    "issues": [
+      "❌ Muito curto: 4.3s (mínimo 8s)",
+      "❌ Áudio com ruído: S/N = 0.62 (mínimo 2.0)",
+      "❌ Muito silêncio: 0.50 (máximo 0.25)",
+      "❌ Ruído de fundo detectado: 0.089"
+    ],
+    "recommendation": "REGRAVE com melhorias"
+  },
+  "approved": false
+}

@@ -1,0 +1,84 @@
+{
+    "roteiro_novo": {
+        "id": "rapidinha_cripto_empresas_blockchain_drex",
+        "data_criacao": "2025-01-27",
+        "tipo": "rapidinha_cripto",
+        "duracao_estimada": "3_minutos",
+        "status": "otimizado_para_ia",
+        
+        "roteiro_otimizado": {
+            "introducao": {
+                "texto_original": "E aí cambada! Ja to de volta por aqui e bora pras notícias.",
+                "texto_otimizado": "EAÍCAMBADA! Já tô de volta por aqui e bora pras notícias",
+                "ajustes": [
+                    "EAÍCAMBADA junto para energia e velocidade",
+                    "Removida vírgula após 'aqui' para fluidez",
+                    "Mantido 'bora' que é característico do usuário"
+                ]
+            },
+            
+            "segmento_1": {
+                "titulo": "Empresas já têm mais de 3% do supply de BTC",
+                "texto_original": "Seguinte: segundo o banco Standard Chartered, 61 empresas que têm ações em bolsa já acumulam **3,2% de todo o Bitcoin que vai existir no mundo**.\n\nEntre elas estão **MicroStrategy**, **Tesla** e outras gigantes que tão comprando BTC pra colocar em caixa, como reserva de valor.\n\nEm vez de só dólar ou ouro, agora tem empresa diversificando com Bitcoin.\nIsso reforça que o BTC não é mais só papo de investidor de rede social — tá virando um ativo institucional.",
+                "texto_otimizado": "Seguinte: segundo o banco Standard Chartered, 61 empresas que têm ações em bolsa já acumulam 3,2% de todo o Bitcoin que vai existir no mundo.\n\nEntre elas estão Strategy, Tesla e outras gigantes que tão comprando BTC pra colocar em caixa como reserva de valor.\n\nEm vez de só dólar ou ouro agora tem empresa diversificando com Bitcoin. Isso reforça que o BTC não é mais só papo de investidor de rede social, tá virando um ativo institucional.",
+                "ajustes": [
+                    "Removidos asteriscos para fluidez na fala",
+                    "Ajustadas vírgulas para pausas naturais",
+                    "Mantido 'tão' que é característico do usuário"
+                ]
+            },
+            
+            "segmento_2": {
+                "titulo": "Blockchain pode modernizar abertura de empresas no Brasil",
+                "texto_original": "Agora uma que pouca gente tá falando:\nTem projeto de lei no Congresso propondo que a gente use **blockchain nos registros de abertura de empresas**.\n\nA ideia é garantir que os dados fiquem **imutáveis e rastreáveis**.\nMenos chance de fraude, mais transparência, e processos mais rápidos.\n\nHoje abrir empresa no Brasil ainda tem muita burocracia e sistema velho.\nSe isso andar, seria um baita uso prático de blockchain — além do mercado cripto — que realmente impacta a vida de quem empreende.",
+                "texto_otimizado": "Agora uma que pouca gente tá falando: tem projeto de lei no Congresso propondo que a gente use blockchain nos registros de abertura de empresas.\n\nA ideia é garantir que os dados fiquem imutáveis e rastreáveis. Menos chance de fraude, mais transparência e processos mais rápidos.\n\nHoje abrir empresa no Brasil ainda tem muita burocracia e sistema velho. Se isso andar seria um baita uso prático de blockchain, além do mercado cripto, que realmente impacta a vida de quem empreende.",
+                "ajustes": [
+                    "Removidos asteriscos para fluidez",
+                    "Ajustadas vírgulas para pausas naturais",
+                    "Mantido 'baita' que é expressão característica"
+                ]
+            },
+            
+            "segmento_3": {
+                "titulo": "Drex chega à Amazônia — e sem internet",
+                "texto_original": "Agora presta atenção nessa aqui:\nA **Caixa Econômica Federal** tá testando o **Drex**, o real digital, em comunidades da Amazônia que não têm nem internet.\n\nA tecnologia permite que o morador faça pagamentos **off-line**, e quando o celular se conecta à rede, tudo é sincronizado.\n\nÉ um avanço grande pra inclusão financeira — levar pagamento digital pra quem hoje tá fora do sistema.\n\n**Mas... a gente também tem que olhar pro outro lado dessa moeda.**\nDiferente do dinheiro físico — que você gasta sem deixar rastro — o Drex é uma moeda **totalmente rastreável e programável**.\n\nNa prática, isso significa que o governo poderia, tecnicamente, monitorar e até controlar como você gasta seu dinheiro.\n\nEntão assim:\nTecnologia boa? Sim.\nMas liberdade financeira precisa estar no centro dessa conversa.\n**A gente tem que ficar muito atento pra isso não virar ferramenta de controle.**",
+                "texto_otimizado": "Agora presta atenção nessa aqui: a Caixa Econômica Federal tá testando o Drex, o real digital, em comunidades da Amazônia que não têm nem internet.\n\nA tecnologia permite que o morador faça pagamentos off-line e quando o celular se conecta à rede tudo é sincronizado.\n\nÉ um avanço grande pra inclusão financeira, levar pagamento digital pra quem hoje tá fora do sistema.\n\nMas a gente também tem que olhar pro outro lado dessa moeda. Diferente do dinheiro físico que você gasta sem deixar rastro, o Drex é uma moeda totalmente rastreável e programável.\n\nNa prática isso significa que o governo poderia tecnicamente monitorar e até controlar como você gasta seu dinheiro.\n\nEntão assim: tecnologia boa? Sim. Mas liberdade financeira precisa estar no centro dessa conversa. A gente tem que ficar muito atento pra isso não virar ferramenta de controle.",
+                "ajustes": [
+                    "Removidos asteriscos e travessões para fluidez",
+                    "Ajustadas vírgulas para pausas naturais",
+                    "Mantido tom de alerta característico do usuário",
+                    "Preservada estrutura de pergunta e resposta"
+                ]
+            },
+            
+            "encerramento": {
+                "texto_original": "Por hoje é isso, cambada.\nGrandes empresas acumulando Bitcoin, blockchain no registro de empresas, e o Drex chegando até onde o Pix não chega — com um baita potencial, mas com um baita alerta também.\n\nSigo de olho.",
+                "texto_otimizado": "Por hoje é isso cambada. Grandes empresas acumulando Bitcoin, blockchain no registro de empresas e o Drex chegando até onde o Pix não chega, com um baita potencial mas com um baita alerta também.\n\nSigo de olho.",
+                "ajustes": [
+                    "Removida vírgula após 'isso' para fluidez",
+                    "Ajustadas vírgulas para pausas naturais",
+                    "Mantido 'baita' e 'sigo de olho' característicos"
+                ]
+            }
+        },
+        
+        "texto_final_completo": "EAÍCAMBADA! Já tô de volta por aqui e bora pras notícias.\n\nSeguinte: segundo o banco Standard Chartered, 61 empresas que têm ações em bolsa já acumulam 3,2% de todo o Bitcoin que vai existir no mundo.\n\nEntre elas estão MicroStrategy, Tesla e outras gigantes que tão comprando BTC pra colocar em caixa como reserva de valor.\n\nEm vez de só dólar ou ouro agora tem empresa diversificando com Bitcoin. Isso reforça que o BTC não é mais só papo de investidor de rede social, tá virando um ativo institucional.\n\nAgora uma que pouca gente tá falando: tem projeto de lei no Congresso propondo que a gente use blockchain nos registros de abertura de empresas.\n\nA ideia é garantir que os dados fiquem imutáveis e rastreáveis. Menos chance de fraude, mais transparência e processos mais rápidos.\n\nHoje abrir empresa no Brasil ainda tem muita burocracia e sistema velho. Se isso andar seria um baita uso prático de blockchain, além do mercado cripto, que realmente impacta a vida de quem empreende.\n\nAgora presta atenção nessa aqui: a Caixa Econômica Federal tá testando o Drex, o real digital, em comunidades da Amazônia que não têm nem internet.\n\nA tecnologia permite que o morador faça pagamentos off-line e quando o celular se conecta à rede tudo é sincronizado.\n\nÉ um avanço grande pra inclusão financeira, levar pagamento digital pra quem hoje tá fora do sistema.\n\nMas a gente também tem que olhar pro outro lado dessa moeda. Diferente do dinheiro físico que você gasta sem deixar rastro, o Drex é uma moeda totalmente rastreável e programável.\n\nNa prática isso significa que o governo poderia tecnicamente monitorar e até controlar como você gasta seu dinheiro.\n\nEntão assim: tecnologia boa? Sim. Mas liberdade financeira precisa estar no centro dessa conversa. A gente tem que ficar muito atento pra isso não virar ferramenta de controle.\n\nPor hoje é isso cambada. Grandes empresas acumulando Bitcoin, blockchain no registro de empresas e o Drex chegando até onde o Pix não chega, com um baita potencial mas com um baita alerta também.\n\nSigo de olho.",
+        
+        "configuracoes_geracao": {
+            "voice_profile": "fluido",
+            "voice_id": "oG30eP3GaYrCwnabbDCw",
+            "avatar_id": "bde6a19874124e12b230248bff9ed903",
+            "avatar_name": "novo_avatar_teste",
+            "heygen_profile": "perfil2"
+        },
+        
+        "observacoes_otimizacao": [
+            "Mantidas expressões características: 'EAÍCAMBADA', 'cambada', 'baita', 'tão'",
+            "Removidos asteriscos e formatações que atrapalham a fala",
+            "Ajustadas vírgulas para pausas naturais na voz",
+            "Preservado tom educativo e de alerta do usuário",
+            "Mantida estrutura de perguntas e respostas",
+            "Texto otimizado para o perfil de voz FlukakuFluido"
+        ]
+    }
+}

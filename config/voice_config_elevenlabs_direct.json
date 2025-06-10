@@ -1,0 +1,24 @@
+{
+    "voice_id": "25NR0sM9ehsgXaoknsxO",
+    "voice_name": "FlukakuElevenLabsDirect",
+    "settings": {
+        "stability": 0.3,
+        "similarity_boost": 0.7,
+        "style": 0.8,
+        "use_speaker_boost": true,
+        "model_id": "eleven_multilingual_v2"
+    },
+    "status": "elevenlabs_direct_training",
+    "description": "Configuração focada no perfil treinado diretamente no ElevenLabs",
+    "strategy": {
+        "approach": "Usar samples upados diretamente no ElevenLabs",
+        "local_samples": "Removidos - foco no treinamento da plataforma",
+        "optimization": "Deixar ElevenLabs processar os samples nativamente"
+    },
+    "notes": {
+        "voice_training": "Usuario vai upar mais samples diretamente no ElevenLabs",
+        "expected_improvement": "Melhor qualidade com samples processados pela plataforma",
+        "config_optimized": "Parâmetros balanceados para novo treinamento"
+    },
+    "last_updated": "2025-06-09 19:15:00"
+}

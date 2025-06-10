@@ -1,0 +1,21 @@
+{
+    "voice_id": "oG30eP3GaYrCwnabbDCw",
+    "voice_name": "FlukakuSuperFluido",
+    "settings": {
+        "stability": 0.02,
+        "similarity_boost": 0.25,
+        "style": 0.3,
+        "use_speaker_boost": true,
+        "model_id": "eleven_multilingual_v2"
+    },
+    "status": "teste_super_fluido",
+    "description": "Configurações extremas para máxima fluidez e naturalidade",
+    "observacoes": {
+        "stability": "0.02 (quase zero para máxima variação natural)",
+        "similarity_boost": "0.25 (ainda mais baixa)",
+        "style": "0.3 (mínima para eliminar roboticidade)",
+        "objetivo": "Eliminar pausas robóticas e bugs na fala"
+    },
+    "last_updated": "2025-01-27 15:45:00",
+    "teste_para": "Resolver pausas robóticas e partes bugadas"
+}

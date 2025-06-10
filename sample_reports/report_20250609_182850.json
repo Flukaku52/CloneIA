@@ -1,0 +1,28 @@
+{
+  "timestamp": "20250609_182850",
+  "sample_path": "/Users/renatosantannasilva/Documents/samples/sample10.wav",
+  "analysis": {
+    "duration": 124.414125,
+    "signal_to_noise": 0.6276164057426544,
+    "silence_ratio": 0.5210752798365941,
+    "background_noise": 0.1974546451149257,
+    "clipping_ratio": 7.032963499924144e-06,
+    "tonal_variety": 0.04936790098435487
+  },
+  "evaluation": {
+    "approved": false,
+    "score": 0,
+    "feedback": [
+      "✅ Sem distorção",
+      "✅ Boa expressividade: 0.049"
+    ],
+    "issues": [
+      "⚠️ Muito longo: 124.4s (máximo 30s)",
+      "❌ Áudio com ruído: S/N = 0.63 (mínimo 2.0)",
+      "❌ Muito silêncio: 0.52 (máximo 0.25)",
+      "❌ Ruído de fundo detectado: 0.197"
+    ],
+    "recommendation": "REGRAVE com melhorias"
+  },
+  "approved": false
+}

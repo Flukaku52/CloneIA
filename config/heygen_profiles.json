@@ -37,9 +37,16 @@
             "remaining_quota": 600,
             "avatars": [
                 {
+                    "id": "bde6a19874124e12b230248bff9ed903",
+                    "name": "novo_avatar_teste",
+                    "description": "Novo avatar para teste - fornecido pelo usuário",
+                    "status": "teste_ativo"
+                },
+                {
                     "id": "bd9548bed4984738a93b0db0c6c3edc9",
                     "name": "flukakudabet",
-                    "description": "Avatar principal do Flukaku - ESTE É O AVATAR CORRETO!"
+                    "description": "Avatar principal do Flukaku - BACKUP",
+                    "status": "backup"
                 }
             ],
             "status": "active",
@@ -49,9 +56,9 @@
     "default_profile": "perfil2",
     "recommended_avatar": {
         "profile": "perfil2",
-        "avatar_id": "bd9548bed4984738a93b0db0c6c3edc9",
-        "avatar_name": "flukakudabet",
-        "reason": "Avatar correto do Flukaku com mais créditos disponíveis"
+        "avatar_id": "bde6a19874124e12b230248bff9ed903",
+        "avatar_name": "novo_avatar_teste",
+        "reason": "Novo avatar para teste - fornecido pelo usuário"
     },
     "usage_notes": {
         "perfil1": "Usar como backup ou para testes",

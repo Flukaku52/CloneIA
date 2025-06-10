@@ -1,0 +1,28 @@
+{
+  "timestamp": "20250609_182737",
+  "sample_path": "output/samples/WhatsApp Audio 2025-06-09 at 18.25.48.opus",
+  "analysis": {
+    "duration": 18.9978125,
+    "signal_to_noise": 0.5672462783445419,
+    "silence_ratio": 0.5844422877633938,
+    "background_noise": 0.0019457154349746789,
+    "clipping_ratio": 0.000161202770055763,
+    "tonal_variety": 0.028188594762247058
+  },
+  "evaluation": {
+    "approved": false,
+    "score": 35,
+    "feedback": [
+      "✅ Duração perfeita: 19.0s",
+      "✅ Sem ruído de fundo",
+      "✅ Sem distorção",
+      "✅ Boa expressividade: 0.028"
+    ],
+    "issues": [
+      "❌ Áudio com ruído: S/N = 0.57 (mínimo 2.0)",
+      "❌ Muito silêncio: 0.58 (máximo 0.25)"
+    ],
+    "recommendation": "REGRAVE com melhorias"
+  },
+  "approved": false
+}

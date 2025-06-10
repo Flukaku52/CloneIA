@@ -1,0 +1,188 @@
+{
+  "estrutura": {
+    "total_segmentos": 5,
+    "ordem_segmentos": [
+      "intro",
+      "noticia1",
+      "noticia2",
+      "noticia3",
+      "encerramento"
+    ],
+    "funcoes_por_segmento": {
+      "intro": "abertura_energica",
+      "noticia1": "noticia_principal_bitcoin",
+      "noticia2": "noticia_brasil_blockchain",
+      "noticia3": "noticia_controversa_analise_dupla",
+      "encerramento": "fechamento_promessa_retorno"
+    },
+    "tamanho_medio_segmentos": {
+      "intro": {
+        "caracteres": 59,
+        "palavras": 13,
+        "linhas": 1
+      },
+      "noticia1": {
+        "caracteres": 494,
+        "palavras": 89,
+        "linhas": 8
+      },
+      "noticia2": {
+        "caracteres": 544,
+        "palavras": 90,
+        "linhas": 10
+      },
+      "noticia3": {
+        "caracteres": 882,
+        "palavras": 146,
+        "linhas": 18
+      },
+      "encerramento": {
+        "caracteres": 63,
+        "palavras": 14,
+        "linhas": 1
+      }
+    },
+    "proporcao_conteudo": {
+      "intro": 2.9,
+      "noticia1": 24.2,
+      "noticia2": 26.6,
+      "noticia3": 43.2,
+      "encerramento": 3.1
+    }
+  },
+  "linguagem": {
+    "tom": "informal_brasileiro",
+    "pessoa_verbal": "primeira_pessoa_plural",
+    "expressoes_caracteristicas": [
+      "E aí cambada",
+      "cambada",
+      "Seguinte:",
+      "Agora",
+      "presta atenção",
+      "pouca gente tá falando",
+      "a gente",
+      "tô",
+      "bora",
+      "baita",
+      "Então assim:",
+      "Por hoje é isso"
+    ],
+    "conectores_frequentes": [
+      "Seguinte:",
+      "Agora",
+      "Mas...",
+      "Na prática",
+      "Então assim:",
+      "Se isso andar",
+      "Entre elas",
+      "Em vez de",
+      "Diferente do"
+    ],
+    "estruturas_frase": [],
+    "marcadores_discursivos": [
+      "segundo o",
+      "presta atenção",
+      "a gente também tem que",
+      "tecnicamente",
+      "realmente impacta",
+      "ficar muito atento"
+    ]
+  },
+  "transicoes": [
+    {
+      "de": "intro",
+      "para": "noticia1",
+      "mecanismo": "bora pras notícias",
+      "tipo": "chamada_energica"
+    }
+  ],
+  "vocabulario": {
+    "termos_tecnicos": {
+      "crypto": [
+        "Bitcoin",
+        "BTC",
+        "blockchain",
+        "Drex",
+        "cripto",
+        "supply"
+      ],
+      "financeiro": [
+        "reserva de valor",
+        "ativo institucional",
+        "diversificando",
+        "inclusão financeira"
+      ],
+      "tecnologia": [
+        "off-line",
+        "sincronizado",
+        "rastreável",
+        "programável",
+        "imutáveis"
+      ]
+    },
+    "expressoes_brasil": [
+      "no Brasil",
+      "brasileiro",
+      "Congresso",
+      "Caixa Econômica Federal",
+      "Amazônia",
+      "burocracia",
+      "sistema velho"
+    ],
+    "linguagem_coloquial": [
+      "cambada",
+      "tô",
+      "bora",
+      "baita",
+      "galera",
+      "pouca gente",
+      "a gente",
+      "papo de"
+    ],
+    "conectores_analise": [
+      "Na prática",
+      "Então assim",
+      "Mas",
+      "Diferente do",
+      "Em vez de",
+      "segundo o",
+      "tecnicamente"
+    ]
+  },
+  "estilos": {
+    "abordagem_noticias": {
+      "estrutura_padrao": [
+        "titulo_impactante",
+        "fonte_ou_contexto",
+        "explicacao_detalhada",
+        "implicacoes_praticas",
+        "opiniao_pessoal"
+      ],
+      "tecnica_engagement": [
+        "dados_numericos_especificos",
+        "exemplos_conhecidos",
+        "contrapontos_equilibrados",
+        "alertas_vigilancia"
+      ]
+    },
+    "personalidade": {
+      "tom_geral": "informativo_descontraido",
+      "posicionamento": "critico_equilibrado",
+      "relacionamento_audiencia": "proxima_coloquial",
+      "nivel_tecnico": "acessivel_com_profundidade"
+    },
+    "padroes_narrativos": {
+      "uso_dados": "sempre_com_fonte",
+      "exemplos": "empresas_conhecidas_e_casos_brasileiros",
+      "conclusoes": "provocativas_mas_equilibradas",
+      "call_to_action": "implícito_vigilancia_critica"
+    }
+  },
+  "metadata": {
+    "versao": "1.0",
+    "data_analise": "2025-06-10 01:10:36",
+    "roteiro_analisado": "reel_cripto_empresas_drex_junho_2025",
+    "total_segmentos_analisados": 5,
+    "objetivo": "aprender_padroes_para_geracao_automatica"
+  }
+}

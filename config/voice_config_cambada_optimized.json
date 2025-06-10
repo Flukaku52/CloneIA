@@ -1,0 +1,24 @@
+{
+    "voice_id": "oG30eP3GaYrCwnabbDCw",
+    "voice_name": "FlukakuCambadaOptimized",
+    "settings": {
+        "stability": 0.1,
+        "similarity_boost": 0.5,
+        "style": 1.0,
+        "use_speaker_boost": true,
+        "model_id": "eleven_multilingual_v2"
+    },
+    "optimization_notes": {
+        "greeting_prefix": "FALA CAMBADAAA!!!",
+        "remove_spaces": true,
+        "add_emphasis": true,
+        "comparison_based": true
+    },
+    "prosody_targets": {
+        "energy": 0.026776001557881592,
+        "rhythm_rate": 0.03499670324717685,
+        "peak_density": 0.0008187922265682367,
+        "attack_time": 0.6293671875,
+        "speech_rate": 1260.0603858864265
+    }
+}

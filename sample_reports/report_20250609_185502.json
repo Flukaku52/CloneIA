@@ -1,0 +1,28 @@
+{
+  "timestamp": "20250609_185502",
+  "sample_path": "output/samples/exemplo 3.aifc",
+  "analysis": {
+    "duration": 50.752,
+    "signal_to_noise": 0.6121022424205208,
+    "silence_ratio": 0.6328789998423707,
+    "background_noise": 0.003969325996588701,
+    "clipping_ratio": 2.4629571248423707e-06,
+    "tonal_variety": 0.024795463266828386
+  },
+  "evaluation": {
+    "approved": false,
+    "score": 0,
+    "feedback": [
+      "✅ Sem ruído de fundo",
+      "✅ Sem distorção",
+      "✅ Boa expressividade: 0.025"
+    ],
+    "issues": [
+      "⚠️ Muito longo: 50.8s (máximo 30s)",
+      "❌ Áudio com ruído: S/N = 0.61 (mínimo 2.0)",
+      "❌ Muito silêncio: 0.63 (máximo 0.25)"
+    ],
+    "recommendation": "REGRAVE com melhorias"
+  },
+  "approved": false
+}

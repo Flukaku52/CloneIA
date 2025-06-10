@@ -1,0 +1,26 @@
+{
+    "voice_id": "oG30eP3GaYrCwnabbDCw",
+    "voice_name": "FlukakuCleanStart",
+    "settings": {
+        "stability": 0.3,
+        "similarity_boost": 0.8,
+        "style": 0.9,
+        "use_speaker_boost": true,
+        "model_id": "eleven_multilingual_v2"
+    },
+    "status": "clean_start",
+    "description": "Configuração resetada - aguardando samples de alta qualidade",
+    "notes": {
+        "old_samples_removed": "Todos os 51 samples inadequados foram removidos",
+        "next_step": "Gravar 3-5 samples perfeitos (score 60+)",
+        "target_quality": "8-15 segundos, ambiente silencioso, fala contínua"
+    },
+    "quality_requirements": {
+        "duration": "8-25 segundos",
+        "signal_to_noise": "> 2.0",
+        "silence_ratio": "< 0.25",
+        "background_noise": "< 0.02",
+        "min_score": 60
+    },
+    "last_updated": "2025-06-09 18:30:00"
+}
