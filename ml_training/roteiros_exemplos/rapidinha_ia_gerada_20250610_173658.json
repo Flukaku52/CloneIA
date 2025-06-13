@@ -1,0 +1,75 @@
+{
+  "id": "rapidinha_ia_gerada_20250610_173658",
+  "data_criacao": "2025-06-10T17:36:58.640814",
+  "tipo": "rapidinha_cripto_ia",
+  "fonte": "ia_automatica",
+  "noticias_utilizadas": [
+    {
+      "titulo": "Projeto de lei propõe uso de blockchain para registro de empresas no Brasil",
+      "fonte": "Mock Source",
+      "relevancia": 40,
+      "duracao_estimada": 30
+    },
+    {
+      "titulo": "MicroStrategy compra mais 1.000 BTC e total chega a 200.000 moedas",
+      "fonte": "Mock Source",
+      "relevancia": 25,
+      "duracao_estimada": 33
+    },
+    {
+      "titulo": "Banco Central testa Drex em comunidades ribeirinhas da Amazônia",
+      "fonte": "Mock Source",
+      "relevancia": 25,
+      "duracao_estimada": 32
+    }
+  ],
+  "roteiro_estruturado": {
+    "introducao": "FALACAMBADA! Tô aqui de novo com as notícias da semana",
+    "segmentos": [
+      {
+        "titulo": "Projeto de lei propõe uso de tecnologia descentralizada para registro de empresas no Brasil",
+        "texto": "Seguinte: Tramita no Congresso Nacional um projeto de lei que pretende modernizar o processo de abertura de empresas no Brasil usando tecnologia blockchain (que é um sistema onde as informações ficam registradas de forma descentralizada, sem depender de um banco ou governo). A proposta sugere que todos os registros empresariais sejam armazenados em uma rede descentralizada, garantindo maior transparência e reduzindo fraudes. O sistema eliminaria intermediários burocráticos e aceleraria processos que hoje podem levar semanas. Advogados e empresários apoiam a iniciativa mas alertam para a necessidade de capacitação dos órgãos públicos para implementar a tecnologia adequadamente.\n\nModernização é boa mas liberdade individual tem que ser preservada nesse processo.",
+        "categoria": "regulacao_brasil",
+        "duracao_estimada": 43
+      },
+      {
+        "titulo": "MicroStrategy compra mais 1.000 BTC e total chega a 200.000 moedas",
+        "texto": "E aqui ó, uma importante: A MicroStrategy, empresa de software americana, anunciou a compra de mais mil bitcoin (a primeira moeda digital que não depende de banco central)s por cerca de 65 milhões de dólares. Com essa aquisição, a empresa agora possui aproximadamente 200 mil bitcoins em seu balanço, o que representa um investimento total de mais de 12 bilhões de dólares. O CEO Michael Saylor continua defendendo o Bitcoin como a melhor reserva de valor para empresas, especialmente em um cenário de inflação global. A estratégia da MicroStrategy tem inspirado outras empresas a diversificar suas reservas com criptomoedas.\n\nIsso mostra que o Bitcoin não é mais só 'dinheiro de internet' - tá virando reserva de valor institucional, fora do controle dos bancos centrais.",
+        "categoria": "adocao_empresarial",
+        "duracao_estimada": 49
+      },
+      {
+        "titulo": "Banco Central testa Drex em comunidades ribeirinhas da Amazônia",
+        "texto": "Agora presta atenção nessa aqui: O Banco Central do Brasil iniciou testes piloto do Drex (que é uma moeda digital controlada pelo banco central), o real digital brasileiro, em comunidades isoladas da região amazônica. A tecnologia permite que moradores façam pagamentos digitais mesmo sem conexão constante com a internet, sincronizando as transações quando a conectividade é restabelecida. O projeto visa ampliar a inclusão financeira em áreas rurais onde o acesso a bancos tradicionais é limitado. No entanto, especialistas alertam sobre questões de privacidade, já que todas as transações com moeda digital são rastreáveis pelo governo.\n\nA tecnologia é interessante pra inclusão mas diferente do dinheiro físico, aqui tudo fica rastreado. Liberdade financeira tem que estar no centro dessa conversa.",
+        "categoria": "cbdc_drex",
+        "duracao_estimada": 47
+      }
+    ],
+    "encerramento": "E é isso aí cambada. Falamos sobre empresas adotando cripto e movimentos governamentais, lembrando sempre que tecnologia boa + liberdade individual = futuro melhor. Sigo de olho."
+  },
+  "texto_completo": "FALACAMBADA! Tô aqui de novo com as notícias da semana\n\nSeguinte: Tramita no Congresso Nacional um projeto de lei que pretende modernizar o processo de abertura de empresas no Brasil usando tecnologia blockchain (que é um sistema onde as informações ficam registradas de forma descentralizada, sem depender de um banco ou governo). A proposta sugere que todos os registros empresariais sejam armazenados em uma rede descentralizada, garantindo maior transparência e reduzindo fraudes. O sistema eliminaria intermediários burocráticos e aceleraria processos que hoje podem levar semanas. Advogados e empresários apoiam a iniciativa mas alertam para a necessidade de capacitação dos órgãos públicos para implementar a tecnologia adequadamente.\n\nModernização é boa mas liberdade individual tem que ser preservada nesse processo.\n\nE aqui ó, uma importante: A MicroStrategy, empresa de software americana, anunciou a compra de mais mil bitcoin (a primeira moeda digital que não depende de banco central)s por cerca de 65 milhões de dólares. Com essa aquisição, a empresa agora possui aproximadamente 200 mil bitcoins em seu balanço, o que representa um investimento total de mais de 12 bilhões de dólares. O CEO Michael Saylor continua defendendo o Bitcoin como a melhor reserva de valor para empresas, especialmente em um cenário de inflação global. A estratégia da MicroStrategy tem inspirado outras empresas a diversificar suas reservas com criptomoedas.\n\nIsso mostra que o Bitcoin não é mais só 'dinheiro de internet' - tá virando reserva de valor institucional, fora do controle dos bancos centrais.\n\nAgora presta atenção nessa aqui: O Banco Central do Brasil iniciou testes piloto do Drex (que é uma moeda digital controlada pelo banco central), o real digital brasileiro, em comunidades isoladas da região amazônica. A tecnologia permite que moradores façam pagamentos digitais mesmo sem conexão constante com a internet, sincronizando as transações quando a conectividade é restabelecida. O projeto visa ampliar a inclusão financeira em áreas rurais onde o acesso a bancos tradicionais é limitado. No entanto, especialistas alertam sobre questões de privacidade, já que todas as transações com moeda digital são rastreáveis pelo governo.\n\nA tecnologia é interessante pra inclusão mas diferente do dinheiro físico, aqui tudo fica rastreado. Liberdade financeira tem que estar no centro dessa conversa.\n\nE é isso aí cambada. Falamos sobre empresas adotando cripto e movimentos governamentais, lembrando sempre que tecnologia boa + liberdade individual = futuro melhor. Sigo de olho.",
+  "configuracoes_geracao": {
+    "voice_profile": "fluido",
+    "voice_id": "default",
+    "formato": "portrait",
+    "avatar_rotacao": true
+  },
+  "controle_duracao": {
+    "duracao_alvo_segundos": 180,
+    "duracao_estimada_segundos": 155,
+    "duracao_minutos": 2.6,
+    "dentro_limite": true,
+    "num_noticias": 3,
+    "palavras_total": 388
+  },
+  "metadados": {
+    "num_segmentos": 3,
+    "categorias_abordadas": [
+      "adocao_empresarial",
+      "cbdc_drex",
+      "regulacao_brasil"
+    ],
+    "score_medio_relevancia": 30.0,
+    "vies_aplicado": "libertario_educativo"
+  }
+}

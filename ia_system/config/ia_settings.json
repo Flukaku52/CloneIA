@@ -1,0 +1,122 @@
+{
+    "sistema_ia": {
+        "versao": "1.0",
+        "perfil_usuario": {
+            "tom": "educativo_libertario",
+            "publico_alvo": "leigo_iniciante",
+            "vieses": [
+                "libertario_moderado",
+                "educativo",
+                "anti_controle_governamental",
+                "pro_descentralizacao"
+            ],
+            "expressoes_caracteristicas": [
+                "EAÍCAMBADA",
+                "cambada", 
+                "baita",
+                "tão",
+                "sigo de olho",
+                "presta atenção",
+                "seguinte"
+            ]
+        },
+        
+        "fontes_noticias": {
+            "principais": [
+                "coindesk.com",
+                "cointelegraph.com", 
+                "bitcoinmagazine.com",
+                "decrypt.co",
+                "blockworks.co"
+            ],
+            "brasileiras": [
+                "portaldobitcoin.uol.com.br",
+                "livecoins.com.br",
+                "criptomoedas.com.br"
+            ],
+            "institucionais": [
+                "bancocentral.gov.br",
+                "sec.gov",
+                "reuters.com/technology/crypto",
+                "bloomberg.com/crypto"
+            ],
+            "twitter_perfis": {
+                "brasileiros": [
+                    "@bitdov",
+                    "@caueconomy",
+                    "@hi_disruptivas", 
+                    "@rennoguil",
+                    "@carol_bitcoin",
+                    "@bitconheiros",
+                    "@paradigmaedu",
+                    "@castacrypto"
+                ],
+                "internacionais": [
+                    "@0xCVYH",
+                    "@OutsiderPapini",
+                    "@bitcoinmagazine",
+                    "@bscnews"
+                ],
+                "prioridade": "alta",
+                "frequencia_coleta": "15_minutos",
+                "filtros": [
+                    "cripto",
+                    "bitcoin",
+                    "blockchain", 
+                    "defi",
+                    "regulacao",
+                    "adocao",
+                    "brasil"
+                ]
+            }
+        },
+        
+        "criterios_selecao": {
+            "periodo_dias": 5,
+            "verificacao_multiplas_fontes": true,
+            "foco_adocao": true,
+            "evitar_especulacao": true,
+            "priorizar_casos_uso": true,
+            "incluir_regulacao": true,
+            "nivel_tecnico": "intermediario_com_explicacao"
+        },
+        
+        "estrutura_roteiro": {
+            "introducao": "EAÍCAMBADA! Já tô de volta por aqui e bora pras notícias.",
+            "transicoes": [
+                "Seguinte:",
+                "Agora uma que pouca gente tá falando:",
+                "Agora presta atenção nessa aqui:",
+                "E por último:"
+            ],
+            "encerramento_base": "Por hoje é isso cambada. [resumo] Sigo de olho.",
+            "min_noticias": 2,
+            "max_noticias": 3,
+            "duracao_target_min": 120,
+            "duracao_target_max": 180,
+            "palavras_por_segundo": 2.5,
+            "tempo_introducao_segundos": 8,
+            "tempo_encerramento_segundos": 12
+        },
+        
+        "topics_prioritarios": [
+            "adocao_empresarial",
+            "regulacao_brasil",
+            "casos_uso_real", 
+            "cbdc_drex",
+            "infraestrutura_blockchain",
+            "educacao_financeira",
+            "descentralizacao_vs_controle"
+        ],
+        
+        "explicacoes_termos": {
+            "blockchain": "sistema descentralizado de registros",
+            "bitcoin": "primeira moeda digital descentralizada",
+            "cbdc": "moeda digital de banco central",
+            "defi": "finanças descentralizadas",
+            "staking": "processo de validação que gera recompensas",
+            "wallet": "carteira digital para guardar criptomoedas",
+            "smart_contract": "contrato que executa automaticamente"
+        }
+    }
+}

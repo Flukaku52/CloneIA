@@ -1,0 +1,88 @@
+{
+  "id": "rapidinha_ia_gerada_20250610_173645",
+  "data_criacao": "2025-06-10T17:36:45.965530",
+  "tipo": "rapidinha_cripto_ia",
+  "fonte": "ia_automatica",
+  "noticias_utilizadas": [
+    {
+      "titulo": "Projeto de lei propõe uso de blockchain para registro de empresas no Brasil",
+      "fonte": "Mock Source",
+      "relevancia": 40,
+      "duracao_estimada": 30
+    },
+    {
+      "titulo": "MicroStrategy compra mais 1.000 BTC e total chega a 200.000 moedas",
+      "fonte": "Mock Source",
+      "relevancia": 25,
+      "duracao_estimada": 33
+    },
+    {
+      "titulo": "Banco Central testa Drex em comunidades ribeirinhas da Amazônia",
+      "fonte": "Mock Source",
+      "relevancia": 25,
+      "duracao_estimada": 32
+    },
+    {
+      "titulo": "El Salvador registra 10% de aumento no PIB após adoção do Bitcoin",
+      "fonte": "Mock Source",
+      "relevancia": 25,
+      "duracao_estimada": 31
+    }
+  ],
+  "roteiro_estruturado": {
+    "introducao": "EAÍCAMBADA! Já tô de volta por aqui e bora pras notícias",
+    "segmentos": [
+      {
+        "titulo": "Projeto de lei propõe uso de tecnologia descentralizada para registro de empresas no Brasil",
+        "texto": "Olha só essa notícia: Tramita no Congresso Nacional um projeto de lei que pretende modernizar o processo de abertura de empresas no Brasil usando tecnologia blockchain (que é um sistema onde as informações ficam registradas de forma descentralizada, sem depender de um banco ou governo). A proposta sugere que todos os registros empresariais sejam armazenados em uma rede descentralizada, garantindo maior transparência e reduzindo fraudes. O sistema eliminaria intermediários burocráticos e aceleraria processos que hoje podem levar semanas. Advogados e empresários apoiam a iniciativa mas alertam para a necessidade de capacitação dos órgãos públicos para implementar a tecnologia adequadamente.\n\nModernização é boa mas liberdade individual tem que ser preservada nesse processo.",
+        "categoria": "regulacao_brasil",
+        "duracao_estimada": 44
+      },
+      {
+        "titulo": "MicroStrategy compra mais 1.000 BTC e total chega a 200.000 moedas",
+        "texto": "Agora uma que pouca gente tá falando: A MicroStrategy, empresa de software americana, anunciou a compra de mais mil bitcoin (a primeira moeda digital que não depende de banco central)s por cerca de 65 milhões de dólares. Com essa aquisição, a empresa agora possui aproximadamente 200 mil bitcoins em seu balanço, o que representa um investimento total de mais de 12 bilhões de dólares. O CEO Michael Saylor continua defendendo o Bitcoin como a melhor reserva de valor para empresas, especialmente em um cenário de inflação global. A estratégia da MicroStrategy tem inspirado outras empresas a diversificar suas reservas com criptomoedas.\n\nIsso mostra que o Bitcoin não é mais só 'dinheiro de internet' - tá virando reserva de valor institucional, fora do controle dos bancos centrais.",
+        "categoria": "adocao_empresarial",
+        "duracao_estimada": 50
+      },
+      {
+        "titulo": "Banco Central testa Drex em comunidades ribeirinhas da Amazônia",
+        "texto": "Agora presta atenção nessa aqui: O Banco Central do Brasil iniciou testes piloto do Drex (que é uma moeda digital controlada pelo banco central), o real digital brasileiro, em comunidades isoladas da região amazônica. A tecnologia permite que moradores façam pagamentos digitais mesmo sem conexão constante com a internet, sincronizando as transações quando a conectividade é restabelecida. O projeto visa ampliar a inclusão financeira em áreas rurais onde o acesso a bancos tradicionais é limitado. No entanto, especialistas alertam sobre questões de privacidade, já que todas as transações com moeda digital são rastreáveis pelo governo.\n\nInclusão financeira é importante mas precisamos ficar atentos pra isso não virar ferramenta de controle do que a gente faz com nosso dinheiro.",
+        "categoria": "cbdc_drex",
+        "duracao_estimada": 47
+      },
+      {
+        "titulo": "El Salvador registra 10% de aumento no PIB após adoção do Bitcoin",
+        "texto": "Seguinte: El Salvador, primeiro país a adotar o Bitcoin (a primeira moeda digital que não depende de banco central) como moeda oficial, reportou crescimento de dez por cento em seu PIB no último trimestre. O governo atribui parte desse crescimento ao aumento do turismo e investimentos estrangeiros relacionados à política pró-Bitcoin. A estratégia do presidente Nayib Bukele de comprar bitcoins com recursos públicos se mostrou lucrativa, com ganhos que ajudaram a financiar programas sociais. Mesmo com críticas do FMI, o país planeja expandir o uso de criptomoedas na economia local.\n\nCasos assim mostram o poder da descentralização financeira na prática, dando mais opções pro povo.",
+        "categoria": "casos_uso_real",
+        "duracao_estimada": 42
+      }
+    ],
+    "encerramento": "Terminando por aqui. Empresas adotando cripto e movimentos governamentais, sempre analisando os dois lados da moeda. Sigo de olho."
+  },
+  "texto_completo": "EAÍCAMBADA! Já tô de volta por aqui e bora pras notícias\n\nOlha só essa notícia: Tramita no Congresso Nacional um projeto de lei que pretende modernizar o processo de abertura de empresas no Brasil usando tecnologia blockchain (que é um sistema onde as informações ficam registradas de forma descentralizada, sem depender de um banco ou governo). A proposta sugere que todos os registros empresariais sejam armazenados em uma rede descentralizada, garantindo maior transparência e reduzindo fraudes. O sistema eliminaria intermediários burocráticos e aceleraria processos que hoje podem levar semanas. Advogados e empresários apoiam a iniciativa mas alertam para a necessidade de capacitação dos órgãos públicos para implementar a tecnologia adequadamente.\n\nModernização é boa mas liberdade individual tem que ser preservada nesse processo.\n\nAgora uma que pouca gente tá falando: A MicroStrategy, empresa de software americana, anunciou a compra de mais mil bitcoin (a primeira moeda digital que não depende de banco central)s por cerca de 65 milhões de dólares. Com essa aquisição, a empresa agora possui aproximadamente 200 mil bitcoins em seu balanço, o que representa um investimento total de mais de 12 bilhões de dólares. O CEO Michael Saylor continua defendendo o Bitcoin como a melhor reserva de valor para empresas, especialmente em um cenário de inflação global. A estratégia da MicroStrategy tem inspirado outras empresas a diversificar suas reservas com criptomoedas.\n\nIsso mostra que o Bitcoin não é mais só 'dinheiro de internet' - tá virando reserva de valor institucional, fora do controle dos bancos centrais.\n\nAgora presta atenção nessa aqui: O Banco Central do Brasil iniciou testes piloto do Drex (que é uma moeda digital controlada pelo banco central), o real digital brasileiro, em comunidades isoladas da região amazônica. A tecnologia permite que moradores façam pagamentos digitais mesmo sem conexão constante com a internet, sincronizando as transações quando a conectividade é restabelecida. O projeto visa ampliar a inclusão financeira em áreas rurais onde o acesso a bancos tradicionais é limitado. No entanto, especialistas alertam sobre questões de privacidade, já que todas as transações com moeda digital são rastreáveis pelo governo.\n\nInclusão financeira é importante mas precisamos ficar atentos pra isso não virar ferramenta de controle do que a gente faz com nosso dinheiro.\n\nSeguinte: El Salvador, primeiro país a adotar o Bitcoin (a primeira moeda digital que não depende de banco central) como moeda oficial, reportou crescimento de dez por cento em seu PIB no último trimestre. O governo atribui parte desse crescimento ao aumento do turismo e investimentos estrangeiros relacionados à política pró-Bitcoin. A estratégia do presidente Nayib Bukele de comprar bitcoins com recursos públicos se mostrou lucrativa, com ganhos que ajudaram a financiar programas sociais. Mesmo com críticas do FMI, o país planeja expandir o uso de criptomoedas na economia local.\n\nCasos assim mostram o poder da descentralização financeira na prática, dando mais opções pro povo.\n\nTerminando por aqui. Empresas adotando cripto e movimentos governamentais, sempre analisando os dois lados da moeda. Sigo de olho.",
+  "configuracoes_geracao": {
+    "voice_profile": "fluido",
+    "voice_id": "default",
+    "formato": "portrait",
+    "avatar_rotacao": true
+  },
+  "controle_duracao": {
+    "duracao_alvo_segundos": 180,
+    "duracao_estimada_segundos": 196,
+    "duracao_minutos": 3.3,
+    "dentro_limite": false,
+    "num_noticias": 4,
+    "palavras_total": 490
+  },
+  "metadados": {
+    "num_segmentos": 4,
+    "categorias_abordadas": [
+      "regulacao_brasil",
+      "cbdc_drex",
+      "adocao_empresarial",
+      "casos_uso_real"
+    ],
+    "score_medio_relevancia": 28.75,
+    "vies_aplicado": "libertario_educativo"
+  }
+}

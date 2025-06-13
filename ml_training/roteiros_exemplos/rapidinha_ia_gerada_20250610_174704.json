@@ -1,0 +1,75 @@
+{
+  "id": "rapidinha_ia_gerada_20250610_174704",
+  "data_criacao": "2025-06-10T17:47:04.474881",
+  "tipo": "rapidinha_cripto_ia",
+  "fonte": "ia_automatica",
+  "noticias_utilizadas": [
+    {
+      "titulo": "URGENTE Banco Central do Brasil anuncia nova fase de testes...",
+      "fonte": "Twitter - @bitdov",
+      "relevancia": 30,
+      "duracao_estimada": 26
+    },
+    {
+      "titulo": "Projeto de lei no Congresso propõe uso de blockchain para...",
+      "fonte": "Twitter - @caueconomy",
+      "relevancia": 30,
+      "duracao_estimada": 26
+    },
+    {
+      "titulo": "MicroStrategy adiciona mais 1.000 BTC ao seu balanço totalizando agora...",
+      "fonte": "Twitter - @carol_bitcoin",
+      "relevancia": 25,
+      "duracao_estimada": 26
+    }
+  ],
+  "roteiro_estruturado": {
+    "introducao": "EAÍCAMBADA! E aí como é que tá? Bora para mais uma rapidinha",
+    "segmentos": [
+      {
+        "titulo": "URGENTE Banco Central do Brasil anuncia nova fase de testes...",
+        "texto": "E aqui ó, uma importante: URGENTE: Banco Central do Brasil anuncia nova fase de testes do Drex (que é uma moeda digital controlada pelo banco central) em comunidades rurais. Tecnologia permite pagamentos offline sincronizados quando há conexão. Avanço na inclusão financeira mas questões de privacidade seguem em debate. O projeto faz parte da estratégia do Banco Central para modernizar o sistema financeiro brasileiro e ampliar a inclusão financeira. A tecnologia permite transações digitais mesmo em áreas com conectividade limitada.\n\nA tecnologia é interessante pra inclusão mas diferente do dinheiro físico, aqui tudo fica rastreado. Liberdade financeira tem que estar no centro dessa conversa.",
+        "categoria": "cbdc_drex",
+        "duracao_estimada": 41
+      },
+      {
+        "titulo": "Projeto de lei no Congresso propõe uso de tecnologia descentralizada para...",
+        "texto": "Olha só essa notícia: Projeto de lei no Congresso propõe uso de blockchain (que é um sistema onde as informações ficam registradas de forma descentralizada, sem depender de um banco ou governo) para registro de empresas no Brasil. Transparência + velocidade + menos burocracia = futuro que a gente quer ver! Mas sempre de olho para não virar mais uma ferramenta de controle. A proposta tramita no Congresso e conta com apoio de empresários e advogados. O objetivo é modernizar processos burocráticos e aumentar a transparência nos registros públicos.\n\nModernização é boa mas liberdade individual tem que ser preservada nesse processo.",
+        "categoria": "regulacao_brasil",
+        "duracao_estimada": 40
+      },
+      {
+        "titulo": "MicroStrategy adiciona mais 1.000 BTC ao seu balanço totalizando agora...",
+        "texto": "Agora presta atenção nessa aqui: MicroStrategy adiciona mais 1.000 BTC ao seu balanço, totalizando agora 200.000 bitcoin (a primeira moeda digital que não depende de banco central)s! 🚀 Michael Saylor continua provando que Bitcoin é a melhor reserva de valor para empresas. Outros CEOs vão seguir o exemplo? Esta movimentação reflete a crescente adoção do Bitcoin por empresas como reserva de valor, especialmente em cenários de alta inflação global. A estratégia tem inspirado outras corporações a diversificar suas reservas com ativos digitais.\n\nEmpresas diversificando além do dólar mostra que a busca por ativos descentralizados tá crescendo.",
+        "categoria": "adocao_empresarial",
+        "duracao_estimada": 38
+      }
+    ],
+    "encerramento": "E é isso aí cambada. Falamos sobre movimentos governamentais, lembrando sempre que tecnologia boa + liberdade individual = futuro melhor. Sigo de olho."
+  },
+  "texto_completo": "EAÍCAMBADA! E aí como é que tá? Bora para mais uma rapidinha\n\nE aqui ó, uma importante: URGENTE: Banco Central do Brasil anuncia nova fase de testes do Drex (que é uma moeda digital controlada pelo banco central) em comunidades rurais. Tecnologia permite pagamentos offline sincronizados quando há conexão. Avanço na inclusão financeira mas questões de privacidade seguem em debate. O projeto faz parte da estratégia do Banco Central para modernizar o sistema financeiro brasileiro e ampliar a inclusão financeira. A tecnologia permite transações digitais mesmo em áreas com conectividade limitada.\n\nA tecnologia é interessante pra inclusão mas diferente do dinheiro físico, aqui tudo fica rastreado. Liberdade financeira tem que estar no centro dessa conversa.\n\nOlha só essa notícia: Projeto de lei no Congresso propõe uso de blockchain (que é um sistema onde as informações ficam registradas de forma descentralizada, sem depender de um banco ou governo) para registro de empresas no Brasil. Transparência + velocidade + menos burocracia = futuro que a gente quer ver! Mas sempre de olho para não virar mais uma ferramenta de controle. A proposta tramita no Congresso e conta com apoio de empresários e advogados. O objetivo é modernizar processos burocráticos e aumentar a transparência nos registros públicos.\n\nModernização é boa mas liberdade individual tem que ser preservada nesse processo.\n\nAgora presta atenção nessa aqui: MicroStrategy adiciona mais 1.000 BTC ao seu balanço, totalizando agora 200.000 bitcoin (a primeira moeda digital que não depende de banco central)s! 🚀 Michael Saylor continua provando que Bitcoin é a melhor reserva de valor para empresas. Outros CEOs vão seguir o exemplo? Esta movimentação reflete a crescente adoção do Bitcoin por empresas como reserva de valor, especialmente em cenários de alta inflação global. A estratégia tem inspirado outras corporações a diversificar suas reservas com ativos digitais.\n\nEmpresas diversificando além do dólar mostra que a busca por ativos descentralizados tá crescendo.\n\nE é isso aí cambada. Falamos sobre movimentos governamentais, lembrando sempre que tecnologia boa + liberdade individual = futuro melhor. Sigo de olho.",
+  "configuracoes_geracao": {
+    "voice_profile": "fluido",
+    "voice_id": "default",
+    "formato": "portrait",
+    "avatar_rotacao": true
+  },
+  "controle_duracao": {
+    "duracao_alvo_segundos": 180,
+    "duracao_estimada_segundos": 134,
+    "duracao_minutos": 2.2,
+    "dentro_limite": true,
+    "num_noticias": 3,
+    "palavras_total": 335
+  },
+  "metadados": {
+    "num_segmentos": 3,
+    "categorias_abordadas": [
+      "adocao_empresarial",
+      "cbdc_drex",
+      "regulacao_brasil"
+    ],
+    "score_medio_relevancia": 28.333333333333332,
+    "vies_aplicado": "libertario_educativo"
+  }
+}

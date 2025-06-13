@@ -1,0 +1,100 @@
+{
+  "versao": "1.0",
+  "ultima_atualizacao": "2025-01-06",
+  "descricao": "Configurações finais testadas e aprovadas para geração de reels",
+  
+  "audio": {
+    "plataforma": "ElevenLabs",
+    "voice_id": "25NR0sM9ehsgXaoknsxO",
+    "profile_name": "FlukakuFluido", 
+    "configuracoes": {
+      "stability": 0.2,
+      "similarity_boost": 0.7,
+      "style": 0.0,
+      "use_speaker_boost": true
+    },
+    "formato_arquivo": "mp3",
+    "qualidade": "alta"
+  },
+  
+  "video": {
+    "plataforma": "HeyGen",
+    "metodo": "web_interface",
+    "avatar_id": "3034bbd37f2540ddb70c90c7f67b4f5c",
+    "configuracoes": {
+      "formato": "9:16",
+      "resolucao": {
+        "width": 1080,
+        "height": 1920
+      },
+      "background": "#000000",
+      "avatar_style": "normal"
+    },
+    "creditos_disponveis": 360
+  },
+  
+  "estrutura_roteiro": {
+    "segmentos": 5,
+    "ordem": [
+      "abertura",
+      "noticia_1", 
+      "noticia_2",
+      "noticia_3",
+      "fechamento"
+    ],
+    "duracao_estimada": {
+      "abertura": "15-20s",
+      "noticias": "3-5min cada",
+      "fechamento": "45-60s",
+      "total": "2-3min"
+    }
+  },
+  
+  "estilo_linguistico": {
+    "expressoes_marca": [
+      "cambada",
+      "bora", 
+      "sigo de olho",
+      "querendo ou não",
+      "olha esse dado"
+    ],
+    "tom": "libertário, otimista, conversacional",
+    "abertura_padrao": "E aí cambada! Olha eu aí deново. Bora pras novas!",
+    "fechamento_padrao": "Por hoje é isso cambada. [resumo]. Sigo de olho.",
+    "ajustes_ia": {
+      "numeros_por_extenso": true,
+      "pausas_dramaticas": true,
+      "pronuncia_adaptada": {
+        "Connecticut": "Conecticut"
+      }
+    }
+  },
+  
+  "processo_producao": {
+    "etapas": [
+      "1. Escrever roteiro com pausas",
+      "2. Gerar 5 áudios separados (ElevenLabs)",
+      "3. Upload na interface HeyGen",
+      "4. Gerar 5 vídeos separados", 
+      "5. Editar juntando com cortes secos",
+      "6. Exportar em 9:16 para reels"
+    ],
+    "tempo_estimado": "1-2 horas total",
+    "softwares_edicao": ["CapCut", "Premiere", "DaVinci"]
+  },
+  
+  "diretorios": {
+    "scripts": "/scripts/",
+    "audio_output": "/output/reel_[nome]/segments/",
+    "video_output": "/output/videos_heygen_final/", 
+    "ml_training": "/ml_training/roteiros_exemplos/"
+  },
+  
+  "observacoes": [
+    "Sempre salvar roteiro como exemplo ML",
+    "HeyGen interface web mais estável que API",
+    "Cortes secos obrigatórios (sem transições)",
+    "Background preto sempre",
+    "Pausas antes de 'Sigo de olho' são essenciais"
+  ]
+}

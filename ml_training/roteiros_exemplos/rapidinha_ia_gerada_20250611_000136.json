@@ -1,0 +1,62 @@
+{
+  "id": "rapidinha_ia_gerada_20250611_000136",
+  "data_criacao": "2025-06-11T00:01:36.251325",
+  "tipo": "rapidinha_cripto_ia",
+  "fonte": "ia_automatica",
+  "noticias_utilizadas": [
+    {
+      "titulo": "El Salvador reports 10 GDP growth following Bitcoin adoption. Tourism...",
+      "fonte": "Twitter - @bitcoinmagazine",
+      "relevancia": 65,
+      "duracao_estimada": 20
+    },
+    {
+      "titulo": "BlackRock Bitcoin ETF Surpasses $50 Billion in Assets Under Management",
+      "fonte": "CoinDesk",
+      "relevancia": 55,
+      "duracao_estimada": 15
+    }
+  ],
+  "roteiro_estruturado": {
+    "introducao": "EAÍCAMBADA! Já tô de volta por aqui e bora pras notícias",
+    "segmentos": [
+      {
+        "titulo": "El Salvador reports 10 GDP growth following Bitcoin adoption. Tourism...",
+        "texto": "E aqui ó, uma importante: El Salvador reports 10% GDP growth following Bitcoin (a primeira moeda digital que não depende de banco central) adoption. Tourism up 30%, foreign investment flowing in. President Bukele: \"Bitcoin is working exactly as we planned.\" Critics from IMF remain silent. Este caso demonstra como a adoção de criptomoedas pode impactar positivamente a economia de um país, atraindo investimentos e turismo internacional.\n\nCasos assim mostram o poder da descentralização financeira na prática, dando mais opções pro povo.",
+        "categoria": "casos_uso_real",
+        "duracao_estimada": 32
+      },
+      {
+        "titulo": "BlackRock Bitcoin fundo de investimento Surpasses $50 Billion in Assets Under Management",
+        "texto": "Agora presta atenção nessa aqui: BlackRock's Bitcoin (a primeira moeda digital que não depende de banco central) exchange-traded fund has reached a new milestone, surpassing $50 billion in assets under management. The fund continues to attract institutional investors seeking regulated exposure to Bitcoin. This growth reflects the increasing mainstream adoption of cryptocurrency investment products.\n\nEmpresas diversificando além do dólar mostra que a busca por ativos descentralizados tá crescendo.",
+        "categoria": "adocao_empresarial",
+        "duracao_estimada": 27
+      }
+    ],
+    "encerramento": "Por hoje é isso cambada. Várias notícias importantes, sempre de olho na nossa liberdade financeira. Sigo de olho."
+  },
+  "texto_completo": "EAÍCAMBADA! Já tô de volta por aqui e bora pras notícias\n\nE aqui ó, uma importante: El Salvador reports 10% GDP growth following Bitcoin (a primeira moeda digital que não depende de banco central) adoption. Tourism up 30%, foreign investment flowing in. President Bukele: \"Bitcoin is working exactly as we planned.\" Critics from IMF remain silent. Este caso demonstra como a adoção de criptomoedas pode impactar positivamente a economia de um país, atraindo investimentos e turismo internacional.\n\nCasos assim mostram o poder da descentralização financeira na prática, dando mais opções pro povo.\n\nAgora presta atenção nessa aqui: BlackRock's Bitcoin (a primeira moeda digital que não depende de banco central) exchange-traded fund has reached a new milestone, surpassing $50 billion in assets under management. The fund continues to attract institutional investors seeking regulated exposure to Bitcoin. This growth reflects the increasing mainstream adoption of cryptocurrency investment products.\n\nEmpresas diversificando além do dólar mostra que a busca por ativos descentralizados tá crescendo.\n\nPor hoje é isso cambada. Várias notícias importantes, sempre de olho na nossa liberdade financeira. Sigo de olho.",
+  "configuracoes_geracao": {
+    "voice_profile": "fluido",
+    "voice_id": "default",
+    "formato": "portrait",
+    "avatar_rotacao": true
+  },
+  "controle_duracao": {
+    "duracao_alvo_segundos": 180,
+    "duracao_estimada_segundos": 71,
+    "duracao_minutos": 1.2,
+    "dentro_limite": false,
+    "num_noticias": 2,
+    "palavras_total": 178
+  },
+  "metadados": {
+    "num_segmentos": 2,
+    "categorias_abordadas": [
+      "adocao_empresarial",
+      "casos_uso_real"
+    ],
+    "score_medio_relevancia": 60.0,
+    "vies_aplicado": "libertario_educativo"
+  }
+}

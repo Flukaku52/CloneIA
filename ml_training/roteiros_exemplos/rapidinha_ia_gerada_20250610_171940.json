@@ -1,0 +1,72 @@
+{
+  "id": "rapidinha_ia_gerada_20250610_171940",
+  "data_criacao": "2025-06-10T17:19:40.988771",
+  "tipo": "rapidinha_cripto_ia",
+  "fonte": "ia_automatica",
+  "noticias_utilizadas": [
+    {
+      "titulo": "Projeto de lei propõe uso de blockchain para registro de empresas no Brasil",
+      "fonte": "Mock Source",
+      "relevancia": 40
+    },
+    {
+      "titulo": "MicroStrategy compra mais 1.000 BTC e total chega a 200.000 moedas",
+      "fonte": "Mock Source",
+      "relevancia": 25
+    },
+    {
+      "titulo": "Banco Central testa Drex em comunidades ribeirinhas da Amazônia",
+      "fonte": "Mock Source",
+      "relevancia": 25
+    },
+    {
+      "titulo": "El Salvador registra 10% de aumento no PIB após adoção do Bitcoin",
+      "fonte": "Mock Source",
+      "relevancia": 25
+    }
+  ],
+  "roteiro_estruturado": {
+    "introducao": "FALACAMBADA! Tô aqui de novo com as notícias da semana",
+    "segmentos": [
+      {
+        "titulo": "Projeto de lei propõe uso de tecnologia descentralizada para registro de empresas no Brasil",
+        "texto": "Olha só essa notícia: Conteúdo detalhado sobre projeto de lei propõe uso de blockchain (que é um sistema onde as informações ficam registradas de forma descentralizada, sem depender de um banco ou governo) para registro de empresas no brasil...\n\nModernização é boa mas liberdade individual tem que ser preservada nesse processo.",
+        "categoria": "regulacao_brasil"
+      },
+      {
+        "titulo": "MicroStrategy compra mais 1.000 BTC e total chega a 200.000 moedas",
+        "texto": "E aqui ó, uma importante: Conteúdo detalhado sobre microstrategy compra mais 1.000 btc (a primeira moeda digital que não depende de banco central) e total chega a 200.000 moedas...\n\nIsso mostra que o Bitcoin não é mais só 'dinheiro de internet' - tá virando reserva de valor institucional, fora do controle dos bancos centrais.",
+        "categoria": "adocao_empresarial"
+      },
+      {
+        "titulo": "Banco Central testa Drex em comunidades ribeirinhas da Amazônia",
+        "texto": "Seguinte: Conteúdo detalhado sobre banco central testa drex (que é uma moeda digital controlada pelo banco central) em comunidades ribeirinhas da amazônia...\n\nA tecnologia é interessante pra inclusão mas diferente do dinheiro físico, aqui tudo fica rastreado. Liberdade financeira tem que estar no centro dessa conversa.",
+        "categoria": "cbdc_drex"
+      },
+      {
+        "titulo": "El Salvador registra 10% de aumento no PIB após adoção do Bitcoin",
+        "texto": "Agora uma que pouca gente tá falando: Conteúdo detalhado sobre el salvador registra 10% de aumento no pib após adoção do bitcoin (a primeira moeda digital que não depende de banco central)...\n\nÉ isso que acontece quando as pessoas têm mais opções financeiras: liberdade gera prosperidade.",
+        "categoria": "casos_uso_real"
+      }
+    ],
+    "encerramento": "Terminando por aqui. Empresas adotando cripto e movimentos governamentais, sempre analisando os dois lados da moeda. Sigo de olho."
+  },
+  "texto_completo": "FALACAMBADA! Tô aqui de novo com as notícias da semana\n\nOlha só essa notícia: Conteúdo detalhado sobre projeto de lei propõe uso de blockchain (que é um sistema onde as informações ficam registradas de forma descentralizada, sem depender de um banco ou governo) para registro de empresas no brasil...\n\nModernização é boa mas liberdade individual tem que ser preservada nesse processo.\n\nE aqui ó, uma importante: Conteúdo detalhado sobre microstrategy compra mais 1.000 btc (a primeira moeda digital que não depende de banco central) e total chega a 200.000 moedas...\n\nIsso mostra que o Bitcoin não é mais só 'dinheiro de internet' - tá virando reserva de valor institucional, fora do controle dos bancos centrais.\n\nSeguinte: Conteúdo detalhado sobre banco central testa drex (que é uma moeda digital controlada pelo banco central) em comunidades ribeirinhas da amazônia...\n\nA tecnologia é interessante pra inclusão mas diferente do dinheiro físico, aqui tudo fica rastreado. Liberdade financeira tem que estar no centro dessa conversa.\n\nAgora uma que pouca gente tá falando: Conteúdo detalhado sobre el salvador registra 10% de aumento no pib após adoção do bitcoin (a primeira moeda digital que não depende de banco central)...\n\nÉ isso que acontece quando as pessoas têm mais opções financeiras: liberdade gera prosperidade.\n\nTerminando por aqui. Empresas adotando cripto e movimentos governamentais, sempre analisando os dois lados da moeda. Sigo de olho.",
+  "configuracoes_geracao": {
+    "voice_profile": "fluido",
+    "voice_id": "default",
+    "formato": "portrait",
+    "avatar_rotacao": true
+  },
+  "metadados": {
+    "num_segmentos": 4,
+    "categorias_abordadas": [
+      "adocao_empresarial",
+      "casos_uso_real",
+      "regulacao_brasil",
+      "cbdc_drex"
+    ],
+    "score_medio_relevancia": 28.75,
+    "vies_aplicado": "libertario_educativo"
+  }
+}

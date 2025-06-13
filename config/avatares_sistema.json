@@ -2,28 +2,93 @@
     "avatares_disponiveis": [
         {
             "id": "bde6a19874124e12b230248bff9ed903",
-            "nome": "novo_avatar_teste", 
+            "nome": "novo_avatar_teste",
             "descricao": "Avatar principal atual",
             "status": "ativo",
             "ultimo_uso": "2025-06-10",
-            "total_usos": 1
+            "total_usos": 4
         },
         {
             "id": "bd9548bed4984738a93b0db0c6c3edc9",
             "nome": "flukakudabet",
             "descricao": "Avatar backup/rei jamb",
-            "status": "ativo", 
-            "ultimo_uso": "2025-06-09",
-            "total_usos": 1
+            "status": "ativo",
+            "ultimo_uso": "2025-06-10",
+            "total_usos": 4
+        },
+        {
+            "id": "670f73152cff47039134d5a2c27a7f76",
+            "nome": "avatar_terceiro",
+            "descricao": "Terceiro avatar adicionado ao sistema",
+            "status": "ativo",
+            "ultimo_uso": "2025-06-10",
+            "total_usos": 3
+        },
+        {
+            "id": "86454c7113894f6f8dc0496025cd8346",
+            "nome": "avatar_quarto",
+            "descricao": "Quarto avatar adicionado ao sistema",
+            "status": "ativo",
+            "ultimo_uso": "2025-06-10",
+            "total_usos": 2
+        },
+        {
+            "id": "ad46ec4202394d9aa33bcf5974bac416",
+            "nome": "avatar_quinto",
+            "descricao": "Quinto avatar adicionado ao sistema",
+            "status": "ativo",
+            "ultimo_uso": "2025-06-10",
+            "total_usos": 2
         }
     ],
     "configuracao_rotacao": {
         "modo_rotacao": "sequencial",
         "proximo_avatar_index": 0,
-        "historico_ultimos_usos": []
+        "historico_ultimos_usos": [
+            {
+                "avatar_id": "bde6a19874124e12b230248bff9ed903",
+                "data": "2025-06-10"
+            },
+            {
+                "avatar_id": "bd9548bed4984738a93b0db0c6c3edc9",
+                "data": "2025-06-10"
+            },
+            {
+                "avatar_id": "670f73152cff47039134d5a2c27a7f76",
+                "data": "2025-06-10"
+            },
+            {
+                "avatar_id": "86454c7113894f6f8dc0496025cd8346",
+                "data": "2025-06-10"
+            },
+            {
+                "avatar_id": "ad46ec4202394d9aa33bcf5974bac416",
+                "data": "2025-06-10"
+            },
+            {
+                "avatar_id": "bde6a19874124e12b230248bff9ed903",
+                "data": "2025-06-10"
+            },
+            {
+                "avatar_id": "bd9548bed4984738a93b0db0c6c3edc9",
+                "data": "2025-06-10"
+            },
+            {
+                "avatar_id": "670f73152cff47039134d5a2c27a7f76",
+                "data": "2025-06-10"
+            },
+            {
+                "avatar_id": "86454c7113894f6f8dc0496025cd8346",
+                "data": "2025-06-10"
+            },
+            {
+                "avatar_id": "ad46ec4202394d9aa33bcf5974bac416",
+                "data": "2025-06-10"
+            }
+        ]
     },
     "estatisticas": {
-        "total_reels_gerados": 1,
+        "total_reels_gerados": 14,
         "avatar_mais_usado": "bde6a19874124e12b230248bff9ed903",
         "criado_em": "2025-06-10",
         "atualizado_em": "2025-06-10"

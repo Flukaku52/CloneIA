@@ -1,0 +1,56 @@
+{
+  "titulo": "Rapidinha no Cripto - Connecticut proíbe cripto, Brasil adota e Bitcoin em alta",
+  "data": "2025-01-11",
+  "autor": "Renato Santanna Silva",
+  "tipo": "rapidinha_manual",
+  "duracao_estimada": "2-3 minutos",
+  "estrutura": {
+    "abertura": "E aí cambada! Olha eu de volta aí e bora pras novas!",
+    "blocos": [
+      {
+        "tema": "Connecticut proíbe criptomoedas no governo",
+        "pontos_principais": [
+          "Lei proíbe governo de comprar/investir em cripto",
+          "Contraste com Texas, Wyoming e Colorado que estão liberando",
+          "Argumento de 'proteger da volatilidade' é desculpa para controle",
+          "Comparação com Drex (aceito) vs cripto descentralizada (proibida)"
+        ],
+        "tom": "crítico ao controle governamental"
+      },
+      {
+        "tema": "15% dos brasileiros já investem em cripto",
+        "pontos_principais": [
+          "Mais que dólar (14%), renda fixa (12%), ouro (9%) e ações (6%)",
+          "Só perde para poupança (52%)",
+          "Tendência de buscar alternativas fora do sistema tradicional",
+          "Alinhamento com proposta de autonomia das criptos"
+        ],
+        "tom": "otimista e informativo"
+      },
+      {
+        "tema": "Bitcoin mantém-se acima de US$100k por 30 dias",
+        "pontos_principais": [
+          "Marco histórico de estabilidade",
+          "Recuperação rápida após queda",
+          "Demonstra maturidade e confiança do mercado",
+          "Validação independente de bancos centrais"
+        ],
+        "tom": "confiante e analítico"
+      }
+    ],
+    "fechamento": "Por hoje é isso, cambada. Governos tentando segurar a revolução, brasileiros investindo além do tradicional, e o Bitcoin mostrando que existe. E que veio pra ficar. Sigo de olho."
+  },
+  "caracteristicas_linguisticas": {
+    "expressoes_marca": ["cambada", "bora", "sigo de olho"],
+    "estilo": "informal mas informativo",
+    "uso_de_numeros": "sempre por extenso para facilitar leitura",
+    "pausas_naturais": "sem travessões, texto corrido com pontuação natural",
+    "tom_geral": "libertário, crítico ao controle estatal, otimista com cripto"
+  },
+  "observacoes_ia": {
+    "remover_formatacao": "sem negrito, itálico ou caracteres especiais",
+    "numeros_por_extenso": "15% = quinze por cento, US$100k = cem mil dólares",
+    "fluidez": "texto corrido sem quebras artificiais",
+    "personalidade": "mantem tom crítico ao governo mas educativo ao público"
+  }
+}
